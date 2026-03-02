@@ -1,0 +1,377 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Vehicle Marketplace API with Cognito Authentication'
+
+Resources:
+  # Cognito User Pool
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: vehicle-marketplace-users
+      AutoVerifiedAttributes:
+        - email
+      Schema:
+        - Name: email
+          Required: true
+          Mutable: false
+        - Name: given_name
+          Required: true
+        - Name: family_name
+          Required: true
+        - Name: phone_number
+          Required: true
+
+  # Cognito User Pool Client
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: vehicle-marketplace-web
+      UserPoolId: !Ref UserPool
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+      GenerateSecret: false
+
+  # API Gateway
+  VehicleApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: VehicleMarketplaceAPI
+      Description: API for Vehicle Marketplace
+
+  # Cognito Authorizer
+  CognitoAuthorizer:
+    Type: AWS::ApiGateway::Authorizer
+    Properties:
+      Name: CognitoUserPoolAuthorizer
+      RestApiId: !Ref VehicleApi
+      Type: COGNITO_USER_POOLS
+      IdentitySource: method.request.header.Authorization
+      ProviderARNs:
+        - !GetAtt UserPool.Arn
+
+  # /vehicles Resource
+  VehiclesResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ParentId: !GetAtt VehicleApi.RootResourceId
+      PathPart: vehicles
+
+  # /vehicles/{id} Resource
+  VehicleIdResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ParentId: !Ref VehiclesResource
+      PathPart: '{id}'
+
+  # GET /vehicles Method
+  GetVehiclesMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ResourceId: !Ref VehiclesResource
+      HttpMethod: GET
+      AuthorizationType: COGNITO_USER_POOLS
+      AuthorizerId: !Ref CognitoAuthorizer
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetVehiclesFunction.Arn}/invocations
+
+  # POST /vehicles Method
+  PostVehiclesMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ResourceId: !Ref VehiclesResource
+      HttpMethod: POST
+      AuthorizationType: COGNITO_USER_POOLS
+      AuthorizerId: !Ref CognitoAuthorizer
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${CreateVehicleFunction.Arn}/invocations
+
+  # OPTIONS /vehicles/{id} Method (CORS)
+  OptionsVehicleIdMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ResourceId: !Ref VehicleIdResource
+      HttpMethod: OPTIONS
+      AuthorizationType: NONE
+      Integration:
+        Type: MOCK
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Methods: "'GET,PUT,DELETE,OPTIONS'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            ResponseTemplates:
+              application/json: ''
+        RequestTemplates:
+          application/json: '{"statusCode": 200}'
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Headers: true
+            method.response.header.Access-Control-Allow-Methods: true
+            method.response.header.Access-Control-Allow-Origin: true
+
+  # OPTIONS /vehicles Method (CORS)
+  OptionsVehiclesMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ResourceId: !Ref VehiclesResource
+      HttpMethod: OPTIONS
+      AuthorizationType: NONE
+      Integration:
+        Type: MOCK
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            ResponseTemplates:
+              application/json: ''
+        RequestTemplates:
+          application/json: '{"statusCode": 200}'
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Headers: true
+            method.response.header.Access-Control-Allow-Methods: true
+            method.response.header.Access-Control-Allow-Origin: true
+
+  # GET /vehicles/{id} Method
+  GetVehicleByIdMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ResourceId: !Ref VehicleIdResource
+      HttpMethod: GET
+      AuthorizationType: COGNITO_USER_POOLS
+      AuthorizerId: !Ref CognitoAuthorizer
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetVehicleByIdFunction.Arn}/invocations
+
+  # PUT /vehicles/{id} Method
+  PutVehicleMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ResourceId: !Ref VehicleIdResource
+      HttpMethod: PUT
+      AuthorizationType: COGNITO_USER_POOLS
+      AuthorizerId: !Ref CognitoAuthorizer
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${UpdateVehicleFunction.Arn}/invocations
+
+  # DELETE /vehicles/{id} Method
+  DeleteVehicleMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref VehicleApi
+      ResourceId: !Ref VehicleIdResource
+      HttpMethod: DELETE
+      AuthorizationType: COGNITO_USER_POOLS
+      AuthorizerId: !Ref CognitoAuthorizer
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DeleteVehicleFunction.Arn}/invocations
+
+  # Lambda Functions (placeholders - add your actual functions)
+  GetVehiclesFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: GetVehicles
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+            return {
+              statusCode: 200,
+              headers: { 'Access-Control-Allow-Origin': '*' },
+              body: JSON.stringify({ vehicles: [] })
+            };
+          };
+
+  CreateVehicleFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: CreateVehicle
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+            return {
+              statusCode: 201,
+              headers: { 'Access-Control-Allow-Origin': '*' },
+              body: JSON.stringify({ message: 'Created' })
+            };
+          };
+
+  GetVehicleByIdFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: GetVehicleById
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+            return {
+              statusCode: 200,
+              headers: { 'Access-Control-Allow-Origin': '*' },
+              body: JSON.stringify({ vehicle: {} })
+            };
+          };
+
+  UpdateVehicleFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: UpdateVehicle
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+            return {
+              statusCode: 200,
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,DELETE,OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
+              },
+              body: JSON.stringify({ message: 'Updated' })
+            };
+          };
+
+  DeleteVehicleFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: DeleteVehicle
+      Runtime: nodejs18.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+            return {
+              statusCode: 200,
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,DELETE,OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
+              },
+              body: JSON.stringify({ message: 'Deleted' })
+            };
+          };
+
+  # Lambda Execution Role
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+  # API Gateway Deployment
+  ApiDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn:
+      - GetVehiclesMethod
+      - PostVehiclesMethod
+      - GetVehicleByIdMethod
+      - PutVehicleMethod
+      - DeleteVehicleMethod
+      - OptionsVehiclesMethod
+      - OptionsVehicleIdMethod
+    Properties:
+      RestApiId: !Ref VehicleApi
+      StageName: dev
+
+  # Lambda Permissions
+  GetVehiclesPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref GetVehiclesFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${VehicleApi}/*/*
+
+  CreateVehiclePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref CreateVehicleFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${VehicleApi}/*/*
+
+  GetVehicleByIdPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref GetVehicleByIdFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${VehicleApi}/*/*
+
+  UpdateVehiclePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref UpdateVehicleFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${VehicleApi}/*/*
+
+  DeleteVehiclePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref DeleteVehicleFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${VehicleApi}/*/*
+
+Outputs:
+  UserPoolId:
+    Description: Cognito User Pool ID
+    Value: !Ref UserPool
+    Export:
+      Name: !Sub ${AWS::StackName}-UserPoolId
+
+  UserPoolClientId:
+    Description: Cognito User Pool Client ID
+    Value: !Ref UserPoolClient
+    Export:
+      Name: !Sub ${AWS::StackName}-UserPoolClientId
+
+  ApiUrl:
+    Description: API Gateway URL
+    Value: !Sub https://${VehicleApi}.execute-api.${AWS::Region}.amazonaws.com/dev
+    Export:
+      Name: !Sub ${AWS::StackName}-ApiUrl
+
+  ApiId:
+    Description: API Gateway ID
+    Value: !Ref VehicleApi
