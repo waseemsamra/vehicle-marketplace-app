@@ -50,7 +50,7 @@ const CustomerList = () => {
         {loading && <div className="text-center text-slate-400">Loading...</div>}
         {error && <div className="text-center text-red-400">Error: {error}</div>}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-4">
           {customers.map((customer) => (
             <CustomerCard 
               key={customer.id} 

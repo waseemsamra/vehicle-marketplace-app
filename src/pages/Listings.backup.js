@@ -369,149 +369,60 @@ const Listings = () => {
             ) : (
               <div className="space-y-4">
                 {sortedVehicles.map((vehicle) => (
-                  <div key={vehicle.vehicleId} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 w-full">
-                    <div className="flex gap-6">
-                      {/* Image Section */}
-                      <div className="relative w-80 h-56 flex-shrink-0">
-                        <img 
-                          src={vehicle.images?.[0] || 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&auto=format&fit=crop&q=80'} 
-                          alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-                          className="w-full h-full object-cover rounded-xl"
-                        />
-                        
-                        <div className="absolute top-3 left-3 bg-rose-500 text-white text-xs font-semibold px-3 py-1.5 rounded-md uppercase">
-                          {vehicle.condition || 'USED'}
-                        </div>
-                        
-                        {vehicle.images?.length > 0 && (
-                          <div className="absolute bottom-3 left-3 bg-black/60 text-white text-sm px-2.5 py-1.5 rounded-md flex items-center gap-1.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                              <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                              <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                            <span>{vehicle.images.length}</span>
-                          </div>
-                        )}
-                        
-                        <button className="absolute top-3 right-3 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md transition-colors">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-600">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  <div key={vehicle.vehicleId} className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow group flex flex-col md:flex-row md:h-56">
+                    <div className="relative w-full md:w-64 h-48 md:h-full bg-gray-100 flex-shrink-0 overflow-hidden">
+                      {vehicle.images?.[0] ? (
+                        <img src={vehicle.images[0]} alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <svg className="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                           </svg>
-                        </button>
+                        </div>
+                      )}
+                      <div className="absolute top-3 left-3">
+                        <span className="px-3 py-1 bg-brand-500 text-white text-xs font-bold rounded-full uppercase">{vehicle.condition || 'Used'}</span>
                       </div>
-
-                      {/* Details Section */}
-                      <div className="flex-1 py-1">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-3 leading-tight">
-                          {vehicle.year} {vehicle.make} {vehicle.model}
-                        </h2>
-                        
-                        <div className="flex items-center gap-4 mb-3">
-                          <span className="text-blue-600 text-xl font-semibold">
-                            {vehicle.price ? `$${vehicle.price.toLocaleString()}` : 'Call for price'}
-                          </span>
-                          {vehicle.dealType && (
-                            <div className="flex items-center gap-1.5 bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full text-sm font-medium">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7"></line>
-                                <polyline points="7 7 17 7 17 17"></polyline>
-                              </svg>
-                              {vehicle.dealType}
-                            </div>
-                          )}
+                    </div>
+                    <div className="flex-1 p-3 md:p-6 flex flex-col">
+                      <h3 className="text-base md:text-xl font-bold text-gray-800 mb-1 md:mb-2">{vehicle.year} {vehicle.make} {vehicle.model}</h3>
+                      <p className="text-lg md:text-xl font-bold text-brand-500 mb-2 md:mb-4">${vehicle.price?.toLocaleString()}</p>
+                      <div className="flex flex-wrap gap-2 md:gap-4 text-xs md:text-sm text-gray-700 mb-2 md:mb-4">
+                        <div className="flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                          <span>{vehicle.mileage?.toLocaleString()} miles</span>
                         </div>
-                        
-                        {vehicle.description && (
-                          <p className="text-gray-600 text-base mb-4 line-clamp-2">
-                            {vehicle.description}
-                          </p>
-                        )}
-                        
-                        <div className="flex items-center gap-6 mb-4 text-gray-700">
-                          <div className="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                              <line x1="16" y1="2" x2="16" y2="6"></line>
-                              <line x1="8" y1="2" x2="8" y2="6"></line>
-                              <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                            <span>{vehicle.year}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <circle cx="12" cy="12" r="10"></circle>
-                            </svg>
-                            <span>{vehicle.mileage?.toLocaleString() || 0} KM</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                              <polyline points="14 2 14 8 20 8"></polyline>
-                            </svg>
-                            <span>{vehicle.fuelType || 'Gasoline'}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <line x1="12" y1="8" x2="12" y2="12"></line>
-                              <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                            </svg>
-                            <span>{vehicle.transmission || 'Automatic'}</span>
-                          </div>
+                        <div className="flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+                          <span>{vehicle.transmission || 'Automatic'}</span>
                         </div>
-                        
-                        {vehicle.location && (
-                          <div className="flex items-center gap-2 text-gray-700 mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                              <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span>{typeof vehicle.location === 'string' ? vehicle.location : vehicle.location?.city || ''}</span>
-                          </div>
-                        )}
-                        
-                        {vehicle.canExport && (
-                          <div className="inline-flex items-center bg-slate-500 text-white text-sm font-medium px-4 py-2 rounded-lg">
-                            Can Be Exported
+                        <div className="flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                          <span>{vehicle.fuelType || 'Gasoline'}</span>
+                        </div>
+                        {vehicle.color && (
+                          <div className="flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
+                            <span>{vehicle.color}</span>
                           </div>
                         )}
                       </div>
-
-                      {/* Action Buttons */}
-                      <div className="w-56 flex-shrink-0 flex flex-col gap-3 py-1">
-                        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                          </svg>
+                      {vehicle.description && <p className="text-gray-700 text-xs md:text-sm leading-relaxed flex-1 overflow-hidden line-clamp-2">{vehicle.description}</p>}
+                    </div>
+                    <div className="w-full md:w-40 p-3 md:p-4 flex items-center justify-center border-t md:border-t-0 md:border-l border-gray-200">
+                      <div className="flex flex-row md:flex-col gap-2 w-full">
+                        <button className="bg-white hover:bg-gray-50 text-gray-800 px-2 md:px-3 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium border border-gray-300 transition-all">
                           Show Number
                         </button>
-                        
-                        <button className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <button className="bg-green-500 hover:bg-green-600 text-white px-2 md:px-3 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-1 justify-center">
+                          <svg className="w-3 md:w-4 h-3 md:h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                           </svg>
                           WhatsApp
                         </button>
-                        
-                        <button 
-                          onClick={() => navigate(`/vehicle/${vehicle.vehicleId}`)}
-                          className="w-full bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
-                          </svg>
-                          View details
+                        <button onClick={() => navigate(`/vehicle/${vehicle.vehicleId}`)} className="bg-brand-600 hover:bg-brand-500 text-white px-2 md:px-3 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all">
+                          View Details
                         </button>
-                        
-                        {vehicle.dealerName && (
-                          <div className="mt-4 flex justify-center">
-                            <div className="w-20 h-20 rounded-full bg-red-500 flex items-center justify-center text-white text-xs font-bold text-center leading-tight p-2 border-4 border-red-600">
-                              {vehicle.dealerName}
-                            </div>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>
