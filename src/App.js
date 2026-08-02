@@ -8,8 +8,12 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Home from './pages/Home';
+import Search from './pages/Search';
 import Listings from './pages/Listings';
 import VehicleDetail from './pages/VehicleDetail';
+import FashionHome from './pages/FashionHome';
+import FashionHeader from './components/FashionHeader';
+import FashionFooter from './components/FashionFooter';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminLayout from './pages/admin/AdminLayout';
 import VehicleManagement from './pages/admin/VehicleManagement';
@@ -53,14 +57,18 @@ function AppContent() {
         <Routes>
           <Route path="/login" element={<Login />} />
           
-          {/* Public Routes */}
-          <Route path="/" element={
+          {/* Fashion Marketplace */}
+          <Route path="/fashion" element={
             <>
-              <Navbar />
-              <Home />
-              <Footer />
+              <FashionHeader />
+              <FashionHome />
+              <FashionFooter />
             </>
           } />
+          
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/vehicles" element={
             <>
               <Navbar />
