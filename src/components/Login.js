@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { confirmSignUp } from '../config/amplify';
+import { createRole } from '../models/Role';
 
 const Login = () => {
   const { signIn, signUp } = useAuth();

@@ -149,12 +149,12 @@ const BuyerManagement = () => {
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-white">Buyer Management</h1>
-          <p className="text-slate-400 mt-1">{buyers.length} total buyers</p>
+          <h1 className="text-3xl font-bold text-gray-900">Buyer Management</h1>
+          <p className="text-gray-500 mt-1">{buyers.length} total buyers</p>
         </div>
         <button
           onClick={() => { resetForm(); setShowModal(true); }}
-          className="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-semibold transition-all flex items-center gap-2"
+          className="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-gray-900 rounded-lg font-semibold transition-all flex items-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -163,43 +163,43 @@ const BuyerManagement = () => {
         </button>
       </div>
 
-      <div className="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
+      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-800/50">
+            <thead className="bg-gray-100/50">
               <tr>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase">Name</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase">Contact</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase">Location</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-400 uppercase">Status</th>
-                <th className="px-6 py-4 text-right text-xs font-semibold text-slate-400 uppercase">Actions</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Name</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Contact</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Location</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
+                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-gray-200">
               {buyers.length === 0 ? (
                 <tr>
-                  <td colSpan="5" className="px-6 py-12 text-center text-slate-400">
+                  <td colSpan="5" className="px-6 py-12 text-center text-gray-500">
                     No buyers found. Click "Add Buyer" to create one.
                   </td>
                 </tr>
               ) : (
                 buyers.map((buyer) => (
-                  <tr key={buyer.buyerId || buyer.id} className="hover:bg-slate-800/30 transition-colors">
+                  <tr key={buyer.buyerId || buyer.id} className="hover:bg-gray-100/30 transition-colors">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-white">{buyer.firstName} {buyer.lastName}</div>
+                      <div className="font-medium text-gray-900">{buyer.firstName} {buyer.lastName}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-slate-300">{buyer.email}</div>
-                      <div className="text-xs text-slate-500">{buyer.phone}</div>
+                      <div className="text-sm text-gray-600">{buyer.email}</div>
+                      <div className="text-xs text-gray-400">{buyer.phone}</div>
                     </td>
-                    <td className="px-6 py-4 text-slate-300">
+                    <td className="px-6 py-4 text-gray-600">
                       {buyer.city && buyer.state ? `${buyer.city}, ${buyer.state}` : '-'}
                     </td>
                     <td className="px-6 py-4">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                         buyer.status === 'active' 
-                          ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                          : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                          ? 'bg-green-100 text-green-700 border border-green-200' 
+                          : 'bg-red-100 text-red-700 border border-red-200'
                       }`}>
                         {buyer.status || 'active'}
                       </span>
@@ -207,13 +207,13 @@ const BuyerManagement = () => {
                     <td className="px-6 py-4 text-right">
                       <button
                         onClick={() => handleEdit(buyer)}
-                        className="px-3 py-1.5 bg-brand-600 hover:bg-brand-500 text-white rounded text-sm font-medium transition-colors mr-2"
+                        className="px-3 py-1.5 bg-brand-600 hover:bg-brand-500 text-gray-900 rounded text-sm font-medium transition-colors mr-2"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(buyer)}
-                        className="px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white rounded text-sm font-medium transition-colors"
+                        className="px-3 py-1.5 bg-red-600 hover:bg-red-500 text-gray-900 rounded text-sm font-medium transition-colors"
                       >
                         Delete
                       </button>
@@ -228,17 +228,17 @@ const BuyerManagement = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-900 rounded-2xl border border-slate-800 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-slate-800 flex justify-between items-center sticky top-0 bg-slate-900 z-10">
-              <h2 className="text-2xl font-bold text-white">
+        <div className="fixed inset-0 bg-gray-200/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl border border-gray-200 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+              <h2 className="text-2xl font-bold text-gray-900">
                 {editingBuyer ? 'Edit Buyer' : 'Add New Buyer'}
               </h2>
               <button
                 onClick={() => { setShowModal(false); resetForm(); }}
-                className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
-                <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -247,54 +247,54 @@ const BuyerManagement = () => {
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">First Name *</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">First Name *</label>
                   <input
                     type="text"
                     required
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Last Name *</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Last Name *</label>
                   <input
                     type="text"
                     required
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Email *</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Email *</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Phone</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Phone</label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Status</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Status</label>
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   >
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
@@ -302,42 +302,42 @@ const BuyerManagement = () => {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Address</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Address</label>
                   <input
                     type="text"
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">City</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">City</label>
                   <input
                     type="text"
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">State</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">State</label>
                   <input
                     type="text"
                     value={formData.state}
                     onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Zip Code</label>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">Zip Code</label>
                   <input
                     type="text"
                     value={formData.zipCode}
                     onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
-                    className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-brand-500"
+                    className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                   />
                 </div>
               </div>
@@ -345,14 +345,14 @@ const BuyerManagement = () => {
               <div className="flex gap-3 pt-4">
                 <button
                   type="submit"
-                  className="flex-1 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-semibold transition-colors"
+                  className="flex-1 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-gray-900 rounded-lg font-semibold transition-colors"
                 >
                   {editingBuyer ? 'Update Buyer' : 'Create Buyer'}
                 </button>
                 <button
                   type="button"
                   onClick={() => { setShowModal(false); resetForm(); }}
-                  className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-semibold transition-colors"
+                  className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-colors"
                 >
                   Cancel
                 </button>

@@ -1,28 +1,14 @@
-import { Amplify } from 'aws-amplify';
-import { signIn, signUp, signOut, getCurrentUser, fetchAuthSession, confirmSignUp } from 'aws-amplify/auth';
+import * as mongoAuth from '../services/mongoAuth';
 
-const amplifyConfig = {
-  Auth: {
-    Cognito: {
-      userPoolId: process.env.REACT_APP_USER_POOL_ID || 'us-east-1_XXXXXXXXX',
-      userPoolClientId: process.env.REACT_APP_CLIENT_ID || 'XXXXXXXXXXXXXXXXXXXXXXXXXX',
-      signUpVerificationMethod: 'code',
-      loginWith: {
-        email: true
-      }
-    }
-  },
-  API: {
-    REST: {
-      VehicleAPI: {
-        endpoint: process.env.REACT_APP_API_URL || 'https://4peif882l0.execute-api.us-east-1.amazonaws.com/dev',
-        region: 'us-east-1'
-      }
-    }
-  }
-};
+// Auth facade backed by MongoDB + JWT instead of AWS Cognito. The named
+// exports are intentionally identical to the old Amplify shim so that
+// hooks/useAuth.js, Login.js and services/vehicleApi.js keep working unchanged.
+const signIn = (params) => mongoAuth.signin(params);
+const signUp = (params) => mongoAuth.signup(params);
+const signOut = () => mongoAuth.signout();
+const getCurrentUser = () => mongoAuth.getCurrentUser();
+const confirmSignUp = (params) => mongoAuth.confirmSignUp(params);
+const fetchAuthSession = () => mongoAuth.fetchAuthSession();
 
-Amplify.configure(amplifyConfig);
-
-export { signIn, signUp, signOut, getCurrentUser, fetchAuthSession, confirmSignUp };
-export default amplifyConfig;
+export { signIn, signUp, signOut, getCurrentUser, confirmSignUp, fetchAuthSession };
+export default { signIn, signUp, signOut, getCurrentUser };

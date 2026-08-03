@@ -1,41 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import vehicleDetailsData from '../data/vehicleDetails.json';
 import { vehicleApi } from '../services/vehicleApi';
 import toast from 'react-hot-toast';
+
+const detailById = new Map();
+const detailBySlug = new Map();
+vehicleDetailsData.vehicles.forEach((v) => {
+  detailById.set(v.id, v);
+  detailBySlug.set(v.slug, v);
+  detailBySlug.set(v.key, v);
+});
 
 const VehicleDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const headerRef = useRef(null);
   const [vehicle, setVehicle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [activeTab, setActiveTab] = useState('overview');
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState('Carrara White');
   const [downPayment, setDownPayment] = useState(20000);
   const [isFavorited, setIsFavorited] = useState(false);
 
-  const images = vehicle?.images || (vehicle?.imageUrl ? [vehicle.imageUrl] : []);
+  const images = vehicle?.gallery?.length ? vehicle.gallery.map((g) => g.url) : vehicle?.images || [];
 
   useEffect(() => {
-    loadVehicle();
+    const header = headerRef.current;
+    if (!header) return;
+    const onScroll = () => {
+      if (window.scrollY > 20) {
+        header.classList.add('py-2');
+        header.classList.remove('py-4');
+      } else {
+        header.classList.add('py-4');
+        header.classList.remove('py-2');
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    loadFromApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (lightboxOpen) {
-        if (e.key === 'Escape') setLightboxOpen(false);
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
-      }
+    document.title = vehicle ? `AutoMarket | ${vehicle.title}` : 'AutoMarket | Vehicle Details';
+  }, [vehicle]);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (!lightboxOpen) return;
+      if (e.key === 'Escape') setLightboxOpen(false);
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, [lightboxOpen, selectedImage]);
 
-  const loadVehicle = async () => {
+  const loadFromApi = async () => {
     try {
       const data = await vehicleApi.getById(id);
+      if (data?.images?.length && !data?.gallery?.length) {
+        data.gallery = data.images.map((url, idx) => ({ url, alt: `${data.title || 'Vehicle'} photo ${idx + 1}` }));
+      }
       setVehicle(data);
     } catch (error) {
       toast.error('Failed to load vehicle');
@@ -45,27 +76,23 @@ const VehicleDetail = () => {
     }
   };
 
-  const nextImage = () => {
-    setSelectedImage((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setSelectedImage((prev) => (prev - 1 + images.length) % images.length);
-  };
+  const nextImage = () => setSelectedImage((p) => (p + 1) % images.length);
+  const prevImage = () => setSelectedImage((p) => (p - 1 + images.length) % images.length);
 
   const calculateMonthlyPayment = () => {
-    const price = vehicle?.price || 142500;
-    const loanAmount = price - downPayment;
+    const price = vehicle?.priceNum || 142500;
+    const loanAmount = Math.max(0, price - downPayment);
     const monthlyRate = 0.059 / 12;
-    const numberOfPayments = 72;
-    const payment = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
-                    (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+    const n = 72;
+    const payment =
+      (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, n)) /
+      (Math.pow(1 + monthlyRate, n) - 1);
     return Math.round(payment);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center pt-20">
+      <div className="min-h-screen bg-background pt-20 flex items-center justify-center">
         <div className="w-12 h-12 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
@@ -73,12 +100,68 @@ const VehicleDetail = () => {
 
   if (!vehicle) return null;
 
+  const {
+    title,
+    subtitle,
+    priceNum,
+    msrp,
+    status,
+    badge,
+    mileage,
+    fuelType,
+    transmission,
+    seats,
+    gallery = [],
+    about = '',
+    specs,
+    features,
+    seller,
+    dealership,
+  } = vehicle;
+
+  const thumbCount = 4;
+  const restCount = Math.max(0, gallery.length - thumbCount);
+
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      {/* Breadcrumb */}
-      <div className="pt-24 pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center space-x-2 text-sm text-gray-600">
-          <button onClick={() => navigate('/')} className="hover:text-gray-900 transition-colors flex items-center gap-1">
+    <div className="bg-background text-on-surface min-h-screen">
+      {/* Top Nav (same theme as Home) */}
+      <header
+        ref={headerRef}
+        className="sticky top-0 z-50 flex justify-between items-center px-margin-desktop w-full max-w-max-width mx-auto bg-surface/80 backdrop-blur-md shadow-sm transition-all duration-200"
+      >
+        <div className="flex items-center gap-xl py-4">
+          <span className="font-display-lg text-display-lg font-black text-primary">AutoMarket</span>
+          <nav className="hidden md:flex items-center gap-lg">
+            <a className="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors" href="/">Buy</a>
+            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/search">Sell</a>
+            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#finance">Finance</a>
+            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#reviews">Reviews</a>
+          </nav>
+        </div>
+        <div className="flex items-center gap-lg py-4">
+          <div className="relative group hidden lg:block">
+            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+            <input
+              className="pl-10 pr-4 py-2 rounded-full bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-body-md w-64 transition-all"
+              placeholder="Search inventory..."
+              type="text"
+            />
+          </div>
+          <div className="flex items-center gap-md">
+            <button
+              onClick={() => navigate('/login')}
+              className="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-max-width mx-auto px-margin-desktop py-8">
+        {/* Breadcrumbs */}
+        <nav className="flex items-center gap-2 mb-6 text-sm text-on-surface-variant">
+          <button onClick={() => navigate('/')} className="flex items-center gap-1 hover:text-primary transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
@@ -87,284 +170,318 @@ const VehicleDetail = () => {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span>Inventory</span>
+          <a href="/search" className="hover:text-primary transition-colors">Inventory</a>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
-          <span className="text-gray-900 font-medium">{vehicle.make} {vehicle.model}</span>
-        </div>
-      </div>
+          <span className="text-primary font-bold">{title}</span>
+        </nav>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-8">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-2 flex-wrap">
-              {vehicle.status === 'available' && (
-                <span className="px-3 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded-full border border-green-500/30 uppercase">Available</span>
-              )}
-              <span className="px-3 py-1 bg-brand-500/20 text-brand-400 text-xs font-bold rounded-full border border-brand-500/30 uppercase">Featured</span>
-              {vehicle.mileage < 10000 && (
-                <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-bold rounded-full border border-yellow-500/30 uppercase">Low Miles</span>
-              )}
-            </div>
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-2">
-              {vehicle.year} {vehicle.make} {vehicle.model}
-            </h1>
-            <p className="text-gray-600 text-lg">{vehicle.bodyType} • {vehicle.transmission}</p>
-          </div>
-          <div className="text-right">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-3xl font-bold text-gray-900">${vehicle.price?.toLocaleString()}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Images */}
-          <div className="lg:col-span-2 space-y-4">
-            {/* Main Image */}
-            <div className="relative aspect-video rounded-2xl overflow-hidden bg-white group cursor-zoom-in shadow-xl border border-gray-200" onClick={() => setLightboxOpen(true)}>
-              <img 
-                src={images[selectedImage]} 
-                alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        {/* Premium Hero Gallery: 1 large + 4 small thumbnails */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-xl">
+          <div className="lg:col-span-8">
+            <div
+              className="relative aspect-[16/9] lg:aspect-auto rounded-xl overflow-hidden shadow-ambient group cursor-pointer bg-surface-container"
+              onClick={() => setLightboxOpen(true)}
+            >
+              <img
+                src={images[selectedImage]}
+                alt={gallery?.[selectedImage]?.alt || title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute bottom-4 right-4 glass-panel px-4 py-2 rounded-full text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-                Click to expand
+              <div className="absolute bottom-4 left-4 bg-surface/80 glass-effect px-3 py-1.5 rounded-lg font-label-sm text-label-sm flex items-center gap-2">
+                <span className="material-symbols-outlined text-[18px]">photo_camera</span>
+                {selectedImage + 1} / {gallery.length} Photos
               </div>
-              <button 
-                className="absolute top-4 right-4 p-3 glass-panel rounded-full hover:bg-white/10 transition-all transform hover:scale-110 active:scale-95"
-                onClick={(e) => { e.stopPropagation(); setIsFavorited(!isFavorited); toast.success(isFavorited ? 'Removed from favorites' : 'Added to favorites'); }}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsFavorited(!isFavorited);
+                  toast.success(isFavorited ? 'Removed from favorites' : 'Added to favorites');
+                }}
+                className="absolute top-4 right-4 p-3 glass-panel-light rounded-full hover:bg-surface-container transition-all transform hover:scale-110 active:scale-95"
               >
-                <svg className={`w-6 h-6 transition-all ${isFavorited ? 'fill-current text-red-500 scale-110' : 'text-white'}`} fill={isFavorited ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className={`w-6 h-6 transition-all ${isFavorited ? 'fill-current text-red-500 scale-110' : 'text-primary'}`}
+                  fill={isFavorited ? 'currentColor' : 'none'}
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </button>
             </div>
-
-            {/* Thumbnail Gallery */}
-            {images.length > 1 && (
-              <div className="grid grid-cols-5 gap-3">
-                {images.slice(0, 5).map((img, idx) => (
-                  <div 
-                    key={idx}
-                    className={`relative aspect-video rounded-lg overflow-hidden border-2 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg ${
-                      selectedImage === idx ? 'border-brand-500 shadow-lg shadow-brand-500/50 scale-105' : 'border-gray-300 hover:border-brand-400'
-                    }`}
-                    onClick={() => setSelectedImage(idx)}
-                  >
-                    <img src={img} className="w-full h-full object-cover" alt={`View ${idx + 1}`} />
-                    {idx === 4 && images.length > 5 && (
-                      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">+{images.length - 5}</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Tabs */}
-            <div className="mt-8 border-b border-gray-200">
-              <div className="flex space-x-8">
-                {['overview', 'features', 'history', 'reviews'].map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`pb-4 font-medium transition-colors ${
-                      activeTab === tab ? 'text-brand-500 border-b-2 border-brand-500' : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Tab Contents */}
-            <div className="mt-6">
-              {activeTab === 'overview' && (
-                <div className="space-y-6 animate-fade-in">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">About This Vehicle</h3>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                      {vehicle.description || `Experience the pinnacle of automotive engineering with this pristine ${vehicle.year} ${vehicle.make} ${vehicle.model}.`}
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="feature-card p-5 rounded-xl text-center bg-white border border-gray-200 hover:border-brand-500/50 transition-all duration-300 hover:shadow-lg shadow-sm">
-                      <svg className="w-8 h-8 text-brand-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Mileage</p>
-                      <p className="text-gray-900 font-bold text-lg">{vehicle.mileage?.toLocaleString()} mi</p>
-                    </div>
-                    <div className="feature-card p-5 rounded-xl text-center bg-white border border-gray-200 hover:border-brand-500/50 transition-all duration-300 hover:shadow-lg shadow-sm">
-                      <svg className="w-8 h-8 text-brand-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-                      </svg>
-                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Fuel Type</p>
-                      <p className="text-gray-900 font-bold text-lg">{vehicle.fuelType || 'Gasoline'}</p>
-                    </div>
-                    <div className="feature-card p-5 rounded-xl text-center bg-white border border-gray-200 hover:border-brand-500/50 transition-all duration-300 hover:shadow-lg shadow-sm">
-                      <svg className="w-8 h-8 text-brand-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Transmission</p>
-                      <p className="text-gray-900 font-bold text-lg">{vehicle.transmission}</p>
-                    </div>
-                    <div className="feature-card p-5 rounded-xl text-center bg-white border border-gray-200 hover:border-brand-500/50 transition-all duration-300 hover:shadow-lg shadow-sm">
-                      <svg className="w-8 h-8 text-brand-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                      </svg>
-                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Color</p>
-                      <p className="text-gray-900 font-bold text-lg">{vehicle.color}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'features' && (
-                <div className="space-y-6 animate-fade-in">
-                  <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-                    <h4 className="font-bold text-gray-900 mb-4">Specifications</h4>
-                    <div className="space-y-3">
-                      {vehicle.vin && <div className="flex justify-between p-3 hover:bg-gray-50 rounded"><span className="text-gray-600">VIN</span><span className="text-gray-900 font-mono">{vehicle.vin}</span></div>}
-                      {vehicle.mileage && <div className="flex justify-between p-3 hover:bg-gray-50 rounded"><span className="text-gray-600">Mileage</span><span className="text-gray-900">{vehicle.mileage.toLocaleString()} miles</span></div>}
-                      {vehicle.transmission && <div className="flex justify-between p-3 hover:bg-gray-50 rounded"><span className="text-gray-600">Transmission</span><span className="text-gray-900">{vehicle.transmission}</span></div>}
-                      {vehicle.drivetrain && <div className="flex justify-between p-3 hover:bg-gray-50 rounded"><span className="text-gray-600">Drivetrain</span><span className="text-gray-900">{vehicle.drivetrain}</span></div>}
-                      {vehicle.color && <div className="flex justify-between p-3 hover:bg-gray-50 rounded"><span className="text-gray-600">Exterior Color</span><span className="text-gray-900">{vehicle.color}</span></div>}
-                      {vehicle.fuelType && <div className="flex justify-between p-3 hover:bg-gray-50 rounded"><span className="text-gray-600">Fuel Type</span><span className="text-gray-900">{vehicle.fuelType}</span></div>}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'history' && (
-                <div className="space-y-6 animate-fade-in">
-                  <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                        <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-gray-900 text-lg">Clean Title Verified</h4>
-                        <p className="text-gray-600 text-sm">No accidents reported</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'reviews' && (
-                <div className="space-y-6 animate-fade-in">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="text-4xl font-bold text-gray-900">4.9</div>
-                    <div>
-                      <div className="flex text-yellow-500">
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <p className="text-gray-600 text-sm">Based on customer reviews</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
 
-          {/* Right Column - Purchase Options */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="bg-white rounded-2xl p-6 sticky top-24 border border-gray-200 shadow-lg">
-              <div className="flex items-center justify-between mb-6">
+          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-4 h-full">
+            {gallery.slice(0, thumbCount).map((img, idx) => (
+              <div
+                key={idx}
+                className="rounded-xl overflow-hidden shadow-ambient relative group cursor-pointer bg-surface-container"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImage(idx);
+                }}
+              >
+                <div
+                  className="bg-cover bg-center w-full h-full transition-transform duration-500 group-hover:scale-110"
+                  style={{ backgroundImage: `url('${img.url}')` }}
+                  data-alt={img.alt}
+                />
+                {idx === thumbCount - 1 && restCount > 0 && (
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-white font-label-md text-label-md">+{restCount} More</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Main Layout with Sticky Sidebar */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+          {/* Left Column: Details */}
+          <div className="lg:col-span-8 space-y-xl">
+            {/* Vehicle Overview Header */}
+            <div className="space-y-4">
+              <div className="flex flex-wrap justify-between items-start gap-4">
                 <div>
-                  <p className="text-gray-600 text-sm">Price</p>
-                  <p className="text-3xl font-bold text-gray-900">${vehicle.price?.toLocaleString()}</p>
+                  <h1 className="font-headline-md text-headline-md text-primary">{title}</h1>
+                  <p className="font-body-lg text-body-lg text-on-surface-variant">{subtitle}</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-headline-md text-headline-md text-primary">${priceNum?.toLocaleString()}</p>
+                  {msrp && <p className="font-label-sm text-label-sm text-on-surface-variant">MSRP: {msrp}</p>}
                 </div>
               </div>
 
-              {/* Financing Calculator */}
-              <div className="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-gray-900">Estimated Payment</span>
+              <div className="flex flex-wrap gap-sm">
+                <div className="bg-surface-container-high px-4 py-2 rounded-lg flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary">speed</span>
+                  <span className="font-label-md text-label-md">{mileage?.toLocaleString()} mi</span>
                 </div>
-                <div className="mb-4">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-600">Down Payment</span>
-                    <span className="text-gray-900 font-medium">${downPayment.toLocaleString()}</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="50000" 
-                    value={downPayment} 
-                    step="1000"
-                    onChange={(e) => setDownPayment(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                    style={{
-                      background: `linear-gradient(to right, #0ea5e9 0%, #0ea5e9 ${(downPayment/50000)*100}%, #e5e7eb ${(downPayment/50000)*100}%, #e5e7eb 100%)`
-                    }}
-                  />
+                <div className="bg-surface-container-high px-4 py-2 rounded-lg flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary">local_gas_station</span>
+                  <span className="font-label-md text-label-md">{fuelType || 'Gasoline'}</span>
                 </div>
-                <div className="flex justify-between items-end border-t border-gray-200 pt-4">
-                  <div>
-                    <p className="text-xs text-gray-600">Monthly Payment</p>
-                    <p className="text-2xl font-bold text-gray-900">${calculateMonthlyPayment().toLocaleString()}</p>
-                  </div>
-                  <p className="text-xs text-gray-500">72 months @ 5.9% APR</p>
+                <div className="bg-surface-container-high px-4 py-2 rounded-lg flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary">settings_input_component</span>
+                  <span className="font-label-md text-label-md">{transmission}</span>
                 </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="space-y-3">
-                <button className="w-full py-4 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white font-bold rounded-xl transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  Buy Now
-                </button>
-                <button className="w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold rounded-xl transition-all border border-gray-300 hover:border-gray-400 flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  Make an Offer
-                </button>
-                <button className="w-full py-4 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-xl transition-all border border-gray-300 hover:border-brand-500 flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  Schedule Test Drive
-                </button>
-              </div>
-
-              {/* Protection Plans */}
-              <div className="mt-6 space-y-2">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>7-Day Money Back Guarantee</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <svg className="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                  </svg>
-                  <span>Free Delivery Nationwide</span>
+                <div className="bg-surface-container-high px-4 py-2 rounded-lg flex items-center gap-2">
+                  <span className="material-symbols-outlined text-secondary">event_seat</span>
+                  <span className="font-label-md text-label-md">{seats} Seats</span>
                 </div>
               </div>
             </div>
+
+            {/* Status / Badges */}
+            <div className="flex items-center gap-3 flex-wrap">
+              {badge && (
+                <span className={`px-3 py-1 rounded-full text-xs font-bold ${badge.cls}`}>{badge.text}</span>
+              )}
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-bold ${
+                  status === 'available'
+                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                    : status === 'reserved'
+                    ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                    : status === 'pricedrop'
+                    ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                    : 'bg-surface-container border border-outline-variant text-on-surface'
+                }`}
+              >
+                {status === 'available' ? 'Available' : status}
+              </span>
+            </div>
+
+            {/* Technical Specifications */}
+            <section>
+              <h2 className="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary">analytics</span>
+                Technical Specifications
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-4 bg-surface-container-lowest p-lg rounded-xl shadow-ambient border border-outline-variant/20">
+                 {(specs || []).map(([icon, label], idx) => (
+                   <div key={idx} className="flex justify-between py-2 border-b border-outline-variant/10">
+                     <span className="text-on-surface-variant">{label}</span>
+                     <span className="material-symbols-outlined text-primary text-[18px]">{icon}</span>
+                   </div>
+                 ))}
+              </div>
+            </section>
+
+            {/* Premium Features */}
+            <section>
+              <h2 className="font-headline-sm text-headline-sm mb-6">Premium Features</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {(features || []).map((f) => (
+                  <div key={f.title} className="flex items-start gap-3 p-4 bg-surface-container-low rounded-lg transition-all hover:bg-surface-container">
+                    <span className="material-symbols-outlined text-primary text-3xl">{f.icon}</span>
+                    <div>
+                      <p className="font-label-md text-label-md text-primary">{f.title}</p>
+                      <p className="text-[12px] text-on-surface-variant">{f.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Seller's Description */}
+            <section>
+              <h2 className="font-headline-sm text-headline-sm mb-4">Seller's Description</h2>
+              <div className="text-on-surface-variant leading-relaxed space-y-4">
+                {(about || '').split('\n').map((para, i) => (
+                  <p key={i} className="mb-4">{para}</p>
+                ))}
+              </div>
+            </section>
+
+            {/* Trust Indicators */}
+            <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex items-center gap-4 p-lg bg-surface-container-lowest rounded-xl shadow-ambient border border-outline-variant/30">
+                <div className="w-12 h-12 flex items-center justify-center bg-secondary-container text-on-secondary-container rounded-full">
+                  <span className="material-symbols-outlined">verified</span>
+                </div>
+                <div>
+                  <p className="font-label-md text-label-md text-primary">Certified Inspection</p>
+                  <p className="text-label-sm text-on-surface-variant">165-point detailed check</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 p-lg bg-surface-container-lowest rounded-xl shadow-ambient border border-outline-variant/30">
+                <div className="w-12 h-12 flex items-center justify-center bg-tertiary-container text-on-tertiary-container rounded-full">
+                  <span className="material-symbols-outlined">history_edu</span>
+                </div>
+                <div>
+                  <p className="font-label-md text-label-md text-primary">CARFAX® Report</p>
+                  <a className="text-label-sm text-primary underline" href="#">View Full History</a>
+                </div>
+              </div>
+            </section>
+
           </div>
+
+          {/* Right Column: Sticky Action Panel */}
+          <aside className="lg:col-span-4">
+            <div className="sticky top-24 space-y-6">
+              <div className="bg-surface-container-lowest p-lg rounded-xl shadow-ambient border border-outline-variant/20 flex flex-col gap-6">
+                <div className="space-y-4">
+                  <button
+                    onClick={() => {
+                      toast.success('Redirecting to purchase');
+                      navigate(`/vehicle/${vehicle.id}/checkout`);
+                    }}
+                    className="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
+                  >
+                    <span className="material-symbols-outlined">bolt</span>
+                    Start Purchase Online
+                  </button>
+                  <button
+                    onClick={() => toast.success('Checking availability...')}
+                    className="w-full border border-primary text-primary py-4 rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors"
+                  >
+                    Check Availability
+                  </button>
+                </div>
+
+                <hr className="border-outline-variant/10" />
+
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-on-surface-variant">Est. Monthly Payment</span>
+                    <span className="font-headline-sm text-headline-sm text-primary">${calculateMonthlyPayment().toLocaleString()} / mo</span>
+                  </div>
+                  <div className="bg-surface-container-low p-4 rounded-lg">
+                    <div className="flex items-center gap-2 text-label-sm mb-2">
+                      <span className="material-symbols-outlined text-[16px]">calculate</span>
+                      <span>Loan Calculator</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max={priceNum ? priceNum * 0.6 : 50000}
+                      value={downPayment}
+                      step="1000"
+                      onChange={(e) => setDownPayment(Number(e.target.value))}
+                      className="w-full h-1 accent-primary"
+                    />
+                    <div className="flex justify-between text-[11px] text-on-surface-variant mt-1">
+                      <span>$0</span>
+                      <span>${priceNum ? (priceNum * 0.6).toLocaleString() : 50000}</span>
+                    </div>
+                  </div>
+                  <p className="text-xs text-on-surface-variant">72 months @ 5.9% APR</p>
+                </div>
+
+                <hr className="border-outline-variant/10" />
+
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 text-label-sm text-on-surface-variant">
+                    <input type="checkbox" className="accent-primary h-4 w-4" defaultChecked />
+                    Include 3-year warranty +$2,995
+                  </label>
+                  <label className="flex items-center gap-2 text-label-sm text-on-surface-variant">
+                    <input type="checkbox" className="accent-primary h-4 w-4" />
+                    Free delivery nationwide
+                  </label>
+                  <label className="flex items-center gap-2 text-label-sm text-on-surface-variant">
+                    <input type="checkbox" className="accent-primary h-4 w-4" />
+                    7-day money-back guarantee
+                  </label>
+                </div>
+              </div>
+
+              {/* Your Client Advisor */}
+              <div className="flex items-center gap-6 p-lg bg-surface-container-lowest rounded-2xl shadow-ambient border border-outline-variant/20">
+                <img
+                  src={seller?.avatar}
+                  alt={seller?.name}
+                  className="w-24 h-24 rounded-full object-cover border-2 border-outline-variant/20"
+                />
+                <div className="flex-1">
+                  <p className="text-on-surface-variant text-xs uppercase tracking-wider">Your Client Advisor</p>
+                  <h4 className="font-semibold text-lg text-primary">{seller?.name}</h4>
+                  <p className="text-on-surface-variant">{seller?.title}</p>
+                  <p className="text-primary font-semibold mt-1">{seller?.phone}</p>
+                </div>
+                <a
+                  href={`tel:${seller?.phone?.replace(/\D/g, '')}`}
+                  className="flex items-center justify-center w-12 h-12 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.586l-2.7 1.104a11.99 11.99 0 006.39 6.39l1.104-2.7a1 1 0 011.586-.502l4.493 1.498A1 1 0 0121 16.691V19a2 2 0 00-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </a>
+              </div>
+
+              {/* Dealer location */}
+              <div className="bg-primary-container p-lg rounded-xl text-on-primary-container shadow-ambient">
+                <h3 className="font-label-md text-label-md mb-2 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-on-primary-container">location_on</span>
+                  {dealership?.name}
+                </h3>
+                <p className="text-label-sm opacity-80 mb-4">
+                  {dealership?.address}, {dealership?.city}, {dealership?.state} {dealership?.zip}
+                </p>
+                <div className="h-32 w-full rounded-lg bg-surface-container-highest overflow-hidden mb-4 border border-outline-variant/20 flex items-center justify-center">
+                  <span className="material-symbols-outlined text-3xl text-on-primary-container/40">map</span>
+                </div>
+                <button
+                  onClick={() =>
+                    window.open(
+                      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        `${dealership?.address}, ${dealership?.city}, ${dealership?.state}`
+                      )}`,
+                      '_blank'
+                    )
+                  }
+                  className="w-full bg-white/10 hover:bg-white/20 py-2 rounded-lg text-label-sm font-medium transition-colors"
+                >
+                  Get Directions
+                </button>
+              </div>
+            </div>
+          </aside>
         </div>
       </main>
 
@@ -386,41 +503,12 @@ const VehicleDetail = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          <img src={images[selectedImage]} alt="Full size" className="max-w-[90%] max-h-[90%] object-contain" onClick={(e) => e.stopPropagation()} />
+          <img src={images[selectedImage]} alt="Full size" className="max-w-[90%] max-h-[85%] object-contain" onClick={(e) => e.stopPropagation()} />
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-full text-white font-medium">
             {selectedImage + 1} / {images.length}
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        .animate-fade-in {
-          animation: fadeIn 0.4s ease-out;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        input[type="range"]::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          background: #0ea5e9;
-          cursor: pointer;
-          box-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
-        }
-        input[type="range"]::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          background: #0ea5e9;
-          cursor: pointer;
-          box-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
-          border: none;
-        }
-      `}</style>
     </div>
   );
 };

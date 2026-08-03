@@ -2,7 +2,8 @@ import axios from 'axios';
 import { fetchAuthSession } from '../config/amplify';
 import { monitoring } from './monitoring';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://your-api-id.execute-api.us-east-1.amazonaws.com/dev';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+const TOKEN_KEY = 'authToken';
 
 // Custom error class
 export class ApiError extends Error {
@@ -26,11 +27,11 @@ const apiClient = axios.create({
 // Request interceptor - Add auth token
 apiClient.interceptors.request.use(
   async (config) => {
-    console.log(`[API Request] ${config.method.toUpperCase()} ${config.baseURL}${config.url}`);
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error) => {
-    console.error('[API Request Error]', error);
     return Promise.reject(error);
   }
 );
@@ -79,6 +80,7 @@ export const vehicleApi = {
       
       return {
         items: vehicles,
+        totalCount: totalCount,
         lastKey: hasMore ? offset + limit : null,
         hasMore: hasMore,
       };

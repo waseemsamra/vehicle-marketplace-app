@@ -11,17 +11,17 @@ const MetricsGrid = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {metrics.map((metric, i) => (
-        <div key={i} className="metric-card rounded-2xl p-6 relative overflow-hidden group hover:border-brand-500/30 transition-all">
+        <div key={i} className="bg-white rounded-2xl p-6 relative overflow-hidden group hover:border-brand-500/30 border border-gray-200 transition-all">
           <div className={`absolute top-0 right-0 w-32 h-32 bg-${metric.color}-500/10 rounded-full blur-3xl -mr-16 -mt-16`}></div>
           <div className="flex items-center justify-between mb-4">
             <div className={`p-3 bg-${metric.color}-500/20 rounded-xl text-2xl`}>{metric.icon}</div>
-            <span className={`flex items-center ${metric.change.startsWith('+') ? 'text-green-400' : 'text-red-400'} text-sm font-medium`}>
+            <span className={`flex items-center ${metric.change.startsWith('+') ? 'text-green-600' : 'text-red-600'} text-sm font-medium`}>
               {metric.change.startsWith('+') ? '📈' : '📉'} {metric.change}
             </span>
           </div>
-          <h3 className="text-slate-400 text-sm font-medium mb-1">{metric.title}</h3>
-          <p className="text-3xl font-bold text-white">{metric.value}</p>
-          <p className="text-xs text-slate-500 mt-2">vs last month {metric.prev}</p>
+          <h3 className="text-gray-500 text-sm font-medium mb-1">{metric.title}</h3>
+          <p className="text-3xl font-bold text-gray-900">{metric.value}</p>
+          <p className="text-xs text-gray-400 mt-2">vs last month {metric.prev}</p>
         </div>
       ))}
     </div>

@@ -1,0 +1,5677 @@
+{
+  "vehicles": [
+    {
+      "id": 1,
+      "key": "vhl_land-rover-range-rover_2018_1",
+      "slug": "land-rover-range-rover-1",
+      "make": "Land Rover",
+      "model": "Range Rover",
+      "year": 2018,
+      "title": "2018 Land Rover Range Rover",
+      "subtitle": "Range Rover SUV \u2022 Hybrid \u2022 Automatic",
+      "price": "$120,400",
+      "priceNum": 120400,
+      "msrp": "$123,900",
+      "status": "reserved",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 700,
+      "bodyStyle": "SUV",
+      "fuelType": "Hybrid",
+      "transmission": "Automatic",
+      "engine": "Inline-4",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Charente Grey Metallic",
+        "hex": "#7A7E85"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA201800000000000",
+      "stockNumber": "2018-0001",
+      "gallery": [
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2018 Land Rover Range Rover front three-quarter"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2018 Land Rover Range Rover interior cabin"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2018 Land Rover Range Rover rear profile"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2018 Land Rover Range Rover close-up detail"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2018 Land Rover Range Rover engine bay"
+        }
+      ],
+      "about": "This certified pre-owned example represents the pinnacle of British luxury SUV engineering. Meticulously maintained with a full service history, this one-owner vehicle features a refined V8 powertrain, handcrafted leather appointments, and the latest generation of advanced driver assistance systems.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Charente Grey Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0001"
+        },
+        {
+          "label": "Mileage",
+          "value": "700 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "photo_camera",
+          "title": "Sunroof",
+          "detail": "Power panoramic glass roof"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.7",
+      "reviewCount": 12
+    },
+    {
+      "id": 2,
+      "key": "vhl_land-rover-range-rover-sport_2019_2",
+      "slug": "land-rover-range-rover-sport-2",
+      "make": "Land Rover",
+      "model": "Range Rover Sport",
+      "year": 2019,
+      "title": "2019 Land Rover Range Rover Sport",
+      "subtitle": "Range Rover Sport SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$102,541",
+      "priceNum": 102541,
+      "msrp": "$106,041",
+      "status": "available",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 2073,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V8",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Santorini Black Metallic",
+        "hex": "#161616"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA201900000000000",
+      "stockNumber": "2019-0002",
+      "gallery": [
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2019 Land Rover Range Rover Sport front three-quarter"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2019 Land Rover Range Rover Sport interior cabin"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2019 Land Rover Range Rover Sport rear profile"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2019 Land Rover Range Rover Sport close-up detail"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2019 Land Rover Range Rover Sport engine bay"
+        }
+      ],
+      "about": "This certified pre-owned example represents the pinnacle of British luxury SUV engineering. Meticulously maintained with a full service history, this one-owner vehicle features a refined V8 powertrain, handcrafted leather appointments, and the latest generation of advanced driver assistance systems.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Santorini Black Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201900000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2019-0002"
+        },
+        {
+          "label": "Mileage",
+          "value": "2,073 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.7",
+      "reviewCount": 15
+    },
+    {
+      "id": 3,
+      "key": "vhl_land-rover-defender_2020_3",
+      "slug": "land-rover-defender-3",
+      "make": "Land Rover",
+      "model": "Defender",
+      "year": 2020,
+      "title": "2020 Land Rover Defender",
+      "subtitle": "Defender SUV \u2022 Diesel \u2022 Manual",
+      "price": "$68,582",
+      "priceNum": 68582,
+      "msrp": "$72,082",
+      "status": "available",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 3446,
+      "bodyStyle": "SUV",
+      "fuelType": "Diesel",
+      "transmission": "Manual",
+      "engine": "Inline-4",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Fuji White",
+        "hex": "#F5F5F5"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA202000000000000",
+      "stockNumber": "2020-0003",
+      "gallery": [
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2020 Land Rover Defender front three-quarter"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2020 Land Rover Defender interior cabin"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2020 Land Rover Defender rear profile"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2020 Land Rover Defender close-up detail"
+        },
+        {
+          "url": "/image/range-rover.jpg",
+          "alt": "2020 Land Rover Defender engine bay"
+        }
+      ],
+      "about": "This certified pre-owned example represents the pinnacle of British luxury SUV engineering. Meticulously maintained with a full service history, this one-owner vehicle features a refined V8 powertrain, handcrafted leather appointments, and the latest generation of advanced driver assistance systems.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Fuji White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202000000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2020-0003"
+        },
+        {
+          "label": "Mileage",
+          "value": "3,446 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.8",
+      "reviewCount": 18
+    },
+    {
+      "id": 4,
+      "key": "vhl_bmw-x5_2021_4",
+      "slug": "bmw-x5-4",
+      "make": "BMW",
+      "model": "X5",
+      "year": 2021,
+      "title": "2021 BMW X5",
+      "subtitle": "X5 SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$75,123",
+      "priceNum": 75123,
+      "msrp": "$78,623",
+      "status": "pricedrop",
+      "badge": {
+        "text": "Reserved",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 4819,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "Inline-6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Yas Marina Blue",
+        "hex": "#0A6EBD"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA202100000000000",
+      "stockNumber": "2021-0004",
+      "gallery": [
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2021 BMW X5 front three-quarter"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2021 BMW X5 interior cabin"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2021 BMW X5 rear profile"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2021 BMW X5 close-up detail"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2021 BMW X5 engine bay"
+        }
+      ],
+      "about": "A stunning example of Bavarian engineering excellence. Finished in a striking color combination, this vehicle blends athletic performance with everyday comfort. Recent inspection and a clean history ensure confidence on every drive.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Yas Marina Blue"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202100000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2021-0004"
+        },
+        {
+          "label": "Mileage",
+          "value": "4,819 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.8",
+      "reviewCount": 21
+    },
+    {
+      "id": 5,
+      "key": "vhl_bmw-x7_2022_5",
+      "slug": "bmw-x7-5",
+      "make": "BMW",
+      "model": "X7",
+      "year": 2022,
+      "title": "2022 BMW X7",
+      "subtitle": "X7 SUV \u2022 Gasoline \u2022 Steptronic",
+      "price": "$107,864",
+      "priceNum": 107864,
+      "msrp": "$111,364",
+      "status": "reserved",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 6192,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Steptronic",
+      "engine": "V8",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Aventurine Rainbow",
+        "hex": "#9E1B1B"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA202200000000000",
+      "stockNumber": "2022-0005",
+      "gallery": [
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2022 BMW X7 front three-quarter"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2022 BMW X7 interior cabin"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2022 BMW X7 rear profile"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2022 BMW X7 close-up detail"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2022 BMW X7 engine bay"
+        }
+      ],
+      "about": "A stunning example of Bavarian engineering excellence. Finished in a striking color combination, this vehicle blends athletic performance with everyday comfort. Recent inspection and a clean history ensure confidence on every drive.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Steptronic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Aventurine Rainbow"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202200000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2022-0005"
+        },
+        {
+          "label": "Mileage",
+          "value": "6,192 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.9",
+      "reviewCount": 24
+    },
+    {
+      "id": 6,
+      "key": "vhl_bmw-m3_2023_6",
+      "slug": "bmw-m3-6",
+      "make": "BMW",
+      "model": "M3",
+      "year": 2023,
+      "title": "2023 BMW M3",
+      "subtitle": "M3 Sedan \u2022 Gasoline \u2022 Manual",
+      "price": "$77,205",
+      "priceNum": 77205,
+      "msrp": "$80,705",
+      "status": "available",
+      "badge": null,
+      "mileage": 7565,
+      "bodyStyle": "Sedan",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "Inline-6",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Obsidian",
+        "hex": "#000000"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA202300000000000",
+      "stockNumber": "2023-0006",
+      "gallery": [
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2023 BMW M3 front three-quarter"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2023 BMW M3 interior cabin"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2023 BMW M3 rear profile"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2023 BMW M3 close-up detail"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2023 BMW M3 engine bay"
+        }
+      ],
+      "about": "A stunning example of Bavarian engineering excellence. Finished in a striking color combination, this vehicle blends athletic performance with everyday comfort. Recent inspection and a clean history ensure confidence on every drive.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Obsidian"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202300000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2023-0006"
+        },
+        {
+          "label": "Mileage",
+          "value": "7,565 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        },
+        {
+          "icon": "heat_pumps",
+          "title": "Heated Seats",
+          "detail": "Front heated & ventilated seats"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.7",
+      "reviewCount": 27
+    },
+    {
+      "id": 7,
+      "key": "vhl_bmw-m5_2024_7",
+      "slug": "bmw-m5-7",
+      "make": "BMW",
+      "model": "M5",
+      "year": 2024,
+      "title": "2024 BMW M5",
+      "subtitle": "M5 Sedan \u2022 Gasoline \u2022 Automatic",
+      "price": "$111,746",
+      "priceNum": 111746,
+      "msrp": "$115,246",
+      "status": "available",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 8938,
+      "bodyStyle": "Sedan",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Mineral White",
+        "hex": "#EAEAEA"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA202400000000000",
+      "stockNumber": "2024-0007",
+      "gallery": [
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2024 BMW M5 front three-quarter"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2024 BMW M5 interior cabin"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2024 BMW M5 rear profile"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2024 BMW M5 close-up detail"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2024 BMW M5 engine bay"
+        }
+      ],
+      "about": "A stunning example of Bavarian engineering excellence. Finished in a striking color combination, this vehicle blends athletic performance with everyday comfort. Recent inspection and a clean history ensure confidence on every drive.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Mineral White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202400000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2024-0007"
+        },
+        {
+          "label": "Mileage",
+          "value": "8,938 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.7",
+      "reviewCount": 30
+    },
+    {
+      "id": 8,
+      "key": "vhl_bmw-ix_2018_8",
+      "slug": "bmw-ix-8",
+      "make": "BMW",
+      "model": "iX",
+      "year": 2018,
+      "title": "2018 BMW iX",
+      "subtitle": "iX SUV \u2022 EV \u2022 Direct-Drive",
+      "price": "$96,287",
+      "priceNum": 96287,
+      "msrp": "$99,787",
+      "status": "pricedrop",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 10311,
+      "bodyStyle": "SUV",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Alpine White",
+        "hex": "#FFFFFF"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA201800000000000",
+      "stockNumber": "2018-0008",
+      "gallery": [
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2018 BMW iX front three-quarter"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2018 BMW iX interior cabin"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2018 BMW iX rear profile"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2018 BMW iX close-up detail"
+        },
+        {
+          "url": "/image/bmw-x7.jpg",
+          "alt": "2018 BMW iX engine bay"
+        }
+      ],
+      "about": "A stunning example of Bavarian engineering excellence. Finished in a striking color combination, this vehicle blends athletic performance with everyday comfort. Recent inspection and a clean history ensure confidence on every drive.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Alpine White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0008"
+        },
+        {
+          "label": "Mileage",
+          "value": "10,311 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.8",
+      "reviewCount": 33
+    },
+    {
+      "id": 9,
+      "key": "vhl_mercedes-benz-g-class_2019_9",
+      "slug": "mercedes-benz-g-class-9",
+      "make": "Mercedes-Benz",
+      "model": "G-Class",
+      "year": 2019,
+      "title": "2019 Mercedes-Benz G-Class",
+      "subtitle": "G-Class SUV \u2022 Gasoline \u2022 Manual",
+      "price": "$160,828",
+      "priceNum": 160828,
+      "msrp": "$164,328",
+      "status": "reserved",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 11684,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V8",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Charente Grey Metallic",
+        "hex": "#7A7E85"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA201900000000000",
+      "stockNumber": "2019-0009",
+      "gallery": [
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2019 Mercedes-Benz G-Class front three-quarter"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2019 Mercedes-Benz G-Class interior cabin"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2019 Mercedes-Benz G-Class rear profile"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2019 Mercedes-Benz G-Class close-up detail"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2019 Mercedes-Benz G-Class engine bay"
+        }
+      ],
+      "about": "The epitome of German luxury and innovation. This vehicle combines timeless design with cutting-edge technology, including a premium audio system, massaging seats, and advanced driver assistance. A true benchmark in its class.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Charente Grey Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201900000000000"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2019-0009"
+        },
+        {
+          "label": "Mileage",
+          "value": "11,684 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.8",
+      "reviewCount": 36
+    },
+    {
+      "id": 10,
+      "key": "vhl_mercedes-benz-eqs-suv_2020_10",
+      "slug": "mercedes-benz-eqs-suv-10",
+      "make": "Mercedes-Benz",
+      "model": "EQS SUV",
+      "year": 2020,
+      "title": "2020 Mercedes-Benz EQS SUV",
+      "subtitle": "EQS SUV SUV \u2022 EV \u2022 Direct-Drive",
+      "price": "$112,369",
+      "priceNum": 112369,
+      "msrp": "$115,869",
+      "status": "available",
+      "badge": {
+        "text": "Reserved",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 13057,
+      "bodyStyle": "SUV",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Santorini Black Metallic",
+        "hex": "#161616"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA202000000000001",
+      "stockNumber": "2020-0010",
+      "gallery": [
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2020 Mercedes-Benz EQS SUV front three-quarter"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2020 Mercedes-Benz EQS SUV interior cabin"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2020 Mercedes-Benz EQS SUV rear profile"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2020 Mercedes-Benz EQS SUV close-up detail"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2020 Mercedes-Benz EQS SUV engine bay"
+        }
+      ],
+      "about": "The epitome of German luxury and innovation. This vehicle combines timeless design with cutting-edge technology, including a premium audio system, massaging seats, and advanced driver assistance. A true benchmark in its class.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Santorini Black Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202000000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2020-0010"
+        },
+        {
+          "label": "Mileage",
+          "value": "13,057 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "speed",
+          "title": "Adaptive Cruise",
+          "detail": "Active cruise with stop/go"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.9",
+      "reviewCount": 39
+    },
+    {
+      "id": 11,
+      "key": "vhl_mercedes-benz-c-class_2021_11",
+      "slug": "mercedes-benz-c-class-11",
+      "make": "Mercedes-Benz",
+      "model": "C-Class",
+      "year": 2021,
+      "title": "2021 Mercedes-Benz C-Class",
+      "subtitle": "C-Class Sedan \u2022 Gasoline \u2022 Automatic",
+      "price": "$47,910",
+      "priceNum": 47910,
+      "msrp": "$51,410",
+      "status": "available",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 14430,
+      "bodyStyle": "Sedan",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "Inline-4",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Fuji White",
+        "hex": "#F5F5F5"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA202100000000001",
+      "stockNumber": "2021-0011",
+      "gallery": [
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2021 Mercedes-Benz C-Class front three-quarter"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2021 Mercedes-Benz C-Class interior cabin"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2021 Mercedes-Benz C-Class rear profile"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2021 Mercedes-Benz C-Class close-up detail"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2021 Mercedes-Benz C-Class engine bay"
+        }
+      ],
+      "about": "The epitome of German luxury and innovation. This vehicle combines timeless design with cutting-edge technology, including a premium audio system, massaging seats, and advanced driver assistance. A true benchmark in its class.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Fuji White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202100000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2021-0011"
+        },
+        {
+          "label": "Mileage",
+          "value": "14,430 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.7",
+      "reviewCount": 42
+    },
+    {
+      "id": 12,
+      "key": "vhl_mercedes-benz-e-class_2022_12",
+      "slug": "mercedes-benz-e-class-12",
+      "make": "Mercedes-Benz",
+      "model": "E-Class",
+      "year": 2022,
+      "title": "2022 Mercedes-Benz E-Class",
+      "subtitle": "E-Class Sedan \u2022 Hybrid \u2022 Automatic",
+      "price": "$54,451",
+      "priceNum": 54451,
+      "msrp": "$57,951",
+      "status": "pricedrop",
+      "badge": null,
+      "mileage": 15803,
+      "bodyStyle": "Sedan",
+      "fuelType": "Hybrid",
+      "transmission": "Automatic",
+      "engine": "Inline-4",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Yas Marina Blue",
+        "hex": "#0A6EBD"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA202200000000001",
+      "stockNumber": "2022-0012",
+      "gallery": [
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2022 Mercedes-Benz E-Class front three-quarter"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2022 Mercedes-Benz E-Class interior cabin"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2022 Mercedes-Benz E-Class rear profile"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2022 Mercedes-Benz E-Class close-up detail"
+        },
+        {
+          "url": "/image/mercedes-eqs.jpg",
+          "alt": "2022 Mercedes-Benz E-Class engine bay"
+        }
+      ],
+      "about": "The epitome of German luxury and innovation. This vehicle combines timeless design with cutting-edge technology, including a premium audio system, massaging seats, and advanced driver assistance. A true benchmark in its class.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Yas Marina Blue"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202200000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2022-0012"
+        },
+        {
+          "label": "Mileage",
+          "value": "15,803 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "speed",
+          "title": "Adaptive Cruise",
+          "detail": "Active cruise with stop/go"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.7",
+      "reviewCount": 45
+    },
+    {
+      "id": 13,
+      "key": "vhl_porsche-cayenne_2023_13",
+      "slug": "porsche-cayenne-13",
+      "make": "Porsche",
+      "model": "Cayenne",
+      "year": 2023,
+      "title": "2023 Porsche Cayenne",
+      "subtitle": "Cayenne SUV \u2022 Gasoline \u2022 PDK",
+      "price": "$97,492",
+      "priceNum": 97492,
+      "msrp": "$100,992",
+      "status": "reserved",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 17176,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "PDK",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Aventurine Rainbow",
+        "hex": "#9E1B1B"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA202300000000001",
+      "stockNumber": "2023-0013",
+      "gallery": [
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2023 Porsche Cayenne front three-quarter"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2023 Porsche Cayenne interior cabin"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2023 Porsche Cayenne rear profile"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2023 Porsche Cayenne close-up detail"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2023 Porsche Cayenne engine bay"
+        }
+      ],
+      "about": "A purist's choice, this vehicle delivers the legendary Porsche driving experience. Lightweight construction, a naturally aspirated engine, and track-honed handling make it equally at home on twisty roads and daily commutes.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "PDK"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Aventurine Rainbow"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202300000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2023-0013"
+        },
+        {
+          "label": "Mileage",
+          "value": "17,176 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.8",
+      "reviewCount": 48
+    },
+    {
+      "id": 14,
+      "key": "vhl_porsche-911_2024_14",
+      "slug": "porsche-911-14",
+      "make": "Porsche",
+      "model": "911",
+      "year": 2024,
+      "title": "2024 Porsche 911",
+      "subtitle": "911 Coupe \u2022 Gasoline \u2022 Manual",
+      "price": "$128,533",
+      "priceNum": 128533,
+      "msrp": "$132,033",
+      "status": "available",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 18549,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "Flat-6",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Obsidian",
+        "hex": "#000000"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA202400000000001",
+      "stockNumber": "2024-0014",
+      "gallery": [
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2024 Porsche 911 front three-quarter"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2024 Porsche 911 interior cabin"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2024 Porsche 911 rear profile"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2024 Porsche 911 close-up detail"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2024 Porsche 911 engine bay"
+        }
+      ],
+      "about": "A purist's choice, this vehicle delivers the legendary Porsche driving experience. Lightweight construction, a naturally aspirated engine, and track-honed handling make it equally at home on twisty roads and daily commutes.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Flat-6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Obsidian"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202400000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2024-0014"
+        },
+        {
+          "label": "Mileage",
+          "value": "18,549 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.8",
+      "reviewCount": 51
+    },
+    {
+      "id": 15,
+      "key": "vhl_porsche-taycan_2018_15",
+      "slug": "porsche-taycan-15",
+      "make": "Porsche",
+      "model": "Taycan",
+      "year": 2018,
+      "title": "2018 Porsche Taycan",
+      "subtitle": "Taycan Sedan \u2022 EV \u2022 Direct-Drive",
+      "price": "$93,074",
+      "priceNum": 93074,
+      "msrp": "$96,574",
+      "status": "available",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 19922,
+      "bodyStyle": "Sedan",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Mineral White",
+        "hex": "#EAEAEA"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA201800000000001",
+      "stockNumber": "2018-0015",
+      "gallery": [
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2018 Porsche Taycan front three-quarter"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2018 Porsche Taycan interior cabin"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2018 Porsche Taycan rear profile"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2018 Porsche Taycan close-up detail"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2018 Porsche Taycan engine bay"
+        }
+      ],
+      "about": "A purist's choice, this vehicle delivers the legendary Porsche driving experience. Lightweight construction, a naturally aspirated engine, and track-honed handling make it equally at home on twisty roads and daily commutes.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Mineral White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0015"
+        },
+        {
+          "label": "Mileage",
+          "value": "19,922 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.9",
+      "reviewCount": 54
+    },
+    {
+      "id": 16,
+      "key": "vhl_porsche-panamera_2019_16",
+      "slug": "porsche-panamera-16",
+      "make": "Porsche",
+      "model": "Panamera",
+      "year": 2019,
+      "title": "2019 Porsche Panamera",
+      "subtitle": "Panamera Coupe \u2022 Gasoline \u2022 PDK",
+      "price": "$112,615",
+      "priceNum": 112615,
+      "msrp": "$116,115",
+      "status": "pricedrop",
+      "badge": {
+        "text": "Reserved",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 21295,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "PDK",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Alpine White",
+        "hex": "#FFFFFF"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA201900000000001",
+      "stockNumber": "2019-0016",
+      "gallery": [
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2019 Porsche Panamera front three-quarter"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2019 Porsche Panamera interior cabin"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2019 Porsche Panamera rear profile"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2019 Porsche Panamera close-up detail"
+        },
+        {
+          "url": "/image/porsche-cayenne.jpg",
+          "alt": "2019 Porsche Panamera engine bay"
+        }
+      ],
+      "about": "A purist's choice, this vehicle delivers the legendary Porsche driving experience. Lightweight construction, a naturally aspirated engine, and track-honed handling make it equally at home on twisty roads and daily commutes.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "PDK"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Alpine White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201900000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2019-0016"
+        },
+        {
+          "label": "Mileage",
+          "value": "21,295 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.7",
+      "reviewCount": 57
+    },
+    {
+      "id": 17,
+      "key": "vhl_audi-q5_2020_17",
+      "slug": "audi-q5-17",
+      "make": "Audi",
+      "model": "Q5",
+      "year": 2020,
+      "title": "2020 Audi Q5",
+      "subtitle": "Q5 SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$49,156",
+      "priceNum": 49156,
+      "msrp": "$52,656",
+      "status": "reserved",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 22668,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "Inline-4",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Charente Grey Metallic",
+        "hex": "#7A7E85"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA202000000000001",
+      "stockNumber": "2020-0017",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Audi Q5 front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Audi Q5 interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Audi Q5 rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Audi Q5 close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Audi Q5 engine bay"
+        }
+      ],
+      "about": "Masterfully engineered with Quattro all-wheel drive and a sophisticated virtual cockpit. This vehicle balances performance and efficiency, wrapped in Audi's signature Singleframe grille and premium materials.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Charente Grey Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202000000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2020-0017"
+        },
+        {
+          "label": "Mileage",
+          "value": "22,668 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.7",
+      "reviewCount": 60
+    },
+    {
+      "id": 18,
+      "key": "vhl_audi-q7_2021_18",
+      "slug": "audi-q7-18",
+      "make": "Audi",
+      "model": "Q7",
+      "year": 2021,
+      "title": "2021 Audi Q7",
+      "subtitle": "Q7 SUV \u2022 Gasoline \u2022 Steptronic",
+      "price": "$61,697",
+      "priceNum": 61697,
+      "msrp": "$65,197",
+      "status": "available",
+      "badge": null,
+      "mileage": 24041,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Steptronic",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Santorini Black Metallic",
+        "hex": "#161616"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA202100000000001",
+      "stockNumber": "2021-0018",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Audi Q7 front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Audi Q7 interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Audi Q7 rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Audi Q7 close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Audi Q7 engine bay"
+        }
+      ],
+      "about": "Masterfully engineered with Quattro all-wheel drive and a sophisticated virtual cockpit. This vehicle balances performance and efficiency, wrapped in Audi's signature Singleframe grille and premium materials.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Steptronic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Santorini Black Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202100000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2021-0018"
+        },
+        {
+          "label": "Mileage",
+          "value": "24,041 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "event_seat",
+          "title": "Third Row",
+          "detail": "Power-folding 3rd row seats"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.8",
+      "reviewCount": 63
+    },
+    {
+      "id": 19,
+      "key": "vhl_audi-a4_2022_19",
+      "slug": "audi-a4-19",
+      "make": "Audi",
+      "model": "A4",
+      "year": 2022,
+      "title": "2022 Audi A4",
+      "subtitle": "A4 Sedan \u2022 Gasoline \u2022 Automatic",
+      "price": "$38,238",
+      "priceNum": 38238,
+      "msrp": "$41,738",
+      "status": "available",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 25414,
+      "bodyStyle": "Sedan",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "Inline-4",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Fuji White",
+        "hex": "#F5F5F5"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA202200000000001",
+      "stockNumber": "2022-0019",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Audi A4 front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Audi A4 interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Audi A4 rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Audi A4 close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Audi A4 engine bay"
+        }
+      ],
+      "about": "Masterfully engineered with Quattro all-wheel drive and a sophisticated virtual cockpit. This vehicle balances performance and efficiency, wrapped in Audi's signature Singleframe grille and premium materials.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Fuji White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202200000000001"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2022-0019"
+        },
+        {
+          "label": "Mileage",
+          "value": "25,414 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.8",
+      "reviewCount": 66
+    },
+    {
+      "id": 20,
+      "key": "vhl_audi-e-tron_2023_20",
+      "slug": "audi-e-tron-20",
+      "make": "Audi",
+      "model": "e-tron",
+      "year": 2023,
+      "title": "2023 Audi e-tron",
+      "subtitle": "e-tron SUV \u2022 EV \u2022 Direct-Drive",
+      "price": "$65,779",
+      "priceNum": 65779,
+      "msrp": "$69,279",
+      "status": "pricedrop",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 26787,
+      "bodyStyle": "SUV",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Yas Marina Blue",
+        "hex": "#0A6EBD"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA202300000000002",
+      "stockNumber": "2023-0020",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Audi e-tron front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Audi e-tron interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Audi e-tron rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Audi e-tron close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Audi e-tron engine bay"
+        }
+      ],
+      "about": "Masterfully engineered with Quattro all-wheel drive and a sophisticated virtual cockpit. This vehicle balances performance and efficiency, wrapped in Audi's signature Singleframe grille and premium materials.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Yas Marina Blue"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202300000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2023-0020"
+        },
+        {
+          "label": "Mileage",
+          "value": "26,787 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.9",
+      "reviewCount": 69
+    },
+    {
+      "id": 21,
+      "key": "vhl_tesla-model-3_2024_21",
+      "slug": "tesla-model-3-21",
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": 2024,
+      "title": "2024 Tesla Model 3",
+      "subtitle": "Model 3 Sedan \u2022 EV \u2022 Direct-Drive",
+      "price": "$49,320",
+      "priceNum": 49320,
+      "msrp": "$52,820",
+      "status": "reserved",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 28160,
+      "bodyStyle": "Sedan",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Aventurine Rainbow",
+        "hex": "#9E1B1B"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA202400000000002",
+      "stockNumber": "2024-0021",
+      "gallery": [
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2024 Tesla Model 3 front three-quarter"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2024 Tesla Model 3 interior cabin"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2024 Tesla Model 3 rear profile"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2024 Tesla Model 3 close-up detail"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2024 Tesla Model 3 engine bay"
+        }
+      ],
+      "about": "The future of automotive performance and sustainability. Instant torque, over-the-air updates, and a minimalist premium interior redefine modern luxury. Low mileage and a single owner since new.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Aventurine Rainbow"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202400000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2024-0021"
+        },
+        {
+          "label": "Mileage",
+          "value": "28,160 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "heat_pumps",
+          "title": "Heated Seats",
+          "detail": "Front heated & ventilated seats"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.7",
+      "reviewCount": 72
+    },
+    {
+      "id": 22,
+      "key": "vhl_tesla-model-s_2018_22",
+      "slug": "tesla-model-s-22",
+      "make": "Tesla",
+      "model": "Model S",
+      "year": 2018,
+      "title": "2018 Tesla Model S",
+      "subtitle": "Model S Sedan \u2022 EV \u2022 Direct-Drive",
+      "price": "$98,861",
+      "priceNum": 98861,
+      "msrp": "$102,361",
+      "status": "available",
+      "badge": {
+        "text": "Reserved",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 1533,
+      "bodyStyle": "Sedan",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Obsidian",
+        "hex": "#000000"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA201800000000002",
+      "stockNumber": "2018-0022",
+      "gallery": [
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2018 Tesla Model S front three-quarter"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2018 Tesla Model S interior cabin"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2018 Tesla Model S rear profile"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2018 Tesla Model S close-up detail"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2018 Tesla Model S engine bay"
+        }
+      ],
+      "about": "The future of automotive performance and sustainability. Instant torque, over-the-air updates, and a minimalist premium interior redefine modern luxury. Low mileage and a single owner since new.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Obsidian"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0022"
+        },
+        {
+          "label": "Mileage",
+          "value": "1,533 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.7",
+      "reviewCount": 75
+    },
+    {
+      "id": 23,
+      "key": "vhl_tesla-model-x_2019_23",
+      "slug": "tesla-model-x-23",
+      "make": "Tesla",
+      "model": "Model X",
+      "year": 2019,
+      "title": "2019 Tesla Model X",
+      "subtitle": "Model X SUV \u2022 EV \u2022 Direct-Drive",
+      "price": "$123,402",
+      "priceNum": 123402,
+      "msrp": "$126,902",
+      "status": "available",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 2906,
+      "bodyStyle": "SUV",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Mineral White",
+        "hex": "#EAEAEA"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA201900000000002",
+      "stockNumber": "2019-0023",
+      "gallery": [
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2019 Tesla Model X front three-quarter"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2019 Tesla Model X interior cabin"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2019 Tesla Model X rear profile"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2019 Tesla Model X close-up detail"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2019 Tesla Model X engine bay"
+        }
+      ],
+      "about": "The future of automotive performance and sustainability. Instant torque, over-the-air updates, and a minimalist premium interior redefine modern luxury. Low mileage and a single owner since new.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Mineral White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201900000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2019-0023"
+        },
+        {
+          "label": "Mileage",
+          "value": "2,906 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "event_seat",
+          "title": "Third Row",
+          "detail": "Power-folding 3rd row seats"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.8",
+      "reviewCount": 78
+    },
+    {
+      "id": 24,
+      "key": "vhl_tesla-model-y_2020_24",
+      "slug": "tesla-model-y-24",
+      "make": "Tesla",
+      "model": "Model Y",
+      "year": 2020,
+      "title": "2020 Tesla Model Y",
+      "subtitle": "Model Y SUV \u2022 EV \u2022 Direct-Drive",
+      "price": "$62,943",
+      "priceNum": 62943,
+      "msrp": "$66,443",
+      "status": "pricedrop",
+      "badge": null,
+      "mileage": 4279,
+      "bodyStyle": "SUV",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Alpine White",
+        "hex": "#FFFFFF"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA202000000000002",
+      "stockNumber": "2020-0024",
+      "gallery": [
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2020 Tesla Model Y front three-quarter"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2020 Tesla Model Y interior cabin"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2020 Tesla Model Y rear profile"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2020 Tesla Model Y close-up detail"
+        },
+        {
+          "url": "/image/tesla-model-3.jpg",
+          "alt": "2020 Tesla Model Y engine bay"
+        }
+      ],
+      "about": "The future of automotive performance and sustainability. Instant torque, over-the-air updates, and a minimalist premium interior redefine modern luxury. Low mileage and a single owner since new.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Alpine White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202000000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2020-0024"
+        },
+        {
+          "label": "Mileage",
+          "value": "4,279 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "photo_camera",
+          "title": "Sunroof",
+          "detail": "Power panoramic glass roof"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.8",
+      "reviewCount": 81
+    },
+    {
+      "id": 25,
+      "key": "vhl_ford-f-150_2021_25",
+      "slug": "ford-f-150-25",
+      "make": "Ford",
+      "model": "F-150",
+      "year": 2021,
+      "title": "2021 Ford F-150",
+      "subtitle": "F-150 Truck \u2022 Gasoline \u2022 Manual",
+      "price": "$57,484",
+      "priceNum": 57484,
+      "msrp": "$60,984",
+      "status": "reserved",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 5652,
+      "bodyStyle": "Truck",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Charente Grey Metallic",
+        "hex": "#7A7E85"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA202100000000002",
+      "stockNumber": "2021-0025",
+      "gallery": [
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2021 Ford F-150 front three-quarter"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2021 Ford F-150 interior cabin"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2021 Ford F-150 rear profile"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2021 Ford F-150 close-up detail"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2021 Ford F-150 engine bay"
+        }
+      ],
+      "about": "This certified pre-owned example represents the pinnacle of British luxury SUV engineering. Meticulously maintained with a full service history, this one-owner vehicle features a refined V8 powertrain, handcrafted leather appointments, and the latest generation of advanced driver assistance systems.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Charente Grey Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202100000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2021-0025"
+        },
+        {
+          "label": "Mileage",
+          "value": "5,652 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.9",
+      "reviewCount": 84
+    },
+    {
+      "id": 26,
+      "key": "vhl_ford-bronco_2022_26",
+      "slug": "ford-bronco-26",
+      "make": "Ford",
+      "model": "Bronco",
+      "year": 2022,
+      "title": "2022 Ford Bronco",
+      "subtitle": "Bronco SUV \u2022 Gasoline \u2022 Manual",
+      "price": "$50,025",
+      "priceNum": 50025,
+      "msrp": "$53,525",
+      "status": "available",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 7025,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Santorini Black Metallic",
+        "hex": "#161616"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA202200000000002",
+      "stockNumber": "2022-0026",
+      "gallery": [
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2022 Ford Bronco front three-quarter"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2022 Ford Bronco interior cabin"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2022 Ford Bronco rear profile"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2022 Ford Bronco close-up detail"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2022 Ford Bronco engine bay"
+        }
+      ],
+      "about": "This certified pre-owned example represents the pinnacle of British luxury SUV engineering. Meticulously maintained with a full service history, this one-owner vehicle features a refined V8 powertrain, handcrafted leather appointments, and the latest generation of advanced driver assistance systems.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Santorini Black Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202200000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2022-0026"
+        },
+        {
+          "label": "Mileage",
+          "value": "7,025 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.7",
+      "reviewCount": 87
+    },
+    {
+      "id": 27,
+      "key": "vhl_ford-mustang-mach-e_2023_27",
+      "slug": "ford-mustang-mach-e-27",
+      "make": "Ford",
+      "model": "Mustang Mach-E",
+      "year": 2023,
+      "title": "2023 Ford Mustang Mach-E",
+      "subtitle": "Mustang Mach-E SUV \u2022 EV \u2022 Direct-Drive",
+      "price": "$51,566",
+      "priceNum": 51566,
+      "msrp": "$55,066",
+      "status": "available",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 8398,
+      "bodyStyle": "SUV",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Fuji White",
+        "hex": "#F5F5F5"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA202300000000002",
+      "stockNumber": "2023-0027",
+      "gallery": [
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2023 Ford Mustang Mach-E front three-quarter"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2023 Ford Mustang Mach-E interior cabin"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2023 Ford Mustang Mach-E rear profile"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2023 Ford Mustang Mach-E close-up detail"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2023 Ford Mustang Mach-E engine bay"
+        }
+      ],
+      "about": "This certified pre-owned example represents the pinnacle of British luxury SUV engineering. Meticulously maintained with a full service history, this one-owner vehicle features a refined V8 powertrain, handcrafted leather appointments, and the latest generation of advanced driver assistance systems.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Fuji White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202300000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2023-0027"
+        },
+        {
+          "label": "Mileage",
+          "value": "8,398 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.7",
+      "reviewCount": 90
+    },
+    {
+      "id": 28,
+      "key": "vhl_ford-explorer_2024_28",
+      "slug": "ford-explorer-28",
+      "make": "Ford",
+      "model": "Explorer",
+      "year": 2024,
+      "title": "2024 Ford Explorer",
+      "subtitle": "Explorer SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$61,107",
+      "priceNum": 61107,
+      "msrp": "$64,607",
+      "status": "pricedrop",
+      "badge": {
+        "text": "Reserved",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 9771,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Yas Marina Blue",
+        "hex": "#0A6EBD"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA202400000000002",
+      "stockNumber": "2024-0028",
+      "gallery": [
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2024 Ford Explorer front three-quarter"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2024 Ford Explorer interior cabin"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2024 Ford Explorer rear profile"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2024 Ford Explorer close-up detail"
+        },
+        {
+          "url": "/image/ford-f150.jpg",
+          "alt": "2024 Ford Explorer engine bay"
+        }
+      ],
+      "about": "This certified pre-owned example represents the pinnacle of British luxury SUV engineering. Meticulously maintained with a full service history, this one-owner vehicle features a refined V8 powertrain, handcrafted leather appointments, and the latest generation of advanced driver assistance systems.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Yas Marina Blue"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202400000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2024-0028"
+        },
+        {
+          "label": "Mileage",
+          "value": "9,771 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "event_seat",
+          "title": "Third Row",
+          "detail": "Power-folding 3rd row seats"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.8",
+      "reviewCount": 93
+    },
+    {
+      "id": 29,
+      "key": "vhl_chevrolet-silverado_2018_29",
+      "slug": "chevrolet-silverado-29",
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "year": 2018,
+      "title": "2018 Chevrolet Silverado",
+      "subtitle": "Silverado Truck \u2022 Gasoline \u2022 Manual",
+      "price": "$50,648",
+      "priceNum": 50648,
+      "msrp": "$54,148",
+      "status": "reserved",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 11144,
+      "bodyStyle": "Truck",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Aventurine Rainbow",
+        "hex": "#9E1B1B"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA201800000000002",
+      "stockNumber": "2018-0029",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Chevrolet Silverado front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Chevrolet Silverado interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Chevrolet Silverado rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Chevrolet Silverado close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Chevrolet Silverado engine bay"
+        }
+      ],
+      "about": "An American icon built for capability and value. Powerful engines, modern technology, and practical versatility make this vehicle a dependable choice for drivers who demand both performance and usability.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Aventurine Rainbow"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000002"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0029"
+        },
+        {
+          "label": "Mileage",
+          "value": "11,144 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.8",
+      "reviewCount": 96
+    },
+    {
+      "id": 30,
+      "key": "vhl_chevrolet-equinox_2019_30",
+      "slug": "chevrolet-equinox-30",
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "year": 2019,
+      "title": "2019 Chevrolet Equinox",
+      "subtitle": "Equinox SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$32,189",
+      "priceNum": 32189,
+      "msrp": "$35,689",
+      "status": "available",
+      "badge": null,
+      "mileage": 12517,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "Inline-4",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Obsidian",
+        "hex": "#000000"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA201900000000003",
+      "stockNumber": "2019-0030",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Chevrolet Equinox front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Chevrolet Equinox interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Chevrolet Equinox rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Chevrolet Equinox close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Chevrolet Equinox engine bay"
+        }
+      ],
+      "about": "An American icon built for capability and value. Powerful engines, modern technology, and practical versatility make this vehicle a dependable choice for drivers who demand both performance and usability.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Obsidian"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201900000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2019-0030"
+        },
+        {
+          "label": "Mileage",
+          "value": "12,517 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.9",
+      "reviewCount": 99
+    },
+    {
+      "id": 31,
+      "key": "vhl_chevrolet-corvette_2020_31",
+      "slug": "chevrolet-corvette-31",
+      "make": "Chevrolet",
+      "model": "Corvette",
+      "year": 2020,
+      "title": "2020 Chevrolet Corvette",
+      "subtitle": "Corvette Coupe \u2022 Gasoline \u2022 Manual",
+      "price": "$64,730",
+      "priceNum": 64730,
+      "msrp": "$68,230",
+      "status": "available",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 13890,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Mineral White",
+        "hex": "#EAEAEA"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA202000000000003",
+      "stockNumber": "2020-0031",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Chevrolet Corvette front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Chevrolet Corvette interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Chevrolet Corvette rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Chevrolet Corvette close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Chevrolet Corvette engine bay"
+        }
+      ],
+      "about": "An American icon built for capability and value. Powerful engines, modern technology, and practical versatility make this vehicle a dependable choice for drivers who demand both performance and usability.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Mineral White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202000000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2020-0031"
+        },
+        {
+          "label": "Mileage",
+          "value": "13,890 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.7",
+      "reviewCount": 102
+    },
+    {
+      "id": 32,
+      "key": "vhl_toyota-camry_2021_32",
+      "slug": "toyota-camry-32",
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2021,
+      "title": "2021 Toyota Camry",
+      "subtitle": "Camry Sedan \u2022 Gasoline \u2022 Automatic",
+      "price": "$27,271",
+      "priceNum": 27271,
+      "msrp": "$30,771",
+      "status": "pricedrop",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 15263,
+      "bodyStyle": "Sedan",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "Inline-4",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Alpine White",
+        "hex": "#FFFFFF"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA202100000000003",
+      "stockNumber": "2021-0032",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Toyota Camry front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Toyota Camry interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Toyota Camry rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Toyota Camry close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Toyota Camry engine bay"
+        }
+      ],
+      "about": "Legendary reliability meets modern innovation. This well-maintained vehicle offers excellent fuel economy, advanced safety features, and the peace of mind that comes with Toyota's trusted reputation for longevity.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-4"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Alpine White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202100000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2021-0032"
+        },
+        {
+          "label": "Mileage",
+          "value": "15,263 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.7",
+      "reviewCount": 105
+    },
+    {
+      "id": 33,
+      "key": "vhl_toyota-tacoma_2022_33",
+      "slug": "toyota-tacoma-33",
+      "make": "Toyota",
+      "model": "Tacoma",
+      "year": 2022,
+      "title": "2022 Toyota Tacoma",
+      "subtitle": "Tacoma Truck \u2022 Gasoline \u2022 Manual",
+      "price": "$28,812",
+      "priceNum": 28812,
+      "msrp": "$32,312",
+      "status": "reserved",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 16636,
+      "bodyStyle": "Truck",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Charente Grey Metallic",
+        "hex": "#7A7E85"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA202200000000003",
+      "stockNumber": "2022-0033",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Toyota Tacoma front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Toyota Tacoma interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Toyota Tacoma rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Toyota Tacoma close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Toyota Tacoma engine bay"
+        }
+      ],
+      "about": "Legendary reliability meets modern innovation. This well-maintained vehicle offers excellent fuel economy, advanced safety features, and the peace of mind that comes with Toyota's trusted reputation for longevity.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Charente Grey Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202200000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2022-0033"
+        },
+        {
+          "label": "Mileage",
+          "value": "16,636 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.8",
+      "reviewCount": 108
+    },
+    {
+      "id": 34,
+      "key": "vhl_toyota-highlander_2023_34",
+      "slug": "toyota-highlander-34",
+      "make": "Toyota",
+      "model": "Highlander",
+      "year": 2023,
+      "title": "2023 Toyota Highlander",
+      "subtitle": "Highlander SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$36,353",
+      "priceNum": 36353,
+      "msrp": "$39,853",
+      "status": "available",
+      "badge": {
+        "text": "Reserved",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 18009,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Santorini Black Metallic",
+        "hex": "#161616"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA202300000000003",
+      "stockNumber": "2023-0034",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Toyota Highlander front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Toyota Highlander interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Toyota Highlander rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Toyota Highlander close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Toyota Highlander engine bay"
+        }
+      ],
+      "about": "Legendary reliability meets modern innovation. This well-maintained vehicle offers excellent fuel economy, advanced safety features, and the peace of mind that comes with Toyota's trusted reputation for longevity.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Santorini Black Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202300000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2023-0034"
+        },
+        {
+          "label": "Mileage",
+          "value": "18,009 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "event_seat",
+          "title": "Third Row",
+          "detail": "Power-folding 3rd row seats"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.8",
+      "reviewCount": 111
+    },
+    {
+      "id": 35,
+      "key": "vhl_lexus-rx_2024_35",
+      "slug": "lexus-rx-35",
+      "make": "Lexus",
+      "model": "RX",
+      "year": 2024,
+      "title": "2024 Lexus RX",
+      "subtitle": "RX SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$42,894",
+      "priceNum": 42894,
+      "msrp": "$46,394",
+      "status": "available",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 19382,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Fuji White",
+        "hex": "#F5F5F5"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA202400000000003",
+      "stockNumber": "2024-0035",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Lexus RX front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Lexus RX interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Lexus RX rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Lexus RX close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Lexus RX engine bay"
+        }
+      ],
+      "about": "Where craftsmanship meets technology. This vehicle features the signature spindle grille, an ultra-premium interior with hand-stitched leather, and a quiet, refined driving experience defined by meticulous attention to detail.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Fuji White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202400000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2024-0035"
+        },
+        {
+          "label": "Mileage",
+          "value": "19,382 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.9",
+      "reviewCount": 114
+    },
+    {
+      "id": 36,
+      "key": "vhl_lexus-ls_2018_36",
+      "slug": "lexus-ls-36",
+      "make": "Lexus",
+      "model": "LS",
+      "year": 2018,
+      "title": "2018 Lexus LS",
+      "subtitle": "LS Sedan \u2022 Gasoline \u2022 Automatic",
+      "price": "$77,435",
+      "priceNum": 77435,
+      "msrp": "$80,935",
+      "status": "pricedrop",
+      "badge": null,
+      "mileage": 20755,
+      "bodyStyle": "Sedan",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Yas Marina Blue",
+        "hex": "#0A6EBD"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA201800000000003",
+      "stockNumber": "2018-0036",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Lexus LS front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Lexus LS interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Lexus LS rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Lexus LS close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Lexus LS engine bay"
+        }
+      ],
+      "about": "Where craftsmanship meets technology. This vehicle features the signature spindle grille, an ultra-premium interior with hand-stitched leather, and a quiet, refined driving experience defined by meticulous attention to detail.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Yas Marina Blue"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0036"
+        },
+        {
+          "label": "Mileage",
+          "value": "20,755 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        },
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.7",
+      "reviewCount": 117
+    },
+    {
+      "id": 37,
+      "key": "vhl_lexus-lc_2019_37",
+      "slug": "lexus-lc-37",
+      "make": "Lexus",
+      "model": "LC",
+      "year": 2019,
+      "title": "2019 Lexus LC",
+      "subtitle": "LC Coupe \u2022 EV \u2022 Direct-Drive",
+      "price": "$96,976",
+      "priceNum": 96976,
+      "msrp": "$100,476",
+      "status": "reserved",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 22128,
+      "bodyStyle": "Coupe",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Aventurine Rainbow",
+        "hex": "#9E1B1B"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA201900000000003",
+      "stockNumber": "2019-0037",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lexus LC front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lexus LC interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lexus LC rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lexus LC close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lexus LC engine bay"
+        }
+      ],
+      "about": "Where craftsmanship meets technology. This vehicle features the signature spindle grille, an ultra-premium interior with hand-stitched leather, and a quiet, refined driving experience defined by meticulous attention to detail.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Aventurine Rainbow"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201900000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2019-0037"
+        },
+        {
+          "label": "Mileage",
+          "value": "22,128 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.7",
+      "reviewCount": 120
+    },
+    {
+      "id": 38,
+      "key": "vhl_jaguar-f-pace_2020_38",
+      "slug": "jaguar-f-pace-38",
+      "make": "Jaguar",
+      "model": "F-Pace",
+      "year": 2020,
+      "title": "2020 Jaguar F-Pace",
+      "subtitle": "F-Pace SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$46,517",
+      "priceNum": 46517,
+      "msrp": "$50,017",
+      "status": "available",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 23501,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "Inline-6",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Obsidian",
+        "hex": "#000000"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA202000000000003",
+      "stockNumber": "2020-0038",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Jaguar F-Pace front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Jaguar F-Pace interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Jaguar F-Pace rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Jaguar F-Pace close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Jaguar F-Pace engine bay"
+        }
+      ],
+      "about": "British elegance and sporting spirit unite in this stunning grand tourer. Lightweight aluminum architecture, a supercharged engine, and hand-finished details create an unmistakable character on road and track.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Inline-6"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Obsidian"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202000000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2020-0038"
+        },
+        {
+          "label": "Mileage",
+          "value": "23,501 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.8",
+      "reviewCount": 123
+    },
+    {
+      "id": 39,
+      "key": "vhl_jaguar-i-pace_2021_39",
+      "slug": "jaguar-i-pace-39",
+      "make": "Jaguar",
+      "model": "I-PACE",
+      "year": 2021,
+      "title": "2021 Jaguar I-PACE",
+      "subtitle": "I-PACE SUV \u2022 EV \u2022 Direct-Drive",
+      "price": "$66,058",
+      "priceNum": 66058,
+      "msrp": "$69,558",
+      "status": "available",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 24874,
+      "bodyStyle": "SUV",
+      "fuelType": "Electric",
+      "transmission": "Direct-Drive",
+      "engine": "Electric",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Mineral White",
+        "hex": "#EAEAEA"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA202100000000003",
+      "stockNumber": "2021-0039",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Jaguar I-PACE front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Jaguar I-PACE interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Jaguar I-PACE rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Jaguar I-PACE close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2021 Jaguar I-PACE engine bay"
+        }
+      ],
+      "about": "British elegance and sporting spirit unite in this stunning grand tourer. Lightweight aluminum architecture, a supercharged engine, and hand-finished details create an unmistakable character on road and track.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "Electric"
+        },
+        {
+          "label": "Transmission",
+          "value": "Direct-Drive"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Mineral White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202100000000003"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2021-0039"
+        },
+        {
+          "label": "Mileage",
+          "value": "24,874 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "map",
+          "title": "Navigation",
+          "detail": "14-inch floating touchscreen"
+        },
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.8",
+      "reviewCount": 126
+    },
+    {
+      "id": 40,
+      "key": "vhl_bentley-bentayga_2022_40",
+      "slug": "bentley-bentayga-40",
+      "make": "Bentley",
+      "model": "Bentayga",
+      "year": 2022,
+      "title": "2022 Bentley Bentayga",
+      "subtitle": "Bentayga SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$195,599",
+      "priceNum": 195599,
+      "msrp": "$199,099",
+      "status": "pricedrop",
+      "badge": {
+        "text": "Reserved",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 26247,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "W12",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Alpine White",
+        "hex": "#FFFFFF"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA202200000000004",
+      "stockNumber": "2022-0040",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Bentley Bentayga front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Bentley Bentayga interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Bentley Bentayga rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Bentley Bentayga close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Bentley Bentayga engine bay"
+        }
+      ],
+      "about": "The absolute pinnacle of motoring luxury. Handcrafted by master artisans, every surface is appointed with the finest materials \u2014 from carbon-fiber detailing to genuine wood and leather. Unmatched refinement in every detail.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "W12"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Alpine White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202200000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2022-0040"
+        },
+        {
+          "label": "Mileage",
+          "value": "26,247 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.9",
+      "reviewCount": 129
+    },
+    {
+      "id": 41,
+      "key": "vhl_bentley-continental-gt_2023_41",
+      "slug": "bentley-continental-gt-41",
+      "make": "Bentley",
+      "model": "Continental GT",
+      "year": 2023,
+      "title": "2023 Bentley Continental GT",
+      "subtitle": "Continental GT Coupe \u2022 Gasoline \u2022 Automatic",
+      "price": "$224,140",
+      "priceNum": 224140,
+      "msrp": "$227,640",
+      "status": "reserved",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 27620,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "W12",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Charente Grey Metallic",
+        "hex": "#7A7E85"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA202300000000004",
+      "stockNumber": "2023-0041",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Bentley Continental GT front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Bentley Continental GT interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Bentley Continental GT rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Bentley Continental GT close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Bentley Continental GT engine bay"
+        }
+      ],
+      "about": "The absolute pinnacle of motoring luxury. Handcrafted by master artisans, every surface is appointed with the finest materials \u2014 from carbon-fiber detailing to genuine wood and leather. Unmatched refinement in every detail.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "W12"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Charente Grey Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202300000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2023-0041"
+        },
+        {
+          "label": "Mileage",
+          "value": "27,620 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.7",
+      "reviewCount": 132
+    },
+    {
+      "id": 42,
+      "key": "vhl_rolls-royce-cullinan_2024_42",
+      "slug": "rolls-royce-cullinan-42",
+      "make": "Rolls-Royce",
+      "model": "Cullinan",
+      "year": 2024,
+      "title": "2024 Rolls-Royce Cullinan",
+      "subtitle": "Cullinan SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$253,681",
+      "priceNum": 253681,
+      "msrp": "$257,181",
+      "status": "available",
+      "badge": null,
+      "mileage": 993,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Santorini Black Metallic",
+        "hex": "#161616"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA202400000000004",
+      "stockNumber": "2024-0042",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Rolls-Royce Cullinan front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Rolls-Royce Cullinan interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Rolls-Royce Cullinan rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Rolls-Royce Cullinan close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 Rolls-Royce Cullinan engine bay"
+        }
+      ],
+      "about": "The ultimate expression of automotive luxury. Bespoke craftsmanship, a whisper-quiet V8, and rear-hinged coach doors create an ambiance of pure sophistication. A masterpiece of British engineering.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Santorini Black Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202400000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2024-0042"
+        },
+        {
+          "label": "Mileage",
+          "value": "993 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.7",
+      "reviewCount": 135
+    },
+    {
+      "id": 43,
+      "key": "vhl_rolls-royce-phantom_2018_43",
+      "slug": "rolls-royce-phantom-43",
+      "make": "Rolls-Royce",
+      "model": "Phantom",
+      "year": 2018,
+      "title": "2018 Rolls-Royce Phantom",
+      "subtitle": "Phantom Sedan \u2022 Gasoline \u2022 Automatic",
+      "price": "$453,222",
+      "priceNum": 453222,
+      "msrp": "$456,722",
+      "status": "available",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 2366,
+      "bodyStyle": "Sedan",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Fuji White",
+        "hex": "#F5F5F5"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA201800000000004",
+      "stockNumber": "2018-0043",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Rolls-Royce Phantom front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Rolls-Royce Phantom interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Rolls-Royce Phantom rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Rolls-Royce Phantom close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Rolls-Royce Phantom engine bay"
+        }
+      ],
+      "about": "The ultimate expression of automotive luxury. Bespoke craftsmanship, a whisper-quiet V8, and rear-hinged coach doors create an ambiance of pure sophistication. A masterpiece of British engineering.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Fuji White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0043"
+        },
+        {
+          "label": "Mileage",
+          "value": "2,366 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.8",
+      "reviewCount": 138
+    },
+    {
+      "id": 44,
+      "key": "vhl_lamborghini-urus_2019_44",
+      "slug": "lamborghini-urus-44",
+      "make": "Lamborghini",
+      "model": "Urus",
+      "year": 2019,
+      "title": "2019 Lamborghini Urus",
+      "subtitle": "Urus SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$232,763",
+      "priceNum": 232763,
+      "msrp": "$236,263",
+      "status": "pricedrop",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 3739,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Yas Marina Blue",
+        "hex": "#0A6EBD"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA201900000000004",
+      "stockNumber": "2019-0044",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lamborghini Urus front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lamborghini Urus interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lamborghini Urus rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lamborghini Urus close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2019 Lamborghini Urus engine bay"
+        }
+      ],
+      "about": "Aerodynamic design, a naturally aspirated engine, and race-derived technology come together in this exotic masterpiece. Sharp lines and scissor doors define a vehicle built for emotion and performance.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Yas Marina Blue"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201900000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2019-0044"
+        },
+        {
+          "label": "Mileage",
+          "value": "3,739 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.8",
+      "reviewCount": 141
+    },
+    {
+      "id": 45,
+      "key": "vhl_lamborghini-hurac-n_2020_45",
+      "slug": "lamborghini-hurac-n-45",
+      "make": "Lamborghini",
+      "model": "Hurac\u00e1n",
+      "year": 2020,
+      "title": "2020 Lamborghini Hurac\u00e1n",
+      "subtitle": "Hurac\u00e1n Coupe \u2022 Gasoline \u2022 Manual",
+      "price": "$212,304",
+      "priceNum": 212304,
+      "msrp": "$215,804",
+      "status": "reserved",
+      "badge": {
+        "text": "Price Drop",
+        "cls": "bg-on-tertiary-container text-white"
+      },
+      "mileage": 5112,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V10",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Aventurine Rainbow",
+        "hex": "#9E1B1B"
+      },
+      "interiorColor": "Taupe Leather",
+      "vin": "JA202000000000004",
+      "stockNumber": "2020-0045",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Lamborghini Hurac\u00e1n front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Lamborghini Hurac\u00e1n interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Lamborghini Hurac\u00e1n rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Lamborghini Hurac\u00e1n close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2020 Lamborghini Hurac\u00e1n engine bay"
+        }
+      ],
+      "about": "Aerodynamic design, a naturally aspirated engine, and race-derived technology come together in this exotic masterpiece. Sharp lines and scissor doors define a vehicle built for emotion and performance.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V10"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Aventurine Rainbow"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Taupe Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202000000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2020-0045"
+        },
+        {
+          "label": "Mileage",
+          "value": "5,112 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.9",
+      "reviewCount": 144
+    },
+    {
+      "id": 46,
+      "key": "vhl_ferrari-roma_2021_46",
+      "slug": "ferrari-roma-46",
+      "make": "Ferrari",
+      "model": "Roma",
+      "year": 2020,
+      "title": "2020 Ferrari Roma",
+      "subtitle": "Roma Coupe \u2022 Gasoline \u2022 Manual",
+      "price": "$200,000",
+      "priceNum": 200000,
+      "msrp": "$225,345",
+      "status": "available",
+      "badge": {
+        "text": "Available",
+        "cls": "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+      },
+      "mileage": 2285,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Obsidian",
+        "hex": "#000000"
+      },
+      "interiorColor": "Cognac Leather",
+      "vin": "JA202100000000004",
+      "stockNumber": "2021-0046",
+      "gallery": [
+        {
+          "url": "http://localhost:5001/api/images/vehicles/46/1785778096122_porsche-911.jpg",
+          "alt": "2020 Ferrari Roma photo 1"
+        },
+        {
+          "url": "http://localhost:5001/api/images/vehicles/46/1785778096122_porsche-911.jpg",
+          "alt": "2020 Ferrari Roma photo 2"
+        },
+        {
+          "url": "http://localhost:5001/api/images/vehicles/46/1785778096122_porsche-911.jpg",
+          "alt": "2020 Ferrari Roma photo 3"
+        },
+        {
+          "url": "http://localhost:5001/api/images/vehicles/46/1785778096122_porsche-911.jpg",
+          "alt": "2020 Ferrari Roma photo 4"
+        }
+      ],
+      "about": "Motorsport heritage distilled into a road-going machine. Mid-engine balance, Formula 1-derived technology, and passionate Italian design create an automotive work of art that commands attention.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Obsidian"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Cognac Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202100000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2021-0046"
+        },
+        {
+          "label": "Mileage",
+          "value": "6,485 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.7",
+      "reviewCount": 147
+    },
+    {
+      "id": 47,
+      "key": "vhl_ferrari-purosangue_2022_47",
+      "slug": "ferrari-purosangue-47",
+      "make": "Ferrari",
+      "model": "Purosangue",
+      "year": 2022,
+      "title": "2022 Ferrari Purosangue",
+      "subtitle": "Purosangue SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$251,386",
+      "priceNum": 251386,
+      "msrp": "$254,886",
+      "status": "available",
+      "badge": {
+        "text": "Special Offer",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 7858,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V12",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Mineral White",
+        "hex": "#EAEAEA"
+      },
+      "interiorColor": "Sangria Red",
+      "vin": "JA202200000000004",
+      "stockNumber": "2022-0047",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Ferrari Purosangue front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Ferrari Purosangue interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Ferrari Purosangue rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Ferrari Purosangue close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2022 Ferrari Purosangue engine bay"
+        }
+      ],
+      "about": "Motorsport heritage distilled into a road-going machine. Mid-engine balance, Formula 1-derived technology, and passionate Italian design create an automotive work of art that commands attention.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V12"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Mineral White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Sangria Red"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202200000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2022-0047"
+        },
+        {
+          "label": "Mileage",
+          "value": "7,858 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.7",
+      "reviewCount": 150
+    },
+    {
+      "id": 48,
+      "key": "vhl_ferrari-f8_2023_48",
+      "slug": "ferrari-f8-48",
+      "make": "Ferrari",
+      "model": "F8",
+      "year": 2023,
+      "title": "2023 Ferrari F8",
+      "subtitle": "F8 Coupe \u2022 Gasoline \u2022 Manual",
+      "price": "$210,927",
+      "priceNum": 210927,
+      "msrp": "$214,427",
+      "status": "pricedrop",
+      "badge": null,
+      "mileage": 9231,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Alpine White",
+        "hex": "#FFFFFF"
+      },
+      "interiorColor": "Graphite Grey",
+      "vin": "JA202300000000004",
+      "stockNumber": "2023-0048",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Ferrari F8 front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Ferrari F8 interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Ferrari F8 rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Ferrari F8 close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2023 Ferrari F8 engine bay"
+        }
+      ],
+      "about": "Motorsport heritage distilled into a road-going machine. Mid-engine balance, Formula 1-derived technology, and passionate Italian design create an automotive work of art that commands attention.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Alpine White"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Graphite Grey"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202300000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2023-0048"
+        },
+        {
+          "label": "Mileage",
+          "value": "9,231 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Priya Desai",
+        "title": "Client Experience Director",
+        "phone": "(555) 023-0044",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Bellevue",
+        "address": "10400 NE 2nd St",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "rating": "4.8",
+      "reviewCount": 153
+    },
+    {
+      "id": 49,
+      "key": "vhl_mclaren-720s_2024_49",
+      "slug": "mclaren-720s-49",
+      "make": "McLaren",
+      "model": "720S",
+      "year": 2024,
+      "title": "2024 McLaren 720S",
+      "subtitle": "720S Coupe \u2022 Gasoline \u2022 Manual",
+      "price": "$210,468",
+      "priceNum": 210468,
+      "msrp": "$213,968",
+      "status": "reserved",
+      "badge": {
+        "text": "Certified",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 10604,
+      "bodyStyle": "Coupe",
+      "fuelType": "Gasoline",
+      "transmission": "Manual",
+      "engine": "V8",
+      "drivetrain": "Rear-Wheel Drive",
+      "seats": "5",
+      "exteriorColor": {
+        "name": "Charente Grey Metallic",
+        "hex": "#7A7E85"
+      },
+      "interiorColor": "Caraway Semi-Aniline",
+      "vin": "JA202400000000004",
+      "stockNumber": "2024-0049",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 McLaren 720S front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 McLaren 720S interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 McLaren 720S rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 McLaren 720S close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2024 McLaren 720S engine bay"
+        }
+      ],
+      "about": "Cutting-edge carbon fiber construction meets race-bred performance. With active aerodynamics, a twin-turbo V8, and F1-inspired ergonomics, this car bridges the gap between track and street.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V8"
+        },
+        {
+          "label": "Transmission",
+          "value": "Manual"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Charente Grey Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Caraway Semi-Aniline"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "Rear-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA202400000000004"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2024-0049"
+        },
+        {
+          "label": "Mileage",
+          "value": "10,604 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "sports_gymnastics",
+          "title": "Sport Mode",
+          "detail": "Performance drive modes"
+        }
+      ],
+      "seller": {
+        "name": "Sarah Jenkins",
+        "title": "Senior Client Advisor",
+        "phone": "(555) 012-3456",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Beverly Hills",
+        "address": "9800 Wilshire Blvd",
+        "city": "Beverly Hills",
+        "state": "CA",
+        "zip": "90212"
+      },
+      "rating": "4.8",
+      "reviewCount": 156
+    },
+    {
+      "id": 50,
+      "key": "vhl_aston-martin-dbx_2018_50",
+      "slug": "aston-martin-dbx-50",
+      "make": "Aston Martin",
+      "model": "DBX",
+      "year": 2018,
+      "title": "2018 Aston Martin DBX",
+      "subtitle": "DBX SUV \u2022 Gasoline \u2022 Automatic",
+      "price": "$190,009",
+      "priceNum": 190009,
+      "msrp": "$193,509",
+      "status": "available",
+      "badge": {
+        "text": "New Arrival",
+        "cls": "bg-primary text-on-primary"
+      },
+      "mileage": 11977,
+      "bodyStyle": "SUV",
+      "fuelType": "Gasoline",
+      "transmission": "Automatic",
+      "engine": "V12",
+      "drivetrain": "All-Wheel Drive",
+      "seats": "7",
+      "exteriorColor": {
+        "name": "Santorini Black Metallic",
+        "hex": "#161616"
+      },
+      "interiorColor": "Black Leather",
+      "vin": "JA201800000000005",
+      "stockNumber": "2018-0050",
+      "gallery": [
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Aston Martin DBX front three-quarter"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Aston Martin DBX interior cabin"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Aston Martin DBX rear profile"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Aston Martin DBX close-up detail"
+        },
+        {
+          "url": "/image/hero.jpg",
+          "alt": "2018 Aston Martin DBX engine bay"
+        }
+      ],
+      "about": "Timeless British grand touring with a modern soul. Handcrafted quality, a potent engine, and elegant lines \u2014 this is a vehicle built for the discerning driver who appreciates true craftsmanship.",
+      "specs": [
+        {
+          "label": "Engine",
+          "value": "V12"
+        },
+        {
+          "label": "Transmission",
+          "value": "Automatic"
+        },
+        {
+          "label": "Exterior Color",
+          "value": "Santorini Black Metallic"
+        },
+        {
+          "label": "Interior Color",
+          "value": "Black Leather"
+        },
+        {
+          "label": "Drivetrain",
+          "value": "All-Wheel Drive"
+        },
+        {
+          "label": "VIN",
+          "value": "JA201800000000005"
+        },
+        {
+          "label": "Stock Number",
+          "value": "2018-0050"
+        },
+        {
+          "label": "Mileage",
+          "value": "11,977 miles"
+        }
+      ],
+      "features": [
+        {
+          "icon": "terrain",
+          "title": "AWD",
+          "detail": "Permanent all-wheel drive system"
+        },
+        {
+          "icon": "content_cut",
+          "title": "Leather",
+          "detail": "Full premium leather upholstery"
+        }
+      ],
+      "seller": {
+        "name": "Marcus Rivera",
+        "title": "Premium Sales Consultant",
+        "phone": "(555) 019-8821",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuD6LUhi46nOD4375v2k4zne5ya34p0knPeSBusP3zXa1-hRj4kZvK59A8txz2Z6YQWa6iorScKKsIrctM1koTZWtW1VCRvajfJVfeIuHhhB-mi2TngAqmY9aTlHyWnZR3FK4ZJyl-reH9ZGo4SdjqFdIGmLkoYF2tgjo7DJt20qJIVSUc2LB83R9QoZ7v0QKtwTHSRDP4cKgvGjNhqvrg9S3nZFdTNu9dFMuHue-icQLSf-oJJJtYaRJQ"
+      },
+      "dealership": {
+        "name": "Luxe Motors Westfield Garden State",
+        "address": "100 Garden State Plaza",
+        "city": "Paramus",
+        "state": "NJ",
+        "zip": "07652"
+      },
+      "rating": "4.9",
+      "reviewCount": 159
+    }
+  ],
+  "count": 50
+}

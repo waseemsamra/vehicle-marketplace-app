@@ -17,9 +17,12 @@ import FashionFooter from './components/FashionFooter';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminLayout from './pages/admin/AdminLayout';
 import VehicleManagement from './pages/admin/VehicleManagement';
+import VehicleForm from './pages/admin/VehicleForm';
 import SellerManagement from './pages/admin/SellerManagement';
 import BuyerManagement from './pages/admin/BuyerManagement';
 import Settings from './pages/admin/Settings';
+import Roles from './pages/admin/Roles';
+import { createRole } from './models/Role';
 import './config/amplify';
 import './App.css';
 
@@ -36,13 +39,10 @@ function ProtectedRoute({ children, adminOnly }) {
 
   if (!user) return <Navigate to="/login" />;
   
-  // Check if admin route
-  if (adminOnly) {
-    const groups = user.signInUserSession?.accessToken?.payload['cognito:groups'] || [];
-    const isAdmin = groups.includes('admin') || user.username === 'waseemsamra@gmail.com' || user.username?.includes('admin');
-    if (!isAdmin) {
-      return <Navigate to="/" />;
-    }
+  // Authorization is delegated to the role instance (polymorphic canViewAdmin),
+  // so staff/subclasses extend the gate automatically.
+  if (adminOnly && !createRole(user).canViewAdmin()) {
+    return <Navigate to="/" />;
   }
 
   return children;
@@ -76,27 +76,24 @@ function AppContent() {
               <Footer />
             </>
           } />
-          <Route path="/vehicle/:id" element={
-            <>
-              <Navbar />
-              <VehicleDetail />
-              <Footer />
-            </>
-          } />
+           <Route path="/vehicle/:id" element={<VehicleDetail />} />
           
-          {/* Admin Routes */}
-          <Route path="/admin" element={
-            <ProtectedRoute adminOnly>
-              <AdminLayout />
-            </ProtectedRoute>
-          }>
-            <Route index element={<Navigate to="/admin/dashboard" replace />} />
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="vehicles" element={<VehicleManagement />} />
-            <Route path="sellers" element={<SellerManagement />} />
-            <Route path="buyers" element={<BuyerManagement />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
+            {/* Admin Routes */}
+            <Route path="/admin" element={
+              <ProtectedRoute adminOnly>
+                <AdminLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="vehicles" element={<VehicleManagement />} />
+              <Route path="vehicles/new" element={<VehicleForm />} />
+              <Route path="vehicles/:id/edit" element={<VehicleForm />} />
+              <Route path="sellers" element={<SellerManagement />} />
+              <Route path="buyers" element={<BuyerManagement />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="roles" element={<Roles />} />
+            </Route>
         </Routes>
         {user && <MonitoringDashboard />}
       </div>

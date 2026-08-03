@@ -1,16 +1,87 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  makes,
+  CATEGORIES,
+  CITIES,
+  MODELS,
+  BUDGETS,
+  BODY_TYPES,
+  slugify,
+} from '../data/vehicles';
+import { vehicleApi } from '../services/vehicleApi';
 
-const vehicles = [
-  { name: '2023 Tesla Model 3', sub: 'Long Range AWD', miles: '12k miles', price: '$42,500', status: 'Available', statusClass: 'bg-green-500', img: '/image/tesla-model-3.jpg' },
-  { name: '2022 BMW X5', sub: 'sDrive40i', miles: '24k miles', price: '$58,900', status: 'Available', statusClass: 'bg-green-500', img: '/image/bmw-x5.jpg' },
-  { name: '2024 Ford F-150', sub: 'Lariat Edition', miles: '1.2k miles', price: '$67,200', status: 'Reserved', statusClass: 'bg-yellow-500', img: '/image/ford-f150.jpg' },
-  { name: '2021 Porsche 911', sub: 'Carrera S', miles: '8k miles', price: '$112,000', status: 'Available', statusClass: 'bg-green-500', img: '/image/porsche-911.jpg' },
-];
+const TAB_OPTIONS = {
+  Category: { cols: 6, options: CATEGORIES },
+  City: { cols: 6, options: CITIES },
+  Make: { cols: 6, options: makes.filter((m) => m !== 'All Makes').slice(0, 12) },
+  Model: { cols: 6, options: MODELS },
+  Budget: { cols: 4, options: BUDGETS },
+  'Body Type': { cols: 6, options: BODY_TYPES },
+};
+const TABS = Object.keys(TAB_OPTIONS);
+const CATEGORY_ICONS = {
+  'Sports cars': <path fill="currentColor" d="M12 8.5H7L4 11H3c-1.11 0-2 .89-2 2v3h2.17c.43 1.2 1.56 2 2.83 2s2.4-.8 2.82-2h6.35c.43 1.2 1.56 2 2.83 2s2.4-.8 2.82-2H23v-1c0-1.11-1.03-1.47-2-2zM5.25 12l2.25-2h4l4 2zM6 13.5A1.5 1.5 0 0 1 7.5 15A1.5 1.5 0 0 1 6 16.5A1.5 1.5 0 0 1 4.5 15A1.5 1.5 0 0 1 6 13.5m12 0a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5" />,
+  'Electric cars': <path fill="currentColor" d="M18.92 2c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.21.42-1.42 1L3 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8zM6.5 12c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9S8 9.67 8 10.5S7.33 12 6.5 12m11 0c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5s-.67 1.5-1.5 1.5M5 7l1.5-4.5h11L19 7zm2 13h4v-2l6 3h-4v2z" />,
+  'Luxury Car': <path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2L9.19 8.62L2 9.24l5.45 4.73L5.82 21z" />,
+  'Japanese cars': <path fill="currentColor" d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z" />,
+  'Automatic cars': <path fill="currentColor" d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49 1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z" />,
+  'Old Cars': <path fill="currentColor" d="m5 11l1.5-4.5h11L19 11m-1.5 5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m-11 0A1.5 1.5 0 0 1 5 14.5A1.5 1.5 0 0 1 6.5 13A1.5 1.5 0 0 1 8 14.5A1.5 1.5 0 0 1 6.5 16M18.92 6c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.22.42-1.42 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8z" />,
+  'Hybrid cars': <path fill="currentColor" d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8" />,
+  'Carry Daba': <path fill="currentColor" d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z" />,
+  '7 Seater': <path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20z" />,
+  'Accidental': <path fill="currentColor" d="M13 13h-2V7h2m-2 8h2v2h-2m4.73-14H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27z" />,
+  'Modified Cars': <path fill="currentColor" d="M7 7l8-8 2 2-8 8-1-1v1h-2V9l1-1zm9 5l2 2" />,
+  'Small cars': <path fill="currentColor" d="M18 10a1 1 0 0 1-1-1a1 1 0 0 1 1-1a1 1 0 0 1 1 1a1 1 0 0 1-1 1m-6 0H6V5h6m7.77 2.23l.01-.01l-3.72-3.72L15 4.56l2.11 2.11C16.17 7 15.5 7.93 15.5 9a2.5 2.5 0 0 0 2.5 2.5c.36 0 .69-.08 1-.21v7.21a1 1 0 0 1-1 1a1 1 0 0 1-1-1V14a2 2 0 0 0-2-2h-1V5a2 2 0 0 0-2-2H6c-1.11 0-2 .89-2 2v16h10v-7.5h1.5v5A2.5 2.5 0 0 0 18 21a2.5 2.5 0 0 0 2.5-2.5V9c0-.69-.28-1.32-.73-1.77z" />,
+  'Cheap cars': <path fill="currentColor" d="M4 18v3h3v-3h10v3h3v-6H4zm15-8h3v3h-3zM2 10h3v3H2zm15 3h-7V5h6a2 2 0 0 1 2 2z" />,
+  '8 Seater': <path fill="currentColor" d="M17 8c-.56 0-1.08.15-1.53.42c-.15 1.43-.27 2.85-.27 4.13c0 2.42.6 4.6 1.72 6.27c.06-.13.11-.26.11-.4V13c-.93-.68-1.6-1.73-1.6-2.9c0-1.22.5-2.33 1.3-3.17c.9-.9 2.03-1.5 3.28-1.5c1.25 0 2.38.56 3.18 1.41l2.5-2.5c-.59-3.93-3.66-6.41-7.5-6.41c-3.21 0-5.93 1.92-7.15 4.67A7.5 7.5 0 0 0 12 10v2c-3.31.54-5.5 3.48-5.5 6.93c0 .54.06 1.07.16 1.6A1.5 1.5 0 0 1 5.5 18c.05 0 .1-.02.15-.05C7.5 16.5 9 14.75 9 12.82c0-2.47-.95-4.72-2.5-6.42C4.95 7.3 4 9.03 4 11c0 3.31 2.69 6 6 6v2a8 8 0 0 1-2.64-12.64" />,
+  '660cc cars': <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6c-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m2 1.89c-.38.01-.74.26-.9.65l-1.29 3.23l-.1.23c-.71.13-1.3.6-1.57 1.26c-.41 1.03.09 2.19 1.12 2.6s2.19-.09 2.6-1.12c.26-.66.14-1.42-.29-1.98l.1-.26l1.29-3.21l.01-.03c.2-.51-.05-1.09-.56-1.3c-.13-.05-.26-.07-.41-.07M10 6a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1m-3 3a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1m10 0a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1" />,
+  '1300cc cars': <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6c-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8z" />,
+  '1000cc cars': <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6c-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8z" />,
+  'Petrol Cars': <path fill="currentColor" d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z" />,
+};
 
 const Home = () => {
   const navigate = useNavigate();
   const headerRef = useRef(null);
+  const [activeTab, setActiveTab] = useState('Category');
+  const [selected, setSelected] = useState({});
+  const [categoryPage, setCategoryPage] = useState(0);
+  const [featuredVehicles, setFeaturedVehicles] = useState([]);
+  const [featuredLoading, setFeaturedLoading] = useState(true);
+  const featuredScrollRef = useRef(null);
+
+  const scrollFeatured = (direction) => {
+    const el = featuredScrollRef.current;
+    if (!el) return;
+    const scrollAmount = 304; // card width 280px + gap 24px
+    el.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    setCategoryPage(0);
+  }, [activeTab]);
+
+  useEffect(() => {
+    const loadFeatured = async () => {
+      try {
+        const data = await vehicleApi.getAll(null, 10);
+        const items = data?.items || data || [];
+        setFeaturedVehicles(items.slice(0, 10));
+      } catch (e) {
+        console.error('Failed to load featured vehicles', e);
+      } finally {
+        setFeaturedLoading(false);
+      }
+    };
+    loadFeatured();
+  }, []);
+  const toggleOption = (tab, value) =>
+    setSelected((s) => ({ ...s, [tab]: s[tab] === value ? undefined : value }));
+  const PAGE_SIZE = 12;
+  const catOptions = TAB_OPTIONS.Category.options;
+  const totalPages = Math.max(1, Math.ceil(catOptions.length / PAGE_SIZE));
+  const pageOptions = catOptions.slice(categoryPage * PAGE_SIZE, categoryPage * PAGE_SIZE + PAGE_SIZE);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -119,46 +190,99 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Browse by Body Type */}
-        <section className="py-xl max-w-max-width mx-auto px-margin-desktop">
-          <div className="flex items-end justify-between mb-lg">
-            <div>
-              <span className="font-label-md text-label-md text-secondary uppercase tracking-widest mb-2 block">Categories</span>
-              <h2 className="font-headline-md text-headline-md text-primary">Browse by Body Type</h2>
+        {/* Category Tabs */}
+        <section className="pt-xl pb-md">
+          <div className="max-w-max-width mx-auto px-margin-desktop">
+            <h2 className="font-display-lg text-[32px] font-bold leading-tight text-primary mb-lg text-left">Browse Used Cars</h2>
+            <div className="flex gap-gutter overflow-x-auto hide-scrollbar">
+              {TABS.map((tab) => {
+                const selectedCount = selected[tab] !== undefined ? 1 : 0;
+                return (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={
+                      activeTab === tab
+                        ? 'flex-shrink-0 flex items-center gap-xs px-lg pb-px border-b-2 border-primary font-label-md text-label-md text-primary whitespace-nowrap'
+                        : 'flex-shrink-0 flex items-center gap-xs px-lg pb-px border-b-2 border-transparent font-label-md text-label-md text-on-surface-variant hover:text-primary whitespace-nowrap'
+                    }
+                  >
+                    {tab}
+                    {selectedCount > 0 && (
+                      <span className="w-5 h-5 flex items-center justify-center text-xs bg-on-tertiary-container text-on-primary rounded-full">{selectedCount}</span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
-            <a className="text-primary font-label-md text-label-md hover:underline hidden sm:block" href="#">View All Types</a>
-          </div>
-          <div className="flex gap-gutter overflow-x-auto pb-4 hide-scrollbar">
-            <button className="flex-shrink-0 group flex flex-col items-center gap-md p-lg rounded-xl bg-surface-container-low hover:bg-surface transition-all hover:-translate-y-1 w-32 md:w-40 border border-transparent hover:border-outline-variant">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                <span className="material-symbols-outlined text-4xl text-secondary" data-icon="airport_shuttle">airport_shuttle</span>
-              </div>
-              <span className="font-label-md text-label-md text-on-surface">SUVs</span>
-            </button>
-            <button className="flex-shrink-0 group flex flex-col items-center gap-md p-lg rounded-xl bg-surface-container-low hover:bg-surface transition-all hover:-translate-y-1 w-32 md:w-40 border border-transparent hover:border-outline-variant">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                <span className="material-symbols-outlined text-4xl text-secondary" data-icon="directions_car">directions_car</span>
-              </div>
-              <span className="font-label-md text-label-md text-on-surface">Sedans</span>
-            </button>
-            <button className="flex-shrink-0 group flex flex-col items-center gap-md p-lg rounded-xl bg-surface-container-low hover:bg-surface transition-all hover:-translate-y-1 w-32 md:w-40 border border-transparent hover:border-outline-variant">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                <span className="material-symbols-outlined text-4xl text-secondary" data-icon="local_shipping">local_shipping</span>
-              </div>
-              <span className="font-label-md text-label-md text-on-surface">Trucks</span>
-            </button>
-            <button className="flex-shrink-0 group flex flex-col items-center gap-md p-lg rounded-xl bg-surface-container-low hover:bg-surface transition-all hover:-translate-y-1 w-32 md:w-40 border border-transparent hover:border-outline-variant">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                <span className="material-symbols-outlined text-4xl text-secondary" data-icon="sports_motorsports">sports_motorsports</span>
-              </div>
-              <span className="font-label-md text-label-md text-on-surface">Coupes</span>
-            </button>
-            <button className="flex-shrink-0 group flex flex-col items-center gap-md p-lg rounded-xl bg-surface-container-low hover:bg-surface transition-all hover:-translate-y-1 w-32 md:w-40 border border-transparent hover:border-outline-variant">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                <span className="material-symbols-outlined text-4xl text-secondary" data-icon="electric_car">electric_car</span>
-              </div>
-              <span className="font-label-md text-label-md text-on-surface">EVs</span>
-            </button>
+            <div className="border-b border-outline-variant/20 mb-md"></div>
+            <div className="mt-md">
+              {activeTab === 'Category' ? (
+                <div className="relative">
+                  <div className="grid grid-cols-6 gap-xs px-10">
+                    {pageOptions.map((opt) => {
+                      const isActive = selected[activeTab] === opt;
+                      return (
+                        <button
+                          key={String(opt)}
+                          onClick={() => { toggleOption(activeTab, opt); navigate('/search?category=' + opt.toLowerCase().replace(/\s+/g, '-')); }}
+                          className={
+                            isActive
+                              ? 'flex flex-col items-center justify-center gap-xs w-full px-md py-lg rounded-xl border-2 border-primary bg-surface text-center focus:outline-none'
+                              : 'flex flex-col items-center justify-center gap-xs w-full px-md py-lg rounded-xl border border-outline-variant bg-surface-container hover:border-outline-variant hover:bg-surface focus:outline-none text-center'
+                          }
+                        >
+                          <span className="flex items-center justify-center w-12 h-12 text-primary">
+                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">{CATEGORY_ICONS[opt]}</svg>
+                          </span>
+                          <span className="font-label-sm text-label-sm text-on-surface break-words">{opt}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {totalPages > 1 && (
+                    <>
+                      {categoryPage > 0 && (
+                        <button
+                          onClick={() => setCategoryPage((p) => Math.max(0, p - 1))}
+                          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-surface-container transition-colors"
+                          aria-label="Previous page"
+                        >
+                          <span className="material-symbols-outlined text-2xl font-bold">chevron_left</span>
+                        </button>
+                      )}
+                      <button
+                        onClick={() => setCategoryPage((p) => Math.min(totalPages - 1, p + 1))}
+                        disabled={categoryPage === totalPages - 1}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full hover:bg-surface-container disabled:opacity-40 transition-colors"
+                        aria-label="Next page"
+                      >
+                        <span className="material-symbols-outlined text-2xl font-bold">chevron_right</span>
+                      </button>
+                    </>
+                  )}
+                </div>
+              ) : (
+                <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-${TAB_OPTIONS[activeTab].cols} gap-xs`}>
+                  {(TAB_OPTIONS[activeTab].options || []).map((opt) => {
+                    const isActive = selected[activeTab] === opt;
+                    return (
+                      <button
+                        key={String(opt)}
+                        onClick={() => toggleOption(activeTab, opt)}
+                        className={
+                          isActive
+                            ? 'px-md py-sm font-label-md text-label-md text-primary font-bold text-left focus:outline-none'
+                            : 'px-md py-sm font-label-md text-label-md text-on-surface-variant hover:text-primary text-left focus:outline-none'
+                        }
+                      >
+                        {opt}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
@@ -232,42 +356,57 @@ const Home = () => {
             <div className="flex items-center justify-between mb-lg">
               <h2 className="font-headline-md text-headline-md text-primary">Featured Listings</h2>
               <div className="flex gap-sm">
-                <button className="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
+                <button onClick={() => scrollFeatured('left')} className="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
                   <span className="material-symbols-outlined">chevron_left</span>
                 </button>
-                <button className="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
+                <button onClick={() => scrollFeatured('right')} className="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
                   <span className="material-symbols-outlined">chevron_right</span>
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-              {vehicles.map((v) => (
-                <div key={v.name} className="group bg-white rounded-xl overflow-hidden vehicle-card-shadow border border-surface-container hover:border-primary-fixed-dim transition-all group-hover:translate-y-[-4px] group-hover:shadow-xl">
-                  <div className="relative h-48 overflow-hidden">
-                    <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={`${v.name} front 3/4 view`} src={v.img} />
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: v.status === 'Reserved' ? '#f59e0b' : '#22c55e' }}></span>
-                      <span className="font-label-md text-label-md text-on-surface">{v.status}</span>
+            {featuredLoading ? (
+              <div className="text-center py-12 text-on-surface-variant">Loading featured vehicles...</div>
+            ) : (
+              <div ref={featuredScrollRef} className="flex gap-gutter overflow-x-auto hide-scrollbar pb-4">
+                {featuredVehicles.map((v) => {
+                  const vehicleId = v.vehicleId || v.id || v.VehicleID;
+                  const imgSrc = v.images?.[0] || v.img || v.imageUrl || '/image/hero.jpg';
+                  const title = v.title || `${v.year || ''} ${v.make || ''} ${v.model || ''}`.trim() || 'Vehicle';
+                  const price = v.price || (v.priceNum ? `$${v.priceNum.toLocaleString()}` : '');
+                  const status = v.status || (v.status ? 'Available' : 'Available');
+                  const miles = v.mileage ? `${v.mileage.toLocaleString()} miles` : (v.sub || '');
+                  const sub = v.sub || '';
+                  return (
+                    <div key={vehicleId || title} onClick={() => navigate(`/vehicle/${vehicleId}`)} className="group bg-white rounded-xl overflow-hidden vehicle-card-shadow border border-surface-container hover:border-primary-fixed-dim transition-all group-hover:translate-y-[-4px] group-hover:shadow-xl cursor-pointer flex-shrink-0 w-[280px]">
+                      <div className="relative h-48 overflow-hidden">
+                        <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={`${title} front 3/4 view`} src={imgSrc} />
+                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: status === 'Reserved' ? '#f59e0b' : '#22c55e' }}></span>
+                          <span className="font-label-md text-label-md text-on-surface">{status}</span>
+                        </div>
+                        <button onClick={(e) => { e.stopPropagation(); }} className="absolute top-4 right-4 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors">
+                          <span className="material-symbols-outlined text-sm">favorite</span>
+                        </button>
+                      </div>
+                      <div className="p-md">
+                        <h3 className="font-headline-sm text-headline-sm text-primary mb-1">{title}</h3>
+                        <div className="flex items-center gap-2 mb-4">
+                          <span className="font-label-md text-label-md text-secondary">{miles}</span>
+                          {sub && <>
+                            <span className="text-outline-variant text-xs">•</span>
+                            <span className="font-label-md text-label-md text-secondary">{sub}</span>
+                          </>}
+                        </div>
+                        <div className="flex items-center justify-between mt-auto">
+                          <span className="font-headline-sm text-headline-sm text-on-tertiary-container">{price}</span>
+                          <button className="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">View Details</button>
+                        </div>
+                      </div>
                     </div>
-                    <button className="absolute top-4 right-4 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors">
-                      <span className="material-symbols-outlined text-sm">favorite</span>
-                    </button>
-                  </div>
-                  <div className="p-md">
-                    <h3 className="font-headline-sm text-headline-sm text-primary mb-1">{v.name}</h3>
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="font-label-md text-label-md text-secondary">{v.miles}</span>
-                      <span className="text-outline-variant text-xs">•</span>
-                      <span className="font-label-md text-label-md text-secondary">{v.sub}</span>
-                    </div>
-                    <div className="flex items-center justify-between mt-auto">
-                      <span className="font-headline-sm text-headline-sm text-on-tertiary-container">{v.price}</span>
-                      <button className="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">View Details</button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </section>
 

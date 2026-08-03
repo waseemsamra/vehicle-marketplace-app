@@ -8,19 +8,19 @@ const RecentOrders = () => {
   ];
 
   return (
-    <div className="glass-panel rounded-2xl p-6">
+    <div className="bg-white rounded-2xl p-6 border border-gray-200">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-bold text-white">Recent Orders</h3>
-          <p className="text-sm text-slate-400">Latest transactions and status</p>
+          <h3 className="text-lg font-bold text-gray-900">Recent Orders</h3>
+          <p className="text-sm text-gray-500">Latest transactions and status</p>
         </div>
-        <button className="text-brand-500 hover:text-brand-400 text-sm font-medium">View All →</button>
+        <button className="text-brand-600 hover:text-brand-500 text-sm font-medium">View All →</button>
       </div>
       
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="text-left text-xs font-semibold text-slate-400 uppercase border-b border-slate-700">
+            <tr className="text-left text-xs font-semibold text-gray-500 uppercase border-b border-gray-200">
               <th className="pb-3">Vehicle</th>
               <th className="pb-3">Customer</th>
               <th className="pb-3">Date</th>
@@ -28,18 +28,18 @@ const RecentOrders = () => {
               <th className="pb-3">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800">
+          <tbody className="divide-y divide-gray-100">
             {orders.map((order, i) => (
-              <tr key={i} className="hover:bg-slate-800/50">
-                <td className="py-4 font-medium text-white">{order.vehicle}</td>
-                <td className="py-4 text-slate-300">{order.customer}</td>
-                <td className="py-4 text-sm text-slate-400">{order.date}</td>
-                <td className="py-4 font-semibold text-white">{order.amount}</td>
+              <tr key={i} className="hover:bg-gray-50">
+                <td className="py-4 font-medium text-gray-900">{order.vehicle}</td>
+                <td className="py-4 text-gray-600">{order.customer}</td>
+                <td className="py-4 text-sm text-gray-500">{order.date}</td>
+                <td className="py-4 font-semibold text-gray-900">{order.amount}</td>
                 <td className="py-4">
                   <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                    order.status === 'Completed' ? 'bg-green-500/20 text-green-400' :
-                    order.status === 'Pending' ? 'bg-yellow-500/20 text-yellow-400' :
-                    'bg-blue-500/20 text-blue-400'
+                    order.status === 'Completed' ? 'bg-green-100 text-green-700' :
+                    order.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' :
+                    'bg-blue-100 text-blue-700'
                   }`}>
                     {order.status}
                   </span>

@@ -1,10 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { createRole } from '../models/Role';
+import RoleBadge from './roles/RoleBadge';
 
 const Navbar = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const isAdmin = user && createRole(user).canViewAdmin();
 
   return (
     <nav className="fixed w-full z-50 glass-effect border-b border-white/10">
@@ -28,8 +31,9 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
+                <RoleBadge user={user} size="sm" />
                 <span className="text-sm text-slate-300">{user.username}</span>
-                {(user.signInUserSession?.accessToken?.payload['cognito:groups']?.includes('admin') || user.username?.includes('admin')) && (
+                {isAdmin && (
                   <button
                     onClick={() => navigate('/admin')}
                     className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all"
