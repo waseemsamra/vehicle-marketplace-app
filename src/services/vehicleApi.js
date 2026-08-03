@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { fetchAuthSession } from '../config/amplify';
-import { monitoring } from './monitoring';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 const TOKEN_KEY = 'authToken';

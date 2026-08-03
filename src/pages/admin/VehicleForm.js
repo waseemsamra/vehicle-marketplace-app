@@ -14,15 +14,6 @@ const VehicleForm = () => {
   const [settings, setSettings] = useState({});
   const [makes, setMakes] = useState([]);
   const [models, setModels] = useState([]);
-  const [transmissions, setTransmissions] = useState([]);
-  const [colors, setColors] = useState([]);
-  const [bodyTypes, setBodyTypes] = useState([]);
-  const [engineTypes, setEngineTypes] = useState([]);
-  const [engineCapacities, setEngineCapacities] = useState([]);
-  const [assemblies, setAssemblies] = useState([]);
-  const [doors, setDoors] = useState([]);
-  const [seatingCapacities, setSeatingCapacities] = useState([]);
-  const [modelCategories, setModelCategories] = useState([]);
 
   const [formData, setFormData] = useState({
     make: '', model: '', year: '', price: '', mileage: '', condition: 'used',
@@ -39,11 +30,12 @@ const VehicleForm = () => {
     if (isEdit) {
       fetchVehicle();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const fetchSettings = async () => {
     try {
-      const [settingsRes, makesRes, modelsRes, transmissionsRes, colorsRes, bodyTypesRes, engineTypesRes, engineCapacitiesRes, assembliesRes, doorsRes, seatingCapacitiesRes, modelCategoriesRes] = await Promise.all([
+      await Promise.all([
         fetch(`${API_URL}/settings`),
         fetch(`${API_URL}/makes`),
         fetch(`${API_URL}/models`),
@@ -58,21 +50,16 @@ const VehicleForm = () => {
         fetch(`${API_URL}/model-categories`),
       ]);
 
+      const settingsRes = await fetch(`${API_URL}/settings`);
+      const makesRes = await fetch(`${API_URL}/makes`);
+      const modelsRes = await fetch(`${API_URL}/models`);
+
       if (settingsRes.ok) {
         const data = await settingsRes.json();
         setSettings(data || {});
       }
       if (makesRes.ok) setMakes(await makesRes.json());
       if (modelsRes.ok) setModels(await modelsRes.json());
-      if (transmissionsRes.ok) setTransmissions(await transmissionsRes.json());
-      if (colorsRes.ok) setColors(await colorsRes.json());
-      if (bodyTypesRes.ok) setBodyTypes(await bodyTypesRes.json());
-      if (engineTypesRes.ok) setEngineTypes(await engineTypesRes.json());
-      if (engineCapacitiesRes.ok) setEngineCapacities(await engineCapacitiesRes.json());
-      if (assembliesRes.ok) setAssemblies(await assembliesRes.json());
-      if (doorsRes.ok) setDoors(await doorsRes.json());
-      if (seatingCapacitiesRes.ok) setSeatingCapacities(await seatingCapacitiesRes.json());
-      if (modelCategoriesRes.ok) setModelCategories(await modelCategoriesRes.json());
     } catch (error) {
       console.error('Failed to load settings:', error);
     }

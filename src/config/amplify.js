@@ -11,4 +11,3 @@ const confirmSignUp = (params) => mongoAuth.confirmSignUp(params);
 const fetchAuthSession = () => mongoAuth.fetchAuthSession();
 
 export { signIn, signUp, signOut, getCurrentUser, confirmSignUp, fetchAuthSession };
-export default { signIn, signUp, signOut, getCurrentUser };

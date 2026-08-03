@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import vehicleDetailsData from '../data/vehicleDetails.json';
 import { vehicleApi } from '../services/vehicleApi';
@@ -50,6 +50,14 @@ const VehicleDetail = () => {
     document.title = vehicle ? `AutoMarket | ${vehicle.title}` : 'AutoMarket | Vehicle Details';
   }, [vehicle]);
 
+  const nextImage = useCallback(() => {
+    setSelectedImage((p) => (p + 1) % images.length);
+  }, [images.length]);
+
+  const prevImage = useCallback(() => {
+    setSelectedImage((p) => (p - 1 + images.length) % images.length);
+  }, [images.length]);
+
   useEffect(() => {
     const onKey = (e) => {
       if (!lightboxOpen) return;
@@ -59,7 +67,7 @@ const VehicleDetail = () => {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [lightboxOpen, selectedImage]);
+  }, [lightboxOpen, selectedImage, nextImage, prevImage]);
 
   const loadFromApi = async () => {
     try {
@@ -75,9 +83,6 @@ const VehicleDetail = () => {
       setLoading(false);
     }
   };
-
-  const nextImage = () => setSelectedImage((p) => (p + 1) % images.length);
-  const prevImage = () => setSelectedImage((p) => (p - 1 + images.length) % images.length);
 
   const calculateMonthlyPayment = () => {
     const price = vehicle?.priceNum || 142500;
@@ -354,7 +359,7 @@ const VehicleDetail = () => {
                 </div>
                 <div>
                   <p className="font-label-md text-label-md text-primary">CARFAX® Report</p>
-                  <a className="text-label-sm text-primary underline" href="#">View Full History</a>
+                   <button className="text-label-sm text-primary underline">View Full History</button>
                 </div>
               </div>
             </section>

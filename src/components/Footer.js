@@ -15,25 +15,25 @@ const Footer = () => {
           
           <div>
             <h4 className="text-white font-semibold mb-4">Buy</h4>
-            <ul className="space-y-2 text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-brand-500">Search Cars</a></li>
-              <li><a href="#" className="hover:text-brand-500">New Arrivals</a></li>
+             <ul className="space-y-2 text-slate-400 text-sm">
+              <li><button className="hover:text-brand-500 text-left">Search Cars</button></li>
+              <li><button className="hover:text-brand-500 text-left">New Arrivals</button></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-white font-semibold mb-4">Sell</h4>
             <ul className="space-y-2 text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-brand-500">Get an Offer</a></li>
-              <li><a href="#" className="hover:text-brand-500">How it Works</a></li>
+              <li><button className="hover:text-brand-500 text-left">Get an Offer</button></li>
+              <li><button className="hover:text-brand-500 text-left">How it Works</button></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-brand-500">About Us</a></li>
-              <li><a href="#" className="hover:text-brand-500">Contact</a></li>
+              <li><button className="hover:text-brand-500 text-left">About Us</button></li>
+              <li><button className="hover:text-brand-500 text-left">Contact</button></li>
             </ul>
           </div>
         </div>

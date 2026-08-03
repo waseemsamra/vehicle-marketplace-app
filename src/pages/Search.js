@@ -27,10 +27,6 @@ const Search = () => {
   const [transmission, setTransmission] = useState({});
   const [engine, setEngine] = useState({});
   const [features, setFeatures] = useState({});
-  const [fuelOpen, setFuelOpen] = useState(false);
-  const [transmissionOpen, setTransmissionOpen] = useState(false);
-  const [engineOpen, setEngineOpen] = useState(false);
-  const [featuresOpen, setFeaturesOpen] = useState(false);
 
   const barRef = useRef(null);
   const [barOffset, setBarOffset] = useState(96);

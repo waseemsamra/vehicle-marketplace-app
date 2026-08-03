@@ -7,7 +7,6 @@ import {
   MODELS,
   BUDGETS,
   BODY_TYPES,
-  slugify,
 } from '../data/vehicles';
 import { vehicleApi } from '../services/vehicleApi';
 
@@ -106,10 +105,10 @@ const Home = () => {
         <div className="flex items-center gap-xl py-4">
           <span className="font-display-lg text-display-lg font-black text-primary">AutoMarket</span>
           <nav className="hidden md:flex items-center gap-lg">
-            <a className="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors" href="#">Buy</a>
-            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Sell</a>
-            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Finance</a>
-            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Reviews</a>
+            <button className="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors">Buy</button>
+            <button className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Sell</button>
+            <button className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Finance</button>
+            <button className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Reviews</button>
           </nav>
         </div>
         <div className="flex items-center gap-lg py-4">
@@ -507,27 +506,27 @@ const Home = () => {
           <span className="font-display-lg text-display-lg font-bold text-inverse-on-surface">AutoMarket</span>
           <p className="font-body-md text-body-md text-surface-variant opacity-80">The nation's most trusted professional vehicle marketplace for premium and certified pre-owned vehicles.</p>
           <div className="flex gap-md mt-base">
-            <a className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all" href="#"><span className="material-symbols-outlined">qr_code_2</span></a>
-            <a className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all" href="#"><span className="material-symbols-outlined">photo_camera</span></a>
-            <a className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all" href="#"><span className="material-symbols-outlined">alternate_email</span></a>
+                        <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span className="material-symbols-outlined">qr_code_2</span></button>
+            <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span className="material-symbols-outlined">photo_camera</span></button>
+            <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"><span className="material-symbols-outlined">alternate_email</span></button>
           </div>
         </div>
         <div className="flex flex-col gap-md">
           <h4 className="font-label-md text-label-md text-primary-fixed-dim font-bold uppercase tracking-widest">Company</h4>
           <nav className="flex flex-col gap-sm">
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">About Us</a>
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">Careers</a>
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">Press</a>
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">Contact</a>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">About Us</button>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">Careers</button>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">Press</button>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">Contact</button>
           </nav>
         </div>
         <div className="flex flex-col gap-md">
           <h4 className="font-label-md text-label-md text-primary-fixed-dim font-bold uppercase tracking-widest">Legal</h4>
           <nav className="flex flex-col gap-sm">
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">Privacy Policy</a>
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">Terms of Service</a>
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">Cookie Policy</a>
-            <a className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors" href="#">Security</a>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">Privacy Policy</button>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">Terms of Service</button>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">Cookie Policy</button>
+            <button className="font-body-md text-body-md text-surface-variant opacity-80 hover:text-primary-fixed-dim transition-colors text-left">Security</button>
           </nav>
         </div>
         <div className="flex flex-col gap-md">

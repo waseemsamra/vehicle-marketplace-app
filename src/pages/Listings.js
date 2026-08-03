@@ -32,7 +32,7 @@ const Listings = () => {
   const [showFilters, setShowFilters] = useState(false);
   const searchRef = useRef(null);
 
-  const fetchMetadata = async () => {
+  const fetchMetadata = useCallback(async () => {
     try {
       const response = await fetch(`${API_URL}/vehicles/metadata`);
       if (response.ok) {
@@ -55,7 +55,7 @@ const Listings = () => {
     } catch (error) {
       console.error('Failed to load metadata:', error);
     }
-  };
+  }, []);
 
   const fetchFilteredVehicles = useCallback(async (pageNum, reset) => {
     setLoading(true);
@@ -82,6 +82,7 @@ const Listings = () => {
   useEffect(() => {
     fetchMetadata();
     fetchFilteredVehicles(1, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -107,17 +108,12 @@ const Listings = () => {
     setTotalCount(0);
     setHasMore(true);
     fetchFilteredVehicles(1, true);
-  }, [filters]);
+  }, [filters, fetchFilteredVehicles]);
 
   const handleFilterChange = (key, value) => {
     const newFilters = { ...filters, [key]: value };
     if (key === 'make') newFilters.model = '';
     setFilters(newFilters);
-  };
-
-  const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
   };
 
   const handlePrevPage = () => {

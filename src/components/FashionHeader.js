@@ -19,12 +19,12 @@ const FashionHeader = () => {
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-gray-700">
-          <a href="#" className="hover:text-pink-700 transition-colors">Home</a>
-          <a href="#" className="hover:text-pink-700 transition-colors">Latest Trends</a>
-          <a href="#" className="hover:text-pink-700 transition-colors">Designers Collection</a>
-          <a href="#" className="hover:text-pink-700 transition-colors">Women</a>
-          <a href="#" className="hover:text-pink-700 transition-colors">Men</a>
-          <a href="#" className="hover:text-pink-700 transition-colors">Special Offers</a>
+          <button className="hover:text-pink-700 transition-colors">Home</button>
+          <button className="hover:text-pink-700 transition-colors">Latest Trends</button>
+          <button className="hover:text-pink-700 transition-colors">Designers Collection</button>
+          <button className="hover:text-pink-700 transition-colors">Women</button>
+          <button className="hover:text-pink-700 transition-colors">Men</button>
+          <button className="hover:text-pink-700 transition-colors">Special Offers</button>
         </nav>
 
         {/* Search & Icons */}

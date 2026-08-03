@@ -24,10 +24,10 @@ const FashionFooter = () => {
         <div>
           <h4 className="font-semibold text-sm mb-4 text-pink-400">KNOW ABOUT US</h4>
           <ul className="space-y-2 text-xs text-gray-300">
-            <li><a href="#" className="hover:text-white">About Us</a></li>
-            <li><a href="#" className="hover:text-white">Contact Us</a></li>
-            <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-white">Terms & Conditions</a></li>
+            <li><button className="hover:text-white text-left">About Us</button></li>
+            <li><button className="hover:text-white text-left">Contact Us</button></li>
+            <li><button className="hover:text-white text-left">Privacy Policy</button></li>
+            <li><button className="hover:text-white text-left">Terms & Conditions</button></li>
           </ul>
         </div>
 
@@ -35,10 +35,10 @@ const FashionFooter = () => {
         <div>
           <h4 className="font-semibold text-sm mb-4 text-pink-400">ABOUT</h4>
           <ul className="space-y-2 text-xs text-gray-300">
-            <li><a href="#" className="hover:text-white">The Brand</a></li>
-            <li><a href="#" className="hover:text-white">Collections</a></li>
-            <li><a href="#" className="hover:text-white">Lookbook</a></li>
-            <li><a href="#" className="hover:text-white">Journal</a></li>
+            <li><button className="hover:text-white text-left">The Brand</button></li>
+            <li><button className="hover:text-white text-left">Collections</button></li>
+            <li><button className="hover:text-white text-left">Lookbook</button></li>
+            <li><button className="hover:text-white text-left">Journal</button></li>
           </ul>
         </div>
 
@@ -46,10 +46,10 @@ const FashionFooter = () => {
         <div>
           <h4 className="font-semibold text-sm mb-4 text-pink-400">INFORMATION</h4>
           <ul className="space-y-2 text-xs text-gray-300">
-            <li><a href="#" className="hover:text-white">Shipping Info</a></li>
-            <li><a href="#" className="hover:text-white">Returns</a></li>
-            <li><a href="#" className="hover:text-white">Size Guide</a></li>
-            <li><a href="#" className="hover:text-white">FAQ</a></li>
+            <li><button className="hover:text-white text-left">Shipping Info</button></li>
+            <li><button className="hover:text-white text-left">Returns</button></li>
+            <li><button className="hover:text-white text-left">Size Guide</button></li>
+            <li><button className="hover:text-white text-left">FAQ</button></li>
           </ul>
         </div>
       </div>
@@ -57,8 +57,8 @@ const FashionFooter = () => {
       <div className="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-700 flex justify-between items-center text-xs text-gray-400">
         <p>&copy; 2024 Fusion Style. All Rights Reserved.</p>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-white">Terms & Conditions</a>
-          <a href="#" className="hover:text-white">Privacy Policy</a>
+          <button className="hover:text-white text-left">Terms & Conditions</button>
+          <button className="hover:text-white text-left">Privacy Policy</button>
         </div>
       </div>
     </footer>

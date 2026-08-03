@@ -1,39 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { vehicleApi } from '../../services/vehicleApi';
 import toast from 'react-hot-toast';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 const VehicleManagement = () => {
   const navigate = useNavigate();
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [settings, setSettings] = useState({});
 
   const [page, setPage] = useState(1);
   const [limit] = useState(20);
   const [totalCount, setTotalCount] = useState(0);
   const [hasMore, setHasMore] = useState(false);
 
-  useEffect(() => {
-    fetchVehicles();
-    fetchSettings();
-  }, [page]);
-
-  const fetchSettings = async () => {
-    try {
-      const response = await fetch(`${API_URL}/settings`);
-      if (response.ok) {
-        const data = await response.json();
-        setSettings(data || {});
-      }
-    } catch (error) {
-      console.error('Failed to load settings:', error);
-    }
-  };
-
-  const fetchVehicles = async () => {
+  const fetchVehicles = useCallback(async () => {
     try {
       setLoading(true);
       const offset = (page - 1) * limit;
@@ -47,7 +28,11 @@ const VehicleManagement = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, limit]);
+
+  useEffect(() => {
+    fetchVehicles();
+  }, [page, fetchVehicles]);
 
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this vehicle?')) return;
