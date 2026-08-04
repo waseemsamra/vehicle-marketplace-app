@@ -30,6 +30,7 @@ const Search = () => {
   const [transmission, setTransmission] = useState({});
   const [engine, setEngine] = useState({});
   const [features, setFeatures] = useState({});
+  const [sortBy, setSortBy] = useState('relevance');
 
   const barRef = useRef(null);
   const [barOffset, setBarOffset] = useState(96);
@@ -203,8 +204,11 @@ const Search = () => {
       if (bodySel && v.body !== bodySel) return false;
       if (yearSel && String(v.year) !== yearSel) return false;
       if (mileageSel && v.mileage > Number(mileageSel)) return false;
-      if (v.priceNum > effectiveMaxPrice) return false;
-      if (effectiveMinPrice && v.priceNum < effectiveMinPrice) return false;
+      const price = Number(v.priceNum);
+      if (!Number.isNaN(price)) {
+        if (price > effectiveMaxPrice) return false;
+        if (effectiveMinPrice && price < effectiveMinPrice) return false;
+      }
 
       const any = (obj) => Object.values(obj).some(Boolean);
       if (any(fuel) && !fuel[v.fuel || v.fuelType]) return false;
@@ -244,7 +248,24 @@ const Search = () => {
     setTransmission({});
     setEngine({});
     setFeatures({});
+    setSortBy('relevance');
   };
+
+  const sorted = useMemo(() => {
+    const list = [...filtered];
+    switch (sortBy) {
+      case 'price-asc':
+        return list.sort((a, b) => (Number(a.priceNum) || 0) - (Number(b.priceNum) || 0));
+      case 'price-desc':
+        return list.sort((a, b) => (Number(b.priceNum) || 0) - (Number(a.priceNum) || 0));
+      case 'mileage-asc':
+        return list.sort((a, b) => (Number(a.mileage) || 0) - (Number(b.mileage) || 0));
+      case 'newest':
+        return list.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+      default:
+        return list;
+    }
+  }, [filtered, sortBy]);
 
   return (
     <div className="bg-background text-on-background min-h-screen">
@@ -450,20 +471,24 @@ const Search = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-md">
               <div>
                 <h1 className="font-headline-sm text-headline-sm text-primary">Luxury Vehicles</h1>
-                <p className="font-body-md text-body-md text-on-surface-variant">
-                  {filtered.length === 0 ? 'No vehicles' : filtered.length} vehicle{filtered.length === 1 ? '' : 's'} found
+                  <p className="font-body-md text-body-md text-on-surface-variant">
+                  {sorted.length === 0 ? 'No vehicles' : sorted.length} vehicle{sorted.length === 1 ? '' : 's'} found
                 </p>
               </div>
-              <div className="flex items-center gap-md">
-                <span className="font-label-md text-label-md text-on-surface-variant">Sort By:</span>
-                <select className="rounded-lg border-outline-variant bg-surface-container text-body-md focus:ring-on-tertiary-container min-w-[180px]">
-                  <option>Relevance</option>
-                  <option>Newest Arrivals</option>
-                  <option>Price: Low to High</option>
-                  <option>Price: High to Low</option>
-                  <option>Mileage: Low to High</option>
-                </select>
-              </div>
+               <div className="flex items-center gap-md">
+                 <span className="font-label-md text-label-md text-on-surface-variant">Sort By:</span>
+                 <select
+                   value={sortBy}
+                   onChange={(e) => setSortBy(e.target.value)}
+                   className="rounded-lg border-outline-variant bg-surface-container text-body-md focus:ring-on-tertiary-container min-w-[180px]"
+                 >
+                   <option value="relevance">Relevance</option>
+                   <option value="newest">Newest Arrivals</option>
+                   <option value="price-asc">Price: Low to High</option>
+                   <option value="price-desc">Price: High to Low</option>
+                   <option value="mileage-asc">Mileage: Low to High</option>
+                 </select>
+               </div>
             </div>
           </div>
         </div>
@@ -472,7 +497,7 @@ const Search = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-lg">
           {loading ? (
             <div className="lg:col-span-4 text-center py-xl text-on-surface-variant">Loading vehicles...</div>
-          ) : filtered.length === 0 ? (
+          ) : sorted.length === 0 ? (
             <div className="lg:col-span-4 text-center py-xl">
               <span className="material-symbols-outlined text-5xl mb-4 text-on-surface-variant">search_off</span>
               {parsedRef.current.dirty ? (
@@ -526,7 +551,7 @@ const Search = () => {
               )}
             </div>
           ) : (
-            filtered.slice(0, visibleCount).map((v) => {
+            sorted.slice(0, visibleCount).map((v) => {
               const vehicleId = v.vehicleId || v.id || v.VehicleID;
               return (
                 <VehicleCard
@@ -539,13 +564,13 @@ const Search = () => {
           )}
         </div>
 
-        {filtered.length > visibleCount && (
+        {sorted.length > visibleCount && (
           <div className="text-center mt-8">
             <button
-              onClick={() => setVisibleCount((c) => c + Math.max(10, Math.ceil(filtered.length * 0.1)))}
+              onClick={() => setVisibleCount((c) => c + Math.max(10, Math.ceil(sorted.length * 0.1)))}
               className="px-6 py-3 bg-surface-container border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-outline-variant transition-all"
             >
-              Load More ({filtered.length - visibleCount} remaining)
+              Load More ({sorted.length - visibleCount} remaining)
             </button>
           </div>
         )}
