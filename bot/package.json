@@ -1,0 +1,14 @@
+{
+  "name": "vehicle-marketplace-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "mongoose": "^8.8.0"
+  }
+}

@@ -51,6 +51,8 @@ const Home = () => {
   const [heroMake, setHeroMake] = useState('');
   const [heroModel, setHeroModel] = useState('');
   const [heroMaxPrice, setHeroMaxPrice] = useState('');
+  const [aiQuery, setAiQuery] = useState('');
+  const [advancedOpen, setAdvancedOpen] = useState(false);
   const featuredScrollRef = useRef(null);
 
   const scrollFeatured = (direction) => {
@@ -140,53 +142,79 @@ const Home = () => {
             <img alt="Luxury SUV Hero" className="w-full h-full object-cover" src="/image/hero.jpg" />
             <div className="absolute inset-0 bg-gradient-to-r from-primary-container/40 to-transparent"></div>
           </div>
-          <div className="relative z-10 w-full max-w-max-width px-margin-desktop flex flex-col lg:flex-row items-center justify-between gap-xl">
-            <div className="max-w-2xl text-on-primary">
+          <div className="relative z-10 w-full max-w-max-width px-margin-desktop flex flex-col items-center gap-xl">
+            <div className="max-w-3xl text-center">
                <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-5xl md:text-7xl font-extrabold mb-4 text-white drop-shadow-lg">Find Your Next Drive</h1>
-              <p className="font-body-lg text-body-lg text-white/90 mb-8 max-w-lg drop-shadow-md">Browse thousands of certified pre-owned and new vehicles from trusted dealers across the nation.</p>
+               <p className="font-body-lg text-body-lg text-white/90 mb-6 max-w-2xl mx-auto drop-shadow-md">Browse thousands of certified pre-owned and new vehicles from trusted dealers across the nation.</p>
+                <div className="w-full max-w-2xl mx-auto">
+                  <div className="flex gap-2">
+                     <div className="relative flex-1">
+                       <input
+                         value={aiQuery}
+                         onChange={(e) => setAiQuery(e.target.value)}
+                         onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); navigate(`/search?keyword=${encodeURIComponent(aiQuery)}`); } }}
+                         className="w-full bg-white/90 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg pl-4 pr-20 py-3 focus:outline-none focus:ring-2 focus:ring-white/60"
+                         placeholder='Ask AI: "Tesla Model 3 under $50,000"'
+                         type="text"
+                       />
+                       <span className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center gap-1 rounded-full bg-gray-900 text-white text-xs font-bold px-2 py-1">
+                         <span className="material-symbols-outlined text-sm">auto_awesome</span>
+                         AI
+                       </span>
+                     </div>
+                    <button onClick={() => navigate(`/search?keyword=${encodeURIComponent(aiQuery)}`)} className="bg-white text-primary font-bold px-6 py-3 rounded-lg hover:bg-white/90 transition-all flex items-center gap-2">
+                      <span className="material-symbols-outlined">search</span>
+                      Search
+                    </button>
+                  </div>
+                </div>
             </div>
-            {/* Advanced Search Card */}
-            <div className="glass-panel-light w-full max-w-md p-lg rounded-xl shadow-2xl border border-white/20">
-              <h2 className="font-headline-sm text-headline-sm mb-6 text-primary">Advanced Search</h2>
-               <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); navigate(`/search?make=${encodeURIComponent(heroMake)}&model=${encodeURIComponent(heroModel)}&maxPrice=${encodeURIComponent(heroMaxPrice)}`); }}>
-                 <div className="grid grid-cols-2 gap-md">
-                   <div>
-                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Make</label>
-                     <select value={heroMake} onChange={(e) => setHeroMake(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
-                       <option value="">Any Make</option>
-                       <option value="Tesla">Tesla</option>
-                       <option value="BMW">BMW</option>
-                       <option value="Mercedes-Benz">Mercedes-Benz</option>
-                       <option value="Audi">Audi</option>
-                     </select>
+            <button onClick={() => setAdvancedOpen((p) => !p)} className="text-sm text-gray-900 hover:text-black underline underline-offset-4 transition-colors">
+              {advancedOpen ? 'Hide Advanced Search' : 'Advanced Search'}
+            </button>
+             {/* Advanced Search Card */}
+             {advancedOpen && (
+               <div className="glass-panel-light w-full max-w-4xl p-lg rounded-xl shadow-2xl border border-white/20">
+                 <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); const q = aiQuery || ''; const params = new URLSearchParams({ keyword: q }); if (heroMake) params.set('make', heroMake); if (heroModel) params.set('model', heroModel); if (heroMaxPrice) params.set('maxPrice', heroMaxPrice); navigate(`/search?${params.toString()}`); }}>
+                   <div className="grid grid-cols-2 gap-md">
+                     <div>
+                       <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Make</label>
+                       <select value={heroMake} onChange={(e) => setHeroMake(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
+                         <option value="">Any Make</option>
+                         <option value="Tesla">Tesla</option>
+                         <option value="BMW">BMW</option>
+                         <option value="Mercedes-Benz">Mercedes-Benz</option>
+                         <option value="Audi">Audi</option>
+                       </select>
+                     </div>
+                     <div>
+                       <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Model</label>
+                       <input value={heroModel} onChange={(e) => setHeroModel(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary" placeholder="Any Model" type="text" />
+                     </div>
                    </div>
-                   <div>
-                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Model</label>
-                     <input value={heroModel} onChange={(e) => setHeroModel(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary" placeholder="Any Model" type="text" />
+                   <div className="grid grid-cols-2 gap-md">
+                     <div>
+                       <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Max Price</label>
+                       <select value={heroMaxPrice} onChange={(e) => setHeroMaxPrice(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
+                         <option value="">No Max</option>
+                         <option value="30000">$30,000</option>
+                         <option value="50000">$50,000</option>
+                         <option value="75000">$75,000</option>
+                         <option value="100000">$100,000+</option>
+                       </select>
+                     </div>
+                     <div>
+                       <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Zip Code</label>
+                       <input className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary" placeholder="e.g. 90210" type="text" />
+                     </div>
                    </div>
-                 </div>
-                 <div className="grid grid-cols-2 gap-md">
-                   <div>
-                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Max Price</label>
-                     <select value={heroMaxPrice} onChange={(e) => setHeroMaxPrice(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
-                       <option value="">No Max</option>
-                       <option value="30000">$30,000</option>
-                       <option value="50000">$50,000</option>
-                       <option value="75000">$75,000</option>
-                       <option value="100000">$100,000+</option>
-                     </select>
-                   </div>
-                   <div>
-                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Zip Code</label>
-                     <input className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary" placeholder="e.g. 90210" type="text" />
-                   </div>
-                 </div>
-                 <button className="w-full py-4 bg-primary text-on-primary rounded-lg font-bold text-body-md hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mt-2" type="submit">
-                   <span className="material-symbols-outlined">search</span>
-                   Show Vehicles
-                 </button>
-               </form>
-            </div>
+                   <button className="w-full py-4 bg-primary text-on-primary rounded-lg font-bold text-body-md hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mt-2" type="submit">
+                     <span className="material-symbols-outlined">search</span>
+                     Show Vehicles
+                   </button>
+                 </form>
+               </div>
+             )}
           </div>
         </section>
 

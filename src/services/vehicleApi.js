@@ -110,7 +110,7 @@ export const vehicleApi = {
   search: async (query) => {
     return retryRequest(async () => {
       const response = await apiClient.get('/vehicles', { 
-        params: { search: query }
+        params: { keyword: query }
       });
       return response.data.vehicles || response.data.items || response.data;
     });

@@ -5,7 +5,7 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+const API_URL = process.env.REACT_APP_API_URL || process.env.VEHICLE_API_URL || 'http://localhost:5001/api';
 
 async function apiGet(path, token) {
   const headers = {};
@@ -44,74 +44,74 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
     {
       name: 'list_vehicles',
-      description: 'List all vehicles with optional filters. Returns an array of vehicle objects.',
+      description: 'List vehicles from the inventory with optional filters. USE THIS TOOL when the user asks to see, browse, or list vehicles. Examples: "show me all Toyota cars", "list available SUVs", "show vehicles under $50,000", "I want to see all cars". Supports filters: make, model, minPrice, maxPrice, minYear, maxYear, fuelType, transmission, bodyType, keyword, status, limit, offset.',
       inputSchema: {
         type: 'object',
         properties: {
-          limit: { type: 'number', description: 'Max items to return (default 20)' },
+          limit: { type: 'number', description: 'Max items to return (default 20, max 100)' },
           offset: { type: 'number', description: 'Items to skip (default 0)' },
-          make: { type: 'string', description: 'Filter by make' },
-          model: { type: 'string', description: 'Filter by model' },
-          minPrice: { type: 'number', description: 'Minimum price' },
-          maxPrice: { type: 'number', description: 'Maximum price' },
-          minYear: { type: 'number', description: 'Minimum year' },
-          maxYear: { type: 'number', description: 'Maximum year' },
-          fuelType: { type: 'string', description: 'Filter by fuel type' },
-          transmission: { type: 'string', description: 'Filter by transmission' },
-          bodyType: { type: 'string', description: 'Filter by body type' },
-          keyword: { type: 'string', description: 'Search keyword across make/model/title' },
-          status: { type: 'string', description: 'Filter by status (available/sold/pending)' },
+          make: { type: 'string', description: 'Filter by make/brand name (e.g., "Toyota", "BMW", "Audi")' },
+          model: { type: 'string', description: 'Filter by model name (e.g., "Camry", "X5")' },
+          minPrice: { type: 'number', description: 'Minimum price filter' },
+          maxPrice: { type: 'number', description: 'Maximum price filter' },
+          minYear: { type: 'number', description: 'Minimum year filter' },
+          maxYear: { type: 'number', description: 'Maximum year filter' },
+          fuelType: { type: 'string', description: 'Filter by fuel type (e.g., "Gasoline", "Diesel", "Electric", "Hybrid")' },
+          transmission: { type: 'string', description: 'Filter by transmission (e.g., "Automatic", "Manual")' },
+          bodyType: { type: 'string', description: 'Filter by body type (e.g., "SUV", "Sedan", "Hatchback")' },
+          keyword: { type: 'string', description: 'Search keyword across make, model, title, and description' },
+          status: { type: 'string', description: 'Filter by status (available, sold, pending)' },
         },
       },
     },
     {
       name: 'get_vehicle',
-      description: 'Get a single vehicle by ID.',
+      description: 'Get a single vehicle by ID. USE THIS TOOL when the user asks about a specific vehicle, wants details for a particular car, or mentions a vehicle ID. Example: "show me details for vehicle 123", "tell me about the Toyota Camry", "what is the price of car ABC". Requires vehicleId parameter.',
       inputSchema: {
         type: 'object',
         properties: {
-          vehicleId: { type: 'string', description: 'Vehicle ID' },
+          vehicleId: { type: 'string', description: 'Vehicle ID to retrieve details for' },
         },
         required: ['vehicleId'],
       },
     },
     {
       name: 'search_vehicles',
-      description: 'Search vehicles by keyword with optional filters.',
+      description: 'Search vehicles by keyword with optional filters. USE THIS TOOL for keyword-based searches across all vehicle data. Examples: "find red BMW", "search for electric cars", "looking for a cheap SUV". The q parameter is the main search query.',
       inputSchema: {
         type: 'object',
         properties: {
-          q: { type: 'string', description: 'Search query' },
+          q: { type: 'string', description: 'Search query (e.g., "red BMW", "electric SUV", "cheap sedan")' },
           limit: { type: 'number', description: 'Max items to return' },
-          make: { type: 'string' },
-          model: { type: 'string' },
-          maxPrice: { type: 'number' },
+          make: { type: 'string', description: 'Filter by make' },
+          model: { type: 'string', description: 'Filter by model' },
+          maxPrice: { type: 'number', description: 'Maximum price filter' },
         },
         required: ['q'],
       },
     },
     {
       name: 'get_makes',
-      description: 'Get all available vehicle makes.',
+      description: 'Get all available vehicle makes/brands. USE THIS TOOL when the user asks "what makes do you have?", "show me all brands", "list all manufacturers", or wants to see available car brands. No parameters required.',
       inputSchema: { type: 'object', properties: {} },
     },
     {
       name: 'get_models',
-      description: 'Get all available vehicle models, optionally filtered by make.',
+      description: 'Get all available vehicle models, optionally filtered by make. USE THIS TOOL when the user asks about models for a specific brand. Examples: "what Toyota models do you have?", "show me BMW models", "list Audi models". Pass the make parameter to filter by brand.',
       inputSchema: {
         type: 'object',
         properties: {
-          make: { type: 'string', description: 'Filter models by make name' },
+          make: { type: 'string', description: 'Filter models by make/brand name (e.g., "Toyota", "BMW", "Audi")' },
         },
       },
     },
     {
       name: 'create_vehicle',
-      description: 'Create a new vehicle listing (admin).',
+      description: 'Create a new vehicle listing (admin only). USE THIS TOOL only when the user explicitly asks to add or create a new vehicle listing and provides an admin JWT token. Requires token, make, model, year, and price at minimum.',
       inputSchema: {
         type: 'object',
         properties: {
-          token: { type: 'string', description: 'Admin JWT token' },
+          token: { type: 'string', description: 'Admin JWT token for authentication' },
           make: { type: 'string' },
           model: { type: 'string' },
           year: { type: 'number' },
@@ -133,11 +133,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     },
     {
       name: 'update_vehicle',
-      description: 'Update an existing vehicle (admin).',
+      description: 'Update an existing vehicle listing (admin only). USE THIS TOOL only when the user explicitly asks to update or edit a vehicle and provides an admin JWT token and vehicle ID.',
       inputSchema: {
         type: 'object',
         properties: {
-          token: { type: 'string', description: 'Admin JWT token' },
+          token: { type: 'string', description: 'Admin JWT token for authentication' },
           vehicleId: { type: 'string', description: 'Vehicle ID to update' },
           make: { type: 'string' },
           model: { type: 'string' },
@@ -160,11 +160,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     },
     {
       name: 'delete_vehicle',
-      description: 'Delete a vehicle listing (admin).',
+      description: 'Delete a vehicle listing (admin only). USE THIS TOOL only when the user explicitly asks to delete or remove a vehicle and provides an admin JWT token and vehicle ID.',
       inputSchema: {
         type: 'object',
         properties: {
-          token: { type: 'string', description: 'Admin JWT token' },
+          token: { type: 'string', description: 'Admin JWT token for authentication' },
           vehicleId: { type: 'string', description: 'Vehicle ID to delete' },
         },
         required: ['token', 'vehicleId'],
@@ -203,7 +203,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       case 'search_vehicles': {
-        const params = new URLSearchParams({ q: args.q });
+        const params = new URLSearchParams({ keyword: args.q });
         if (args.limit) params.set('limit', String(args.limit));
         if (args.make) params.set('make', args.make);
         if (args.model) params.set('model', args.model);
