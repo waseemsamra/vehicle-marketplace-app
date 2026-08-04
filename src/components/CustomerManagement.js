@@ -3,6 +3,7 @@ import { useVehicleApi } from '../hooks/useVehicleApi';
 import { useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import VehicleFilters from './VehicleFilters';
+import VehicleCard from '../components/VehicleCard';
 
 const CustomerManagement = ({ searchParams }) => {
   const {
@@ -107,97 +108,17 @@ const CustomerManagement = ({ searchParams }) => {
               {vehicles.map((vehicle) => {
                 const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
                 return (
-                  <div
+                  <VehicleCard
                     key={vehicleId}
-                    onClick={() => {
+                    vehicle={vehicle}
+                    variant="detailed"
+                    onClick={(id) => {
                       sessionStorage.setItem('scrollPosition', window.pageYOffset);
-                      navigate(`/vehicle/${vehicleId}`);
+                      navigate(`/vehicle/${id}`);
                     }}
-                    className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-brand-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-500/10 cursor-pointer"
-                  >
-                  <div className="relative h-64 overflow-hidden bg-gray-100">
-                    {vehicle.images?.[0] || vehicle.imageUrl ? (
-                      <img 
-                        src={vehicle.images?.[0] || vehicle.imageUrl} 
-                        alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                        }}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <svg className="w-20 h-20 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
-                      </div>
-                    )}
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-brand-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase">
-                        {vehicle.condition || vehicle.status || 'Available'}
-                      </span>
-                    </div>
-                    {vehicle.featured && (
-                      <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-accent-500/90 backdrop-blur-sm text-white text-xs font-bold rounded-full">
-                          FEATURED
-                        </span>
-                      </div>
-                    )}
-                    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-1">
-                          {vehicle.year} {vehicle.make} {vehicle.model}
-                        </h3>
-                        <p className="text-gray-600 text-sm">
-                          {vehicle.trim && `${vehicle.trim} • `}
-                          {vehicle.bodyType || 'Sedan'}
-                          {vehicle.mileage && ` • ${vehicle.mileage.toLocaleString()} mi`}
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-brand-500">
-                          ${vehicle.price?.toLocaleString()}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center space-x-4 mt-4 py-4 border-t border-gray-200">
-                      <div className="flex items-center space-x-1 text-gray-600 text-sm">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        <span>{vehicle.fuelType || 'Gas'}</span>
-                      </div>
-                      <div className="flex items-center space-x-1 text-gray-600 text-sm">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                        </svg>
-                        <span>{vehicle.transmission || 'Auto'}</span>
-                      </div>
-                      {vehicle.color && (
-                        <div className="flex items-center space-x-1 text-gray-600 text-sm">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                          </svg>
-                          <span>{vehicle.color}</span>
-                        </div>
-                      )}
-                    </div>
-
-                    <button className="w-full mt-4 py-3 rounded-xl bg-gray-100 hover:bg-brand-600 text-gray-900 hover:text-white font-semibold transition-all duration-300 flex items-center justify-center space-x-2 group-hover:bg-brand-600 group-hover:text-white">
-                      <span>View Details</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              ))}
+                  />
+                );
+              })}
             </div>
 
             {hasMore && (

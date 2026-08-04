@@ -131,11 +131,17 @@ const Settings = () => {
           throw new Error('API error');
         }
       } else if (isModelCategory) {
-        const res = await fetch(`${API_URL}/models`, {
-          headers: { 'Content-Type': 'application/json', ...authHeaders() },
-        });
-        if (res.ok) {
-          const data = await res.json();
+        const [modelsRes, makesRes] = await Promise.all([
+          fetch(`${API_URL}/models`, {
+            headers: { 'Content-Type': 'application/json', ...authHeaders() },
+          }),
+          fetch(`${API_URL}/makes`, {
+            headers: { 'Content-Type': 'application/json', ...authHeaders() },
+          }),
+        ]);
+
+        if (modelsRes.ok) {
+          const data = await modelsRes.json();
           const mapped = data.map((item) => ({
             _id: item._id,
             modelId: item.modelId,
@@ -146,8 +152,21 @@ const Settings = () => {
             value: item.modelId,
             order: 0,
           }));
-          setOptions({ models: mapped });
-          writeStorage({ models: mapped });
+          const newOptions = { models: mapped };
+          if (makesRes.ok) {
+            const makesData = await makesRes.json();
+            const makesMapped = makesData.map((item) => ({
+              _id: item._id,
+              makeId: item.makeId,
+              makeName: item.makeName,
+              label: item.makeName,
+              value: item.makeId,
+              order: 0,
+            }));
+            newOptions.makes = makesMapped;
+          }
+          setOptions(newOptions);
+          writeStorage(newOptions);
         } else {
           throw new Error('API error');
         }

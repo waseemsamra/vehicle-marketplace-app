@@ -131,6 +131,7 @@ export const MAKE_SEED = [
   { makeId: 'MIN', makeName: 'MINI' },
   { makeId: 'MAS', makeName: 'Master' },
   { makeId: 'MAZ', makeName: 'Mazda' },
+  { makeId: 'MCL', makeName: 'McLaren' },
   { makeId: 'MBZ', makeName: 'Mercedes Benz' },
   { makeId: 'MIT', makeName: 'Mitsubishi' },
   { makeId: 'NIS', makeName: 'Nissan' },

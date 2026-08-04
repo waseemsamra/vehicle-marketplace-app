@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import vehicleDetailsData from '../data/vehicleDetails.json';
 import { vehicleApi } from '../services/vehicleApi';
 import toast from 'react-hot-toast';
+import Navbar from '../components/Navbar';
 
 const detailById = new Map();
 const detailBySlug = new Map();
@@ -15,7 +16,6 @@ vehicleDetailsData.vehicles.forEach((v) => {
 const VehicleDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const headerRef = useRef(null);
   const [vehicle, setVehicle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -24,22 +24,6 @@ const VehicleDetail = () => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   const images = vehicle?.gallery?.length ? vehicle.gallery.map((g) => g.url) : vehicle?.images || [];
-
-  useEffect(() => {
-    const header = headerRef.current;
-    if (!header) return;
-    const onScroll = () => {
-      if (window.scrollY > 20) {
-        header.classList.add('py-2');
-        header.classList.remove('py-4');
-      } else {
-        header.classList.add('py-4');
-        header.classList.remove('py-2');
-      }
-    };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     loadFromApi();
@@ -117,53 +101,43 @@ const VehicleDetail = () => {
     transmission,
     seats,
     gallery = [],
-    about = '',
-    specs,
+    description = '',
     features,
     seller,
     dealership,
+    make,
+    model,
+    year,
+    body,
+    engine,
+    color,
+    condition,
+    city,
   } = vehicle;
 
   const thumbCount = 4;
   const restCount = Math.max(0, gallery.length - thumbCount);
 
+  const specItems = [
+    { label: 'Make', value: make },
+    { label: 'Model', value: model },
+    { label: 'Year', value: year ? String(year) : '' },
+    { label: 'Body Type', value: body },
+    { label: 'Location', value: city },
+    { label: 'Transmission', value: transmission },
+    { label: 'Fuel Type', value: fuelType },
+    { label: 'Engine', value: engine },
+    { label: 'Color', value: color },
+    { label: 'Condition', value: condition },
+    { label: 'Mileage', value: mileage ? `${Number(mileage).toLocaleString()} km` : '' },
+    { label: 'Seats', value: seats ? String(seats) : '' },
+  ].filter((item) => item.value);
+
   return (
     <div className="bg-background text-on-surface min-h-screen">
-      {/* Top Nav (same theme as Home) */}
-      <header
-        ref={headerRef}
-        className="sticky top-0 z-50 flex justify-between items-center px-margin-desktop w-full max-w-max-width mx-auto bg-surface/80 backdrop-blur-md shadow-sm transition-all duration-200"
-      >
-        <div className="flex items-center gap-xl py-4">
-          <span className="font-display-lg text-display-lg font-black text-primary text-3xl">Carssourcing</span>
-          <nav className="hidden md:flex items-center gap-lg">
-            <a className="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors" href="/">Buy</a>
-            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/search">Sell</a>
-            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#finance">Finance</a>
-            <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#reviews">Reviews</a>
-          </nav>
-        </div>
-        <div className="flex items-center gap-lg py-4">
-          <div className="relative group hidden lg:block">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-            <input
-              className="pl-10 pr-4 py-2 rounded-full bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-body-md w-64 transition-all"
-              placeholder="Search inventory..."
-              type="text"
-            />
-          </div>
-          <div className="flex items-center gap-md">
-            <button
-              onClick={() => navigate('/login')}
-              className="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95"
-            >
-              Login
-            </button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
-      <main className="max-w-max-width mx-auto px-margin-desktop py-8">
+      <main className="mx-auto px-margin-desktop py-8" style={{ maxWidth: '1536px' }}>
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 mb-6 text-sm text-on-surface-variant">
           <button onClick={() => navigate('/')} className="flex items-center gap-1 hover:text-primary transition-colors">
@@ -251,7 +225,7 @@ const VehicleDetail = () => {
             <div className="space-y-4">
               <div className="flex flex-wrap justify-between items-start gap-4">
                 <div>
-                  <h1 className="font-headline-md text-headline-md text-primary">{title}</h1>
+                  <h1 className="font-headline-lg text-headline-lg md:text-display-lg font-extrabold text-primary">{title}</h1>
                   <p className="font-body-lg text-body-lg text-on-surface-variant">{subtitle}</p>
                 </div>
                 <div className="text-right">
@@ -304,15 +278,15 @@ const VehicleDetail = () => {
             <section>
               <h2 className="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary">analytics</span>
-                Technical Specifications
+                Vehicle Details
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-4 bg-surface-container-lowest p-lg rounded-xl shadow-ambient border border-outline-variant/20">
-                 {(specs || []).map(([icon, label], idx) => (
-                   <div key={idx} className="flex justify-between py-2 border-b border-outline-variant/10">
-                     <span className="text-on-surface-variant">{label}</span>
-                     <span className="material-symbols-outlined text-primary text-[18px]">{icon}</span>
-                   </div>
-                 ))}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-surface-container-lowest p-lg rounded-xl shadow-ambient border border-outline-variant/20">
+                {specItems.map((item, idx) => (
+                  <div key={idx} className="flex flex-col gap-1">
+                    <span className="text-xs text-on-surface-variant uppercase tracking-wider">{item.label}</span>
+                    <span className="text-sm font-semibold text-primary">{item.value}</span>
+                  </div>
+                ))}
               </div>
             </section>
 
@@ -320,12 +294,14 @@ const VehicleDetail = () => {
             <section>
               <h2 className="font-headline-sm text-headline-sm mb-6">Premium Features</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {(features || []).map((f) => (
-                  <div key={f.title} className="flex items-start gap-3 p-4 bg-surface-container-low rounded-lg transition-all hover:bg-surface-container">
-                    <span className="material-symbols-outlined text-primary text-3xl">{f.icon}</span>
+                {(features || []).map((f, idx) => (
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-surface-container-low rounded-lg transition-all hover:bg-surface-container">
+                    <span className="material-symbols-outlined text-primary text-3xl">check_circle</span>
                     <div>
-                      <p className="font-label-md text-label-md text-primary">{f.title}</p>
-                      <p className="text-[12px] text-on-surface-variant">{f.detail}</p>
+                      <p className="font-label-md text-label-md text-primary">{typeof f === 'string' ? f : (f.title || f)}</p>
+                      {typeof f === 'object' && f.detail && (
+                        <p className="text-[12px] text-on-surface-variant">{f.detail}</p>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -336,7 +312,7 @@ const VehicleDetail = () => {
             <section>
               <h2 className="font-headline-sm text-headline-sm mb-4">Seller's Description</h2>
               <div className="text-on-surface-variant leading-relaxed space-y-4">
-                {(about || '').split('\n').map((para, i) => (
+                {(description || '').split('\n').map((para, i) => (
                   <p key={i} className="mb-4">{para}</p>
                 ))}
               </div>

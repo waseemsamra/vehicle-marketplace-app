@@ -492,6 +492,12 @@ app.post('/api/models', async (req, res) => {
   try {
     const { modelId, modelName, brandId, brandName } = req.body || {};
     if (!modelId || !modelName || !brandId || !brandName) return res.status(400).json({ error: 'modelId, modelName, brandId, and brandName are required' });
+
+    const existingMake = await Make.findOne({ makeId: brandId });
+    if (!existingMake) {
+      await Make.create({ makeId: brandId, makeName: brandName, active: true });
+    }
+
     const item = await VehicleModel.create({ modelId, modelName, brandId, brandName, active: true });
     res.status(201).json(item);
   } catch (e) {

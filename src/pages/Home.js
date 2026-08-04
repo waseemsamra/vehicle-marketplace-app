@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import VehicleCard from '../components/VehicleCard';
 import {
   makes,
   CATEGORIES,
@@ -9,12 +10,13 @@ import {
   BODY_TYPES,
 } from '../data/vehicles';
 import { vehicleApi } from '../services/vehicleApi';
+import Navbar from '../components/Navbar';
 
 const TAB_OPTIONS = {
   Category: { cols: 6, options: CATEGORIES },
   City: { cols: 6, options: CITIES },
   Make: { cols: 6, options: makes.filter((m) => m !== 'All Makes').slice(0, 12) },
-  Model: { cols: 6, options: MODELS },
+  Model: { cols: 6, options: MODELS.slice(0, 30) },
   Budget: { cols: 4, options: BUDGETS },
   'Body Type': { cols: 6, options: BODY_TYPES },
 };
@@ -42,7 +44,6 @@ const CATEGORY_ICONS = {
 
 const Home = () => {
   const navigate = useNavigate();
-  const headerRef = useRef(null);
   const [activeTab, setActiveTab] = useState('Category');
   const [selected, setSelected] = useState({});
   const [categoryPage, setCategoryPage] = useState(0);
@@ -87,53 +88,9 @@ const Home = () => {
   const totalPages = Math.max(1, Math.ceil(catOptions.length / PAGE_SIZE));
   const pageOptions = catOptions.slice(categoryPage * PAGE_SIZE, categoryPage * PAGE_SIZE + PAGE_SIZE);
 
-  useEffect(() => {
-    const header = headerRef.current;
-    if (!header) return;
-    const onScroll = () => {
-      if (window.scrollY > 20) {
-        header.classList.add('py-2');
-        header.classList.remove('py-4');
-      } else {
-        header.classList.add('py-4');
-        header.classList.remove('py-2');
-      }
-    };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
     <div className="bg-background text-on-surface min-h-screen">
-      {/* TopNavBar */}
-      <header ref={headerRef} className="sticky top-0 z-50 flex justify-between items-center px-margin-desktop w-full max-w-max-width mx-auto bg-surface/80 backdrop-blur-md shadow-sm transition-all duration-200">
-        <div className="flex items-center gap-xl py-4">
-          <span className="font-display-lg text-display-lg font-black text-primary text-3xl">Carssourcing</span>
-          <nav className="hidden md:flex items-center gap-lg">
-            <button className="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors">Buy</button>
-            <button className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Sell</button>
-            <button className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Finance</button>
-            <button className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Reviews</button>
-          </nav>
-        </div>
-        <div className="flex items-center gap-lg py-4">
-          <div className="relative group hidden lg:block">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-            <input className="pl-10 pr-4 py-2 rounded-full bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-body-md w-64 transition-all" placeholder="Search inventory..." type="text" />
-          </div>
-          <div className="flex items-center gap-md">
-            <button className="p-2 rounded-full hover:bg-surface-container transition-colors active:opacity-80">
-              <span className="material-symbols-outlined" data-icon="person">person</span>
-            </button>
-            <button
-              onClick={() => navigate('/login')}
-              className="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:bg-primary/90 transition-all active:scale-95"
-            >
-              Login
-            </button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <main>
         {/* Hero Section */}
@@ -142,7 +99,7 @@ const Home = () => {
             <img alt="Luxury SUV Hero" className="w-full h-full object-cover" src="/image/hero.jpg" />
             <div className="absolute inset-0 bg-gradient-to-r from-primary-container/40 to-transparent"></div>
           </div>
-          <div className="relative z-10 w-full max-w-max-width px-margin-desktop flex flex-col items-center gap-xl">
+           <div className="relative z-10 w-full mx-auto px-margin-desktop flex flex-col items-center gap-xl" style={{ maxWidth: '1536px' }}>
             <div className="max-w-3xl text-center">
                <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-5xl md:text-7xl font-extrabold mb-4 text-white drop-shadow-lg">Find Your Next Drive</h1>
                <p className="font-body-lg text-body-lg text-white/90 mb-6 max-w-2xl mx-auto drop-shadow-md">Browse thousands of certified pre-owned and new vehicles from trusted dealers across the nation.</p>
@@ -220,7 +177,7 @@ const Home = () => {
 
         {/* Category Tabs */}
         <section className="pt-xl pb-md">
-          <div className="max-w-max-width mx-auto px-margin-desktop">
+           <div className="mx-auto px-margin-desktop" style={{ maxWidth: '1536px' }}>
             <h2 className="font-display-lg text-[32px] font-bold leading-tight text-primary mb-lg text-left">Browse Used Cars</h2>
             <div className="flex gap-gutter overflow-x-auto hide-scrollbar">
               {TABS.map((tab) => {
@@ -316,7 +273,7 @@ const Home = () => {
 
         {/* How it Works Section */}
         <section className="py-xl bg-surface">
-          <div className="max-w-max-width mx-auto px-margin-desktop">
+           <div className="mx-auto px-margin-desktop" style={{ maxWidth: '1536px' }}>
             <div className="text-center max-w-3xl mx-auto mb-xl">
               <span className="font-label-md text-label-md text-secondary uppercase tracking-widest mb-2 block">Process</span>
               <h2 className="font-headline-md text-headline-md md:text-display-lg text-primary mb-4">How it Works</h2>
@@ -352,7 +309,7 @@ const Home = () => {
 
         {/* Sell Your Car Section */}
         <section className="py-xl bg-surface-container-low">
-          <div className="max-w-max-width mx-auto px-margin-desktop">
+           <div className="mx-auto px-margin-desktop" style={{ maxWidth: '1536px' }}>
             <div className="text-center max-w-2xl mx-auto mb-xl">
               <h2 className="font-display-lg text-headline-md md:text-display-lg text-primary mb-4">Sell Your Car in Minutes</h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">Get an instant offer and reach thousands of buyers across the country.</p>
@@ -380,7 +337,7 @@ const Home = () => {
 
         {/* Featured Listings */}
         <section className="py-xl bg-surface-container-lowest">
-          <div className="max-w-max-width mx-auto px-margin-desktop">
+           <div className="mx-auto px-margin-desktop" style={{ maxWidth: '1536px' }}>
             <div className="flex items-center justify-between mb-lg">
               <h2 className="font-headline-md text-headline-md md:text-2xl font-bold text-primary">Featured Listings</h2>
               <div className="flex gap-sm">
@@ -395,52 +352,26 @@ const Home = () => {
             {featuredLoading ? (
               <div className="text-center py-12 text-on-surface-variant">Loading featured vehicles...</div>
             ) : (
-              <div ref={featuredScrollRef} className="flex gap-gutter overflow-x-auto hide-scrollbar pb-4">
-                {featuredVehicles.map((v) => {
-                  const vehicleId = v.vehicleId || v.id || v.VehicleID;
-                  const imgSrc = v.images?.[0] || v.img || v.imageUrl || '/image/hero.jpg';
-                  const title = v.title || `${v.year || ''} ${v.make || ''} ${v.model || ''}`.trim() || 'Vehicle';
-                  const price = v.price || (v.priceNum ? `$${v.priceNum.toLocaleString()}` : '');
-                  const status = v.status || (v.status ? 'Available' : 'Available');
-                  const miles = v.mileage ? `${v.mileage.toLocaleString()} miles` : (v.sub || '');
-                  const sub = v.sub || '';
-                  return (
-                    <div key={vehicleId || title} onClick={() => navigate(`/vehicle/${vehicleId}`)} className="group bg-white rounded-xl overflow-hidden vehicle-card-shadow border border-surface-container hover:border-primary-fixed-dim transition-all group-hover:translate-y-[-4px] group-hover:shadow-xl cursor-pointer flex-shrink-0 w-[280px]">
-                      <div className="relative h-48 overflow-hidden">
-                        <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={`${title} front 3/4 view`} src={imgSrc} />
-                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
-                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: status === 'Reserved' ? '#f59e0b' : '#22c55e' }}></span>
-                          <span className="font-label-md text-label-md text-on-surface">{status}</span>
-                        </div>
-                        <button onClick={(e) => { e.stopPropagation(); }} className="absolute top-4 right-4 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors">
-                          <span className="material-symbols-outlined text-sm">favorite</span>
-                        </button>
-                      </div>
-                      <div className="p-md">
-                        <h3 className="font-headline-sm text-headline-sm text-primary mb-1">{title}</h3>
-                        <div className="flex items-center gap-2 mb-4">
-                          <span className="font-label-md text-label-md text-secondary">{miles}</span>
-                          {sub && <>
-                            <span className="text-outline-variant text-xs">•</span>
-                            <span className="font-label-md text-label-md text-secondary">{sub}</span>
-                          </>}
-                        </div>
-                        <div className="flex items-center justify-between mt-auto">
-                          <span className="font-headline-sm text-headline-sm text-on-tertiary-container">{price}</span>
-                          <button className="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">View Details</button>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+               <div ref={featuredScrollRef} className="flex gap-gutter overflow-x-auto hide-scrollbar pb-4">
+                 {featuredVehicles.map((v) => {
+                   const vehicleId = v.vehicleId || v.id || v.VehicleID;
+                   return (
+                     <VehicleCard
+                       key={vehicleId}
+                       vehicle={v}
+                       onClick={(id) => navigate(`/vehicle/${id}`)}
+                       className="flex-shrink-0 w-[280px]"
+                     />
+                   );
+                 })}
+               </div>
             )}
           </div>
         </section>
 
         {/* Customer Testimonials Section */}
         <section className="py-xl bg-surface-container">
-          <div className="max-w-max-width mx-auto px-margin-desktop">
+           <div className="mx-auto px-margin-desktop" style={{ maxWidth: '1536px' }}>
             <div className="text-center max-w-3xl mx-auto mb-xl">
               <span className="font-label-md text-label-md text-secondary uppercase tracking-widest mb-2 block">Testimonials</span>
               <h2 className="font-headline-md text-headline-md md:text-display-lg text-primary mb-4">What Our Clients Say</h2>
@@ -502,7 +433,7 @@ const Home = () => {
         </section>
 
         {/* Value Proposition */}
-        <section className="py-xl max-w-max-width mx-auto px-margin-desktop">
+         <section className="py-xl mx-auto px-margin-desktop" style={{ maxWidth: '1536px' }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-xl">
             <div className="flex flex-col items-center text-center p-lg rounded-2xl bg-surface-container-low border border-outline-variant/30">
               <div className="w-16 h-16 rounded-full bg-primary-fixed-dim flex items-center justify-center mb-md">

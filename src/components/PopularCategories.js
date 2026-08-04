@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import VehicleCard from '../components/VehicleCard';
 
 const API_URL = process.env.REACT_APP_API_URL || 'https://4peif882l0.execute-api.us-east-1.amazonaws.com/dev';
 
@@ -85,32 +86,14 @@ const PopularCategories = () => {
           {vehicles.slice(0, 9).map((vehicle) => {
             const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
             return (
-              <div
+              <VehicleCard
                 key={vehicleId}
-                onClick={() => navigate(`/vehicle/${vehicleId}`)}
-                className="group cursor-pointer transform hover:-translate-y-1 transition-transform"
-              >
-              <div className="aspect-[4/3] mb-4 overflow-hidden rounded-lg bg-gray-50">
-                {vehicle.images?.[0] ? (
-                  <img
-                    src={vehicle.images[0]}
-                    alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <svg className="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                {vehicle.year} {vehicle.make} {vehicle.model}
-              </h4>
-              <button className="text-gray-900 font-semibold hover:underline">Shop now</button>
-            </div>
-          ))}
+                vehicle={vehicle}
+                variant="compact"
+                onClick={(id) => navigate(`/vehicle/${id}`)}
+              />
+            );
+          })}
         </div>
 
         {/* Mobile Carousel */}
@@ -130,32 +113,15 @@ const PopularCategories = () => {
             {vehicles.slice(0, 9).map((vehicle) => {
               const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
               return (
-                <div
+                <VehicleCard
                   key={vehicleId}
-                  onClick={() => navigate(`/vehicle/${vehicleId}`)}
-                  className="group cursor-pointer w-80 flex-shrink-0 snap-start"
-                >
-                <div className="aspect-[4/3] mb-4 overflow-hidden rounded-lg bg-gray-50">
-                  {vehicle.images?.[0] ? (
-                    <img
-                      src={vehicle.images[0]}
-                      alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg className="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                  {vehicle.year} {vehicle.make} {vehicle.model}
-                </h4>
-                <button className="text-gray-900 font-semibold hover:underline">Shop now</button>
-              </div>
-            ))}
+                  vehicle={vehicle}
+                  variant="compact"
+                  onClick={(id) => navigate(`/vehicle/${id}`)}
+                  className="w-80 flex-shrink-0 snap-start"
+                />
+              );
+            })}
           </div>
         </div>
 
