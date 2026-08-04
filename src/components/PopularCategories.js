@@ -82,12 +82,14 @@ const PopularCategories = () => {
             </button>
           </div>
 
-          {vehicles.slice(0, 9).map((vehicle) => (
-            <div
-              key={vehicle.vehicleId}
-              onClick={() => navigate(`/vehicle/${vehicle.vehicleId}`)}
-              className="group cursor-pointer transform hover:-translate-y-1 transition-transform"
-            >
+          {vehicles.slice(0, 9).map((vehicle) => {
+            const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
+            return (
+              <div
+                key={vehicleId}
+                onClick={() => navigate(`/vehicle/${vehicleId}`)}
+                className="group cursor-pointer transform hover:-translate-y-1 transition-transform"
+              >
               <div className="aspect-[4/3] mb-4 overflow-hidden rounded-lg bg-gray-50">
                 {vehicle.images?.[0] ? (
                   <img
@@ -125,12 +127,14 @@ const PopularCategories = () => {
               </button>
             </div>
 
-            {vehicles.slice(0, 9).map((vehicle) => (
-              <div
-                key={vehicle.vehicleId}
-                onClick={() => navigate(`/vehicle/${vehicle.vehicleId}`)}
-                className="group cursor-pointer w-80 flex-shrink-0 snap-start"
-              >
+            {vehicles.slice(0, 9).map((vehicle) => {
+              const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
+              return (
+                <div
+                  key={vehicleId}
+                  onClick={() => navigate(`/vehicle/${vehicleId}`)}
+                  className="group cursor-pointer w-80 flex-shrink-0 snap-start"
+                >
                 <div className="aspect-[4/3] mb-4 overflow-hidden rounded-lg bg-gray-50">
                   {vehicle.images?.[0] ? (
                     <img

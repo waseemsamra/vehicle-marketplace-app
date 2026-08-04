@@ -365,7 +365,7 @@ const Listings = () => {
             ) : (
               <div className="space-y-4">
                 {sortedVehicles.map((vehicle) => (
-                  <div key={vehicle.vehicleId} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 w-full">
+                  <div key={vehicle.vehicleId || vehicle.id || vehicle._id} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 w-full">
                     <div className="flex gap-6">
                       {/* Image Section */}
                       <div className="relative w-80 h-56 flex-shrink-0">
@@ -491,7 +491,7 @@ const Listings = () => {
                         </button>
                         
                         <button 
-                          onClick={() => navigate(`/vehicle/${vehicle.vehicleId}`)}
+                          onClick={() => navigate(`/vehicle/${vehicle.vehicleId || vehicle.id || vehicle._id}`)}
                           className="w-full bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

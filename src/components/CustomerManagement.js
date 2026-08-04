@@ -104,15 +104,17 @@ const CustomerManagement = ({ searchParams }) => {
         {vehicles.length > 0 && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {vehicles.map((vehicle) => (
-                <div
-                  key={vehicle.vehicleId}
-                  onClick={() => {
-                    sessionStorage.setItem('scrollPosition', window.pageYOffset);
-                    navigate(`/vehicle/${vehicle.vehicleId}`);
-                  }}
-                  className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-brand-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-500/10 cursor-pointer"
-                >
+              {vehicles.map((vehicle) => {
+                const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
+                return (
+                  <div
+                    key={vehicleId}
+                    onClick={() => {
+                      sessionStorage.setItem('scrollPosition', window.pageYOffset);
+                      navigate(`/vehicle/${vehicleId}`);
+                    }}
+                    className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-brand-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-500/10 cursor-pointer"
+                  >
                   <div className="relative h-64 overflow-hidden bg-gray-100">
                     {vehicle.images?.[0] || vehicle.imageUrl ? (
                       <img 

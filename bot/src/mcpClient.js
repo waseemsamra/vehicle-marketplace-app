@@ -1,7 +1,7 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
 
-const MCP_COMMAND = ['node', '/Users/apple/Downloads/vehicle-marketplace-app/mcp-server/src/index.js'];
+const MCP_URL = process.env.MCP_URL || 'http://localhost:3002/mcp';
 
 let cachedClient = null;
 let cachedTransport = null;
@@ -10,10 +10,7 @@ async function getMcpClient() {
   if (cachedClient && cachedTransport) {
     return { client: cachedClient, transport: cachedTransport };
   }
-  const transport = new StdioClientTransport({
-    command: MCP_COMMAND[0],
-    args: MCP_COMMAND.slice(1),
-  });
+  const transport = new SSEClientTransport(new URL(MCP_URL));
   const client = new Client(
     { name: 'vehicle-marketplace-bot', version: '1.0.0' },
     { capabilities: {} }

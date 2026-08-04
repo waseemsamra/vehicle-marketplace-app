@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://4peif882l0.execute-api.us-east-1.amazonaws.com/dev';
+const API_URL = process.env.REACT_APP_API_URL || process.env.REACT_APP_MCP_URL || 'http://localhost:3002';
 
 const Hero = ({ onSearch }) => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Hero = ({ onSearch }) => {
 
   const fetchOneVehicleImage = async () => {
     try {
-      const response = await fetch(`${API_URL}/vehicles?make=Nissan&model=Titan&year=2025&limit=1`);
+      const response = await fetch(`${API_URL}/api/vehicles?make=Nissan&model=Titan&year=2025&limit=1`);
       if (response.ok) {
         const data = await response.json();
         const vehicles = data.vehicles || data.items || [];

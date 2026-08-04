@@ -16,8 +16,16 @@ async function main() {
 
   switch (command) {
     case 'list': {
-      const make = args[1] || null;
-      const result = await bot.listVehicles({ make, limit: 20 });
+      const params = {};
+      for (let i = 1; i < args.length; i++) {
+        if (args[i].startsWith('--')) {
+          const [key, val] = args[i].slice(2).split('=');
+          params[key] = val || true;
+        } else if (!params.make) {
+          params.make = args[i];
+        }
+      }
+      const result = await bot.listVehicles({ make: params.make, limit: params.limit || 20 });
       printVehicles(result);
       break;
     }
@@ -203,7 +211,7 @@ function printVehicles(result) {
 function printUsage() {
   console.log(`
 Commands:
-  list [make=<make>]              List vehicles (optionally filter by make)
+  list [make=<make>] [--limit=N]        List vehicles (optionally filter by make)
   search <query>                  Search vehicles by keyword
   get <id>                        Get a single vehicle by ID
   makes                           List all available makes

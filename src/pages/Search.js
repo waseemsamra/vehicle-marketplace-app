@@ -72,6 +72,62 @@ const Search = () => {
     load();
   }, []);
 
+  const parseSearchQuery = (query, makes, models) => {
+    if (!query) return { keyword: '', make: '', model: '', maxPrice: 300000 };
+
+    const lower = query.toLowerCase();
+    let maxPrice = 300000;
+    let make = '';
+    let model = '';
+    let cleaned = lower;
+
+    const priceMatch = lower.match(/(?:under|below|less\s+than|upto|up\s+to|max|maximum)\s+\$?([\d,]+)/i);
+    if (priceMatch) {
+      maxPrice = Number(priceMatch[1].replace(/,/g, ''));
+      cleaned = cleaned.replace(priceMatch[0], '');
+    }
+
+    const makeNames = makes.map(m => m.makeName?.toLowerCase()).filter(Boolean);
+    for (const makeName of makeNames) {
+      if (cleaned.includes(makeName)) {
+        make = makes.find(m => m.makeName?.toLowerCase() === makeName)?.makeName || '';
+        cleaned = cleaned.replace(makeName, '');
+        break;
+      }
+    }
+
+    const modelNames = models.map(m => m.modelName?.toLowerCase()).filter(Boolean);
+    for (const modelName of modelNames) {
+      if (cleaned.includes(modelName)) {
+        model = models.find(m => m.modelName?.toLowerCase() === modelName)?.modelName || '';
+        cleaned = cleaned.replace(modelName, '');
+        break;
+      }
+    }
+
+    const noiseWords = new Set(['enquire', 'search', 'find', 'show', 'me', 'cars', 'car', 'usd', 'dollars', 'dollar', 'for', 'sale', 'in', 'at', 'the', 'a', 'an', 'under', 'below', 'less', 'than', 'upto', 'up', 'to', 'max', 'maximum']);
+    const keyword = cleaned.split(/\s+/).filter(w => w && !noiseWords.has(w)).join(' ');
+    return { keyword, make, model, maxPrice };
+  };
+
+  const parsedRef = React.useRef({ keyword: '', make: '', model: '', maxPrice: 300000, dirty: false });
+
+  useEffect(() => {
+    const keyword = searchParams.get('keyword') || '';
+    if (!keyword) return;
+
+    const parsed = parseSearchQuery(keyword, makes, models);
+    if (parsed.keyword !== parsedRef.current.keyword || parsed.make !== parsedRef.current.make || 
+        parsed.model !== parsedRef.current.model || parsed.maxPrice !== parsedRef.current.maxPrice) {
+      parsedRef.current = parsed;
+      parsedRef.current.dirty = true;
+      if (parsed.keyword) setKeyword(parsed.keyword);
+      if (parsed.make) setMakeSel(parsed.make);
+      if (parsed.model) setModelSel(parsed.model);
+      if (parsed.maxPrice < 300000) setPriceMax(parsed.maxPrice);
+    }
+  }, [searchParams, makes, models]);
+
   const toggleFav = (id) => setFavorited((f) => ({ ...f, [id]: !f[id] }));
   const toggleMulti = (setter) => (key) => setter((x) => ({ ...x, [key]: !x[key] }));
   const toggleFuel = toggleMulti(setFuel);
@@ -134,8 +190,9 @@ const Search = () => {
   const filtered = useMemo(() => {
     return allVehicles.filter((v) => {
       if (keyword) {
-        const q = keyword.toLowerCase();
-        if (!`${v.make} ${v.model} ${v.title}`.toLowerCase().includes(q)) return false;
+        const words = keyword.toLowerCase().split(/\s+/).filter(Boolean);
+        const haystack = `${v.make} ${v.model} ${v.title}`.toLowerCase();
+        if (!words.some(word => haystack.includes(word))) return false;
       }
       if (makeSel && v.make !== makeSel) return false;
       if (modelSel && v.model !== modelSel) return false;
@@ -438,9 +495,57 @@ const Search = () => {
           {loading ? (
             <div className="lg:col-span-4 text-center py-xl text-on-surface-variant">Loading vehicles...</div>
           ) : filtered.length === 0 ? (
-            <div className="lg:col-span-4 text-center py-xl text-on-surface-variant">
-              <span className="material-symbols-outlined text-5xl mb-4">search_off</span>
-              <p className="font-body-lg">No vehicles match your current filters. Reset to see all listings.</p>
+            <div className="lg:col-span-4 text-center py-xl">
+              <span className="material-symbols-outlined text-5xl mb-4 text-on-surface-variant">search_off</span>
+              {parsedRef.current.dirty ? (
+                <>
+                  <p className="font-body-lg text-on-surface mb-2">No vehicles found.</p>
+                  <p className="font-body-md text-on-surface-variant mb-6">We don't have any cars matching that search in our inventory.</p>
+                  <button 
+                    onClick={() => {
+                      setKeyword('');
+                      setMakeSel('');
+                      setModelSel('');
+                      setBodySel('');
+                      setPriceMin(0);
+                      setPriceMax(300000);
+                      setYearSel('');
+                      setMileageSel('');
+                      setFuel({});
+                      setTransmission({});
+                      setEngine({});
+                      setFeatures({});
+                    }}
+                    className="px-6 py-3 bg-primary text-on-primary rounded-lg font-label-md hover:opacity-90 transition-all"
+                  >
+                    Search again
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p className="font-body-lg text-on-surface mb-2">No vehicles match your current filters.</p>
+                  <p className="font-body-md text-on-surface-variant mb-6">Try broadening your filters or search for something else.</p>
+                  <button 
+                    onClick={() => {
+                      setKeyword('');
+                      setMakeSel('');
+                      setModelSel('');
+                      setBodySel('');
+                      setPriceMin(0);
+                      setPriceMax(300000);
+                      setYearSel('');
+                      setMileageSel('');
+                      setFuel({});
+                      setTransmission({});
+                      setEngine({});
+                      setFeatures({});
+                    }}
+                    className="px-6 py-3 bg-primary text-on-primary rounded-lg font-label-md hover:opacity-90 transition-all"
+                  >
+                    Reset filters
+                  </button>
+                </>
+              )}
             </div>
           ) : (
             filtered.map((v) => {
