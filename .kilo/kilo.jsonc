@@ -1,4 +1,12 @@
 {
   "$schema": "https://app.kilo.ai/config.json",
-  "snapshot": false
+  "snapshot": false,
+  "mcp": {
+    "vehicle-marketplace": {
+      "type": "local",
+      "command": ["node", "src/index.js"],
+      "workingDirectory": "../mcp-server",
+      "enabled": true
+    }
+  }
 }

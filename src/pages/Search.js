@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useMemo, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { vehicleApi } from '../services/vehicleApi';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 const Search = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [favorited, setFavorited] = useState({});
 
   const [allVehicles, setAllVehicles] = useState([]);
@@ -38,8 +39,17 @@ const Search = () => {
   }, [moreOpen]);
 
   useEffect(() => {
-    document.title = 'AutoMarket | Premium Vehicle Inventory';
+    document.title = 'Carssourcing | Premium Vehicle Inventory';
   }, []);
+
+  useEffect(() => {
+    const make = searchParams.get('make') || '';
+    const model = searchParams.get('model') || '';
+    const maxPrice = searchParams.get('maxPrice') || '';
+    if (make) setMakeSel(make);
+    if (model) setModelSel(model);
+    if (maxPrice) setPriceMax(Number(maxPrice));
+  }, [searchParams]);
 
   useEffect(() => {
     const load = async () => {
