@@ -48,6 +48,9 @@ const Home = () => {
   const [categoryPage, setCategoryPage] = useState(0);
   const [featuredVehicles, setFeaturedVehicles] = useState([]);
   const [featuredLoading, setFeaturedLoading] = useState(true);
+  const [heroMake, setHeroMake] = useState('');
+  const [heroModel, setHeroModel] = useState('');
+  const [heroMaxPrice, setHeroMaxPrice] = useState('');
   const featuredScrollRef = useRef(null);
 
   const scrollFeatured = (direction) => {
@@ -103,7 +106,7 @@ const Home = () => {
       {/* TopNavBar */}
       <header ref={headerRef} className="sticky top-0 z-50 flex justify-between items-center px-margin-desktop w-full max-w-max-width mx-auto bg-surface/80 backdrop-blur-md shadow-sm transition-all duration-200">
         <div className="flex items-center gap-xl py-4">
-          <span className="font-display-lg text-display-lg font-black text-primary">AutoMarket</span>
+          <span className="font-display-lg text-display-lg font-black text-primary text-3xl">Carssourcing</span>
           <nav className="hidden md:flex items-center gap-lg">
             <button className="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors">Buy</button>
             <button className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">Sell</button>
@@ -139,52 +142,50 @@ const Home = () => {
           </div>
           <div className="relative z-10 w-full max-w-max-width px-margin-desktop flex flex-col lg:flex-row items-center justify-between gap-xl">
             <div className="max-w-2xl text-on-primary">
-              <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg mb-4 text-white drop-shadow-lg">Find Your Next Drive</h1>
+               <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-5xl md:text-7xl font-extrabold mb-4 text-white drop-shadow-lg">Find Your Next Drive</h1>
               <p className="font-body-lg text-body-lg text-white/90 mb-8 max-w-lg drop-shadow-md">Browse thousands of certified pre-owned and new vehicles from trusted dealers across the nation.</p>
             </div>
             {/* Advanced Search Card */}
             <div className="glass-panel-light w-full max-w-md p-lg rounded-xl shadow-2xl border border-white/20">
               <h2 className="font-headline-sm text-headline-sm mb-6 text-primary">Advanced Search</h2>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-2 gap-md">
-                  <div>
-                    <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Make</label>
-                    <select className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
-                      <option>Any Make</option>
-                      <option>Tesla</option>
-                      <option>BMW</option>
-                      <option>Mercedes-Benz</option>
-                      <option>Audi</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Model</label>
-                    <select className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
-                      <option>Any Model</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-md">
-                  <div>
-                    <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Max Price</label>
-                    <select className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
-                      <option>No Max</option>
-                      <option>$30,000</option>
-                      <option>$50,000</option>
-                      <option>$75,000</option>
-                      <option>$100,000+</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Zip Code</label>
-                    <input className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary" placeholder="e.g. 90210" type="text" />
-                  </div>
-                </div>
-                <button className="w-full py-4 bg-primary text-on-primary rounded-lg font-bold text-body-md hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mt-2" type="submit">
-                  <span className="material-symbols-outlined">search</span>
-                  Show Vehicles
-                </button>
-              </form>
+               <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); navigate(`/search?make=${encodeURIComponent(heroMake)}&model=${encodeURIComponent(heroModel)}&maxPrice=${encodeURIComponent(heroMaxPrice)}`); }}>
+                 <div className="grid grid-cols-2 gap-md">
+                   <div>
+                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Make</label>
+                     <select value={heroMake} onChange={(e) => setHeroMake(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
+                       <option value="">Any Make</option>
+                       <option value="Tesla">Tesla</option>
+                       <option value="BMW">BMW</option>
+                       <option value="Mercedes-Benz">Mercedes-Benz</option>
+                       <option value="Audi">Audi</option>
+                     </select>
+                   </div>
+                   <div>
+                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Model</label>
+                     <input value={heroModel} onChange={(e) => setHeroModel(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary" placeholder="Any Model" type="text" />
+                   </div>
+                 </div>
+                 <div className="grid grid-cols-2 gap-md">
+                   <div>
+                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Max Price</label>
+                     <select value={heroMaxPrice} onChange={(e) => setHeroMaxPrice(e.target.value)} className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary">
+                       <option value="">No Max</option>
+                       <option value="30000">$30,000</option>
+                       <option value="50000">$50,000</option>
+                       <option value="75000">$75,000</option>
+                       <option value="100000">$100,000+</option>
+                     </select>
+                   </div>
+                   <div>
+                     <label className="block font-label-sm text-label-sm text-on-surface-variant mb-2">Zip Code</label>
+                     <input className="w-full bg-surface-container-low border-outline-variant rounded-lg p-3 text-body-md focus:ring-secondary focus:border-secondary" placeholder="e.g. 90210" type="text" />
+                   </div>
+                 </div>
+                 <button className="w-full py-4 bg-primary text-on-primary rounded-lg font-bold text-body-md hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mt-2" type="submit">
+                   <span className="material-symbols-outlined">search</span>
+                   Show Vehicles
+                 </button>
+               </form>
             </div>
           </div>
         </section>
@@ -218,7 +219,7 @@ const Home = () => {
             <div className="mt-md">
               {activeTab === 'Category' ? (
                 <div className="relative">
-                  <div className="grid grid-cols-6 gap-xs px-10">
+                   <div className="grid grid-cols-6 gap-xs">
                     {pageOptions.map((opt) => {
                       const isActive = selected[activeTab] === opt;
                       return (
@@ -353,7 +354,7 @@ const Home = () => {
         <section className="py-xl bg-surface-container-lowest">
           <div className="max-w-max-width mx-auto px-margin-desktop">
             <div className="flex items-center justify-between mb-lg">
-              <h2 className="font-headline-md text-headline-md text-primary">Featured Listings</h2>
+              <h2 className="font-headline-md text-headline-md md:text-2xl font-bold text-primary">Featured Listings</h2>
               <div className="flex gap-sm">
                 <button onClick={() => scrollFeatured('left')} className="p-2 rounded-full border border-outline-variant hover:bg-surface-container transition-colors">
                   <span className="material-symbols-outlined">chevron_left</span>

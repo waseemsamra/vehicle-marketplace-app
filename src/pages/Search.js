@@ -179,7 +179,7 @@ const Search = () => {
       <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm h-20 flex items-center">
         <div className="flex justify-between items-center w-full max-w-max-width mx-auto px-margin-desktop">
           <div className="flex items-center gap-xl">
-            <span className="font-headline-md text-headline-md font-bold text-primary">AutoMarket</span>
+            <span className="font-headline-md text-headline-md font-bold text-primary text-3xl">Carssourcing</span>
             <div className="hidden md:flex gap-lg">
               <a className="font-label-md text-label-md text-on-tertiary-container border-b-2 border-on-tertiary-container cursor-pointer" href="/">Inventory</a>
               <a className="font-label-md text-label-md text-secondary hover:text-primary transition-colors cursor-pointer" href="/search">Sell</a>

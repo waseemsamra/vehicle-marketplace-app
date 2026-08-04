@@ -135,7 +135,7 @@ const VehicleDetail = () => {
         className="sticky top-0 z-50 flex justify-between items-center px-margin-desktop w-full max-w-max-width mx-auto bg-surface/80 backdrop-blur-md shadow-sm transition-all duration-200"
       >
         <div className="flex items-center gap-xl py-4">
-          <span className="font-display-lg text-display-lg font-black text-primary">AutoMarket</span>
+          <span className="font-display-lg text-display-lg font-black text-primary text-3xl">Carssourcing</span>
           <nav className="hidden md:flex items-center gap-lg">
             <a className="font-body-md text-body-md text-primary border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors" href="/">Buy</a>
             <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/search">Sell</a>
