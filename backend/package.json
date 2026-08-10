@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "build": "npm install"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1101.0",
