@@ -248,10 +248,15 @@ const VehicleForm = () => {
                     <button type="button" onClick={async () => {
                       setFormData((prev) => ({ ...prev, coverImage: url }));
                       try {
-                        await vehicleApi.update(id, { coverImage: url });
-                        toast.success('Cover image updated');
+                        const result = await vehicleApi.update(id, { coverImage: url });
+                        if (result && result.error) {
+                          toast.error(result.error || 'Failed to update cover');
+                        } else {
+                          toast.success('Cover image updated');
+                        }
                       } catch (error) {
-                        toast.error('Failed to update cover');
+                        const msg = error?.response?.data?.error || error.message || 'Failed to update cover';
+                        toast.error(msg);
                       }
                     }} className="absolute bottom-1 left-1 text-xs bg-blue-600 text-white px-2 py-1 rounded">Cover</button>
                     <button type="button" onClick={() => setUploadedImages((prev) => prev.filter((_, i) => i !== idx))} className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs">×</button>
