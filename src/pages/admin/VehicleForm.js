@@ -235,7 +235,7 @@ const VehicleForm = () => {
             <label className="block text-sm font-medium text-gray-600 mb-2">Images (max 5)</label>
             <ImageUpload
               vehicleId={id}
-              onUploadComplete={(url) => setUploadedImages([...uploadedImages, url])}
+              onUploadComplete={(url) => setUploadedImages((prev) => [...prev, url])}
               existingImages={uploadedImages}
             />
             {uploadedImages.length > 0 && (
@@ -243,7 +243,7 @@ const VehicleForm = () => {
                 {uploadedImages.map((url, idx) => (
                   <div key={idx} className="relative">
                     <img src={url} alt="" className="w-20 h-20 object-cover rounded border border-gray-300" />
-                    <button type="button" onClick={() => setUploadedImages(uploadedImages.filter((_, i) => i !== idx))} className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs">×</button>
+                    <button type="button" onClick={() => setUploadedImages((prev) => prev.filter((_, i) => i !== idx))} className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs">×</button>
                   </div>
                 ))}
               </div>
