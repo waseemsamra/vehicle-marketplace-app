@@ -553,7 +553,9 @@ app.post('/api/upload-url', async (req, res) => {
     });
 
     const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 });
-    const publicUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:5001/api'}/images/${key}`;
+    const proto = (req.headers['x-forwarded-proto'] || req.protocol || 'https').toString();
+    const host = req.headers.host || 'vehicle-marketplace-app.onrender.com';
+    const publicUrl = `${proto}://${host}/api/images/${key}`;
 
     res.json({ uploadUrl: signedUrl, publicUrl, key });
   } catch (e) {
