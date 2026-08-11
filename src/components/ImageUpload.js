@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import toast from 'react-hot-toast';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
@@ -6,12 +6,13 @@ const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5, existingImages = [] }) {
   const [uploading, setUploading] = useState(false);
   const [previews, setPreviews] = useState([]);
+  const uploadedCountRef = useRef(0);
 
   const handleFileSelect = async (event) => {
     const files = Array.from(event.target.files || []);
     if (!files.length) return;
 
-    const remaining = maxFiles - existingImages.length - previews.length;
+    const remaining = maxFiles - existingImages.length - uploadedCountRef.current;
     const toUpload = files.slice(0, Math.max(0, remaining));
     if (toUpload.length < files.length) {
       toast.error(`Only ${maxFiles} images allowed`);
@@ -21,9 +22,10 @@ export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5,
     const newPreviews = toUpload.map(file => URL.createObjectURL(file));
     setPreviews(prev => [...prev, ...newPreviews]);
     setUploading(true);
+    uploadedCountRef.current += toUpload.length;
 
     try {
-      for (const file of toUpload) {
+      const uploadPromises = toUpload.map(async (file) => {
         const response = await fetch(`${API_URL}/upload-url`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -54,10 +56,13 @@ export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5,
           toast.success('Image uploaded');
           onUploadComplete(data.publicUrl);
         }
-      }
+      });
+
+      await Promise.allSettled(uploadPromises);
     } catch (error) {
       console.error('Upload failed:', error);
       toast.error(error.message || 'Upload failed');
+      uploadedCountRef.current = Math.max(0, uploadedCountRef.current - toUpload.length);
       setPreviews(prev => prev.slice(0, -toUpload.length));
     } finally {
       setUploading(false);
