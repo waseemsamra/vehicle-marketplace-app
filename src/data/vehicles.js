@@ -154,7 +154,6 @@ function buildVehicles() {
     out.push({
       id: i + 1,
       img: imageByMake[t.make] || '/image/hero.jpg',
-      coverImage: imageByMake[t.make] || '/image/hero.jpg',
       badges: badgeOptions[i % badgeOptions.length],
       title: `${year} ${t.make} ${t.model}`,
       price: `$${priceNum.toLocaleString()}`,
