@@ -84,8 +84,9 @@ const AdminSidebar = () => {
             <p className="text-sm font-medium text-gray-900 truncate">{user?.username || 'Admin'}</p>
             <RoleBadge user={user} size="sm" />
           </div>
-          <button onClick={handleSignOut} className="text-gray-400 hover:text-red-500">
-            🚪
+          <button onClick={handleSignOut} className="flex items-center space-x-2 text-gray-400 hover:text-red-500 w-full px-3 py-2 rounded-lg hover:bg-gray-50">
+            <span>🚪</span>
+            <span className="text-sm font-medium">Logout</span>
           </button>
         </div>
       </div>
