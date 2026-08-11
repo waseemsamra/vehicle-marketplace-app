@@ -245,7 +245,15 @@ const VehicleForm = () => {
                 {uploadedImages.map((url, idx) => (
                   <div key={idx} className="relative">
                     <img src={url} alt="" className={`w-20 h-20 object-cover rounded border ${formData.coverImage === url ? 'border-blue-500 ring-2 ring-blue-500' : 'border-gray-300'}`} />
-                    <button type="button" onClick={() => setFormData({ ...formData, coverImage: url })} className="absolute bottom-1 left-1 text-xs bg-blue-600 text-white px-2 py-1 rounded">Cover</button>
+                    <button type="button" onClick={async () => {
+                      setFormData((prev) => ({ ...prev, coverImage: url }));
+                      try {
+                        await vehicleApi.update(id, { coverImage: url });
+                        toast.success('Cover image updated');
+                      } catch (error) {
+                        toast.error('Failed to update cover');
+                      }
+                    }} className="absolute bottom-1 left-1 text-xs bg-blue-600 text-white px-2 py-1 rounded">Cover</button>
                     <button type="button" onClick={() => setUploadedImages((prev) => prev.filter((_, i) => i !== idx))} className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs">×</button>
                   </div>
                 ))}
