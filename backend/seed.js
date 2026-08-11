@@ -294,6 +294,15 @@ export const MODEL_SEED = [
   { modelId: 'VAMOS_HOBIO', modelName: 'Vamos Hobio', brandId: 'HON', brandName: 'Honda' },
   { modelId: 'ZEST', modelName: 'Zest', brandId: 'HON', brandName: 'Honda' },
 
+  // Jaguar
+  { modelId: 'F-PACE', modelName: 'F-Pace', brandId: 'JAG', brandName: 'Jaguar' },
+  { modelId: 'F-TYPE', modelName: 'F-Type', brandId: 'JAG', brandName: 'Jaguar' },
+  { modelId: 'I-PACE', modelName: 'I-Pace', brandId: 'JAG', brandName: 'Jaguar' },
+  { modelId: 'XE', modelName: 'XE', brandId: 'JAG', brandName: 'Jaguar' },
+  { modelId: 'XF', modelName: 'XF', brandId: 'JAG', brandName: 'Jaguar' },
+  { modelId: 'XJ', modelName: 'XJ', brandId: 'JAG', brandName: 'Jaguar' },
+  { modelId: 'E-PACE', modelName: 'E-Pace', brandId: 'JAG', brandName: 'Jaguar' },
+
   // Suzuki
   { modelId: 'CULTUS', modelName: 'Cultus', brandId: 'SUZ', brandName: 'Suzuki' },
   { modelId: 'ALTO', modelName: 'Alto', brandId: 'SUZ', brandName: 'Suzuki' },
