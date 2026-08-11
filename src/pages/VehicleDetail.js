@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import vehicleDetailsData from '../data/vehicleDetails.json';
 import { vehicleApi } from '../services/vehicleApi';
@@ -23,7 +23,13 @@ const VehicleDetail = () => {
   const [downPayment, setDownPayment] = useState(20000);
   const [isFavorited, setIsFavorited] = useState(false);
 
-  const images = vehicle?.gallery?.length ? vehicle.gallery.map((g) => g.url) : vehicle?.images || [];
+  const images = useMemo(() => {
+    if (vehicle?.gallery?.length) return vehicle.gallery.map((g) => g.url);
+    if (vehicle?.images?.length) return vehicle.images;
+    if (vehicle?.img) return [vehicle.img];
+    if (vehicle?.imageUrl) return [vehicle.imageUrl];
+    return [];
+  }, [vehicle]);
 
   useEffect(() => {
     loadFromApi();
@@ -167,6 +173,9 @@ const VehicleDetail = () => {
                 src={images[selectedImage]}
                 alt={gallery?.[selectedImage]?.alt || title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                onError={(e) => {
+                  e.target.src = '/image/hero.jpg';
+                }}
               />
               <div className="absolute bottom-4 left-4 bg-surface/80 glass-effect px-3 py-1.5 rounded-lg font-label-sm text-label-sm flex items-center gap-2">
                 <span className="material-symbols-outlined text-[18px]">photo_camera</span>

@@ -96,7 +96,8 @@ const VehicleForm = () => {
     e.preventDefault();
     try {
       setSaving(true);
-      const vehicleData = { ...formData, images: uploadedImages };
+      const title = `${formData.year || ''} ${formData.make || ''} ${formData.model || ''}`.trim();
+      const vehicleData = { ...formData, title, images: uploadedImages };
       if (isEdit) {
         await vehicleApi.update(id, vehicleData);
         toast.success('Vehicle updated');
@@ -233,9 +234,9 @@ const VehicleForm = () => {
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-2">Images (max 5)</label>
             <ImageUpload
-              vehicleId={id || `temp-${Date.now()}`}
+              vehicleId={id}
               onUploadComplete={(url) => setUploadedImages([...uploadedImages, url])}
-              maxFiles={5}
+              existingImages={uploadedImages}
             />
             {uploadedImages.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">

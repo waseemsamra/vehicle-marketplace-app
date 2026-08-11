@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
-export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5 }) {
+export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5, existingImages = [] }) {
   const [uploading, setUploading] = useState(false);
   const [previews, setPreviews] = useState([]);
 
@@ -11,7 +11,7 @@ export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5 
     const files = Array.from(event.target.files || []);
     if (!files.length) return;
 
-    const remaining = maxFiles - (previews.length + (window._uploadedCount || 0));
+    const remaining = maxFiles - existingImages.length - previews.length;
     const toUpload = files.slice(0, Math.max(0, remaining));
     if (toUpload.length < files.length) {
       toast.error(`Only ${maxFiles} images allowed`);
@@ -21,7 +21,6 @@ export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5 
     const newPreviews = toUpload.map(file => URL.createObjectURL(file));
     setPreviews(prev => [...prev, ...newPreviews]);
     setUploading(true);
-    window._uploadedCount = (window._uploadedCount || 0) + toUpload.length;
 
     try {
       for (const file of toUpload) {
@@ -60,18 +59,13 @@ export default function ImageUpload({ vehicleId, onUploadComplete, maxFiles = 5 
       console.error('Upload failed:', error);
       toast.error(error.message || 'Upload failed');
       setPreviews(prev => prev.slice(0, -toUpload.length));
-      window._uploadedCount = Math.max(0, (window._uploadedCount || 0) - toUpload.length);
     } finally {
       setUploading(false);
     }
   };
 
   const removePreview = (index) => {
-    setPreviews(prev => {
-      const next = prev.filter((_, i) => i !== index);
-      window._uploadedCount = Math.max(0, (window._uploadedCount || 0) - 1);
-      return next;
-    });
+    setPreviews(prev => prev.filter((_, i) => i !== index));
   };
 
   return (

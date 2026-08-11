@@ -25,6 +25,9 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
               src={imgSrc}
               alt={`${title} front 3/4 view`}
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                e.target.src = '/image/hero.jpg';
+              }}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
@@ -50,7 +53,7 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
               alt={`${title} front 3/4 view`}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
-                e.target.style.display = 'none';
+                e.target.src = '/image/hero.jpg';
               }}
             />
           ) : (
@@ -135,6 +138,9 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           alt={`${title} front 3/4 view`}
           src={imgSrc}
+          onError={(e) => {
+            e.target.src = '/image/hero.jpg';
+          }}
         />
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
           <span className="w-2 h-2 rounded-full" style={{ backgroundColor: status === 'Reserved' ? '#f59e0b' : '#22c55e' }}></span>
