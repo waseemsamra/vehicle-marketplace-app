@@ -24,8 +24,14 @@ const VehicleDetail = () => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   const images = useMemo(() => {
-    if (vehicle?.gallery?.length) return vehicle.gallery.map((g) => g.url);
-    if (vehicle?.images?.length) return vehicle.images;
+    const cover = vehicle?.coverImage;
+    if (vehicle?.gallery?.length) {
+      const urls = vehicle.gallery.map((g) => g.url);
+      return cover ? [cover, ...urls.filter((u) => u !== cover)] : urls;
+    }
+    if (vehicle?.images?.length) {
+      return cover ? [cover, ...vehicle.images.filter((u) => u !== cover)] : vehicle.images;
+    }
     if (vehicle?.img) return [vehicle.img];
     if (vehicle?.imageUrl) return [vehicle.imageUrl];
     return [];

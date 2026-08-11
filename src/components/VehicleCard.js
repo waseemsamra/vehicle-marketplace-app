@@ -2,7 +2,7 @@ import React from 'react';
 
 const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', className = '' }) => {
   const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
-  const imgSrc = vehicle.images?.[0] || vehicle.img || vehicle.imageUrl || '/image/hero.jpg';
+  const imgSrc = vehicle.coverImage || vehicle.images?.[0] || vehicle.img || vehicle.imageUrl || '/image/hero.jpg';
   const title = vehicle.title || `${vehicle.year || ''} ${vehicle.make || ''} ${vehicle.model || ''}`.trim() || 'Vehicle';
   const price = vehicle.price || (vehicle.priceNum ? `$${vehicle.priceNum.toLocaleString()}` : '');
   const status = vehicle.status || (vehicle.condition || 'Available');

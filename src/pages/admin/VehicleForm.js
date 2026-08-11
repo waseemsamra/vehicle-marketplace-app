@@ -19,7 +19,7 @@ const VehicleForm = () => {
     make: '', model: '', year: '', price: '', mileage: '', condition: 'used',
     fuelType: 'gasoline', transmission: 'automatic', color: '', description: '',
     images: [], status: 'available', bodyType: '', engineType: '', engineCapacity: '',
-    assembly: '', door: '', seatingCapacity: '', modelCategory: ''
+    assembly: '', door: '', seatingCapacity: '', modelCategory: '', coverImage: ''
   });
   const [uploadedImages, setUploadedImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,7 +81,8 @@ const VehicleForm = () => {
         color: data.color || '',
         description: data.description || '',
         images: data.images || [],
-        status: data.status || 'available'
+        status: data.status || 'available',
+        coverImage: data.coverImage || data.img || data.imageUrl || ''
       });
       setUploadedImages(data.images || []);
     } catch (error) {
@@ -97,7 +98,8 @@ const VehicleForm = () => {
     try {
       setSaving(true);
       const title = `${formData.year || ''} ${formData.make || ''} ${formData.model || ''}`.trim();
-      const vehicleData = { ...formData, title, images: uploadedImages };
+      const coverImage = formData.coverImage || uploadedImages[0] || '';
+      const vehicleData = { ...formData, title, images: uploadedImages, coverImage };
       if (isEdit) {
         await vehicleApi.update(id, vehicleData);
         toast.success('Vehicle updated');
@@ -242,7 +244,8 @@ const VehicleForm = () => {
               <div className="mt-3 flex flex-wrap gap-2">
                 {uploadedImages.map((url, idx) => (
                   <div key={idx} className="relative">
-                    <img src={url} alt="" className="w-20 h-20 object-cover rounded border border-gray-300" />
+                    <img src={url} alt="" className={`w-20 h-20 object-cover rounded border ${formData.coverImage === url ? 'border-blue-500 ring-2 ring-blue-500' : 'border-gray-300'}`} />
+                    <button type="button" onClick={() => setFormData({ ...formData, coverImage: url })} className="absolute bottom-1 left-1 text-xs bg-blue-600 text-white px-2 py-1 rounded">Cover</button>
                     <button type="button" onClick={() => setUploadedImages((prev) => prev.filter((_, i) => i !== idx))} className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs">×</button>
                   </div>
                 ))}

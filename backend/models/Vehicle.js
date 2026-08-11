@@ -26,6 +26,7 @@ const vehicleSchema = new mongoose.Schema(
     color: String,
     description: String,
     images: [String],
+    coverImage: String,
     status: String,
     imageUrl: String,
   },
