@@ -100,6 +100,7 @@ export const MAKE_SEED = [
   { makeId: 'DON', makeName: 'Dongfeng' },
   { makeId: 'FAW', makeName: 'FAW' },
   { makeId: 'FIA', makeName: 'Fiat' },
+  { makeId: 'FER', makeName: 'Ferrari' },
   { makeId: 'FOR', makeName: 'Ford' },
   { makeId: 'FTH', makeName: 'Forthing' },
   { makeId: 'FOT', makeName: 'Foton' },
@@ -352,6 +353,23 @@ export const MODEL_SEED = [
   { modelId: 'SPRESSO', modelName: 'S-Presso', brandId: 'SUZ', brandName: 'Suzuki' },
   { modelId: 'IGNIS', modelName: 'Ignis', brandId: 'SUZ', brandName: 'Suzuki' },
   { modelId: 'KARIMUN', modelName: 'Karimun', brandId: 'SUZ', brandName: 'Suzuki' },
+
+  // Ferrari
+  { modelId: 'F8_TRIBUTO', modelName: 'F8 Tributo', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'F430', modelName: 'F430', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'F355', modelName: 'F355', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: '488_PISTA', modelName: '488 Pista', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'SF90_STRADALE', modelName: 'SF90 Stradale', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: '296_GTB', modelName: '296 GTB', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: '812_SUPERFAST', modelName: '812 Superfast', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'ROMA', modelName: 'Roma', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'PORTOFINO', modelName: 'Portofino', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'LAFERRARI', modelName: 'LaFerrari', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'GTC4_LUSSO', modelName: 'GTC4 Lusso', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'CALIFORNIA', modelName: 'California', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: '458_ITALIA', modelName: '458 Italia', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'ENZO', modelName: 'Enzo', brandId: 'FER', brandName: 'Ferrari' },
+  { modelId: 'F12_BERLINETTA', modelName: 'F12 Berlinetta', brandId: 'FER', brandName: 'Ferrari' },
 
   // BMW
   { modelId: '3_SERIES', modelName: '3 Series', brandId: 'BMW', brandName: 'BMW' },
