@@ -172,7 +172,7 @@ const VehicleDetail = () => {
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-xl">
           <div className="lg:col-span-8">
             <div
-              className="relative aspect-[16/9] lg:aspect-auto rounded-xl overflow-hidden shadow-ambient group cursor-pointer bg-surface-container"
+              className="relative aspect-[16/9] lg:h-[500px] rounded-xl overflow-hidden shadow-ambient group cursor-pointer bg-surface-container"
               onClick={() => setLightboxOpen(true)}
             >
               <img
@@ -207,20 +207,20 @@ const VehicleDetail = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-4 h-full">
+          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-4">
             {gallery.slice(0, thumbCount).map((img, idx) => (
               <div
                 key={idx}
-                className="rounded-xl overflow-hidden shadow-ambient relative group cursor-pointer bg-surface-container"
+                className="rounded-xl overflow-hidden shadow-ambient relative group cursor-pointer bg-surface-container aspect-square"
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedImage(idx);
                 }}
               >
-                <div
-                  className="bg-cover bg-center w-full h-full transition-transform duration-500 group-hover:scale-110"
-                  style={{ backgroundImage: `url('${img.url}')` }}
-                  data-alt={img.alt}
+                <img
+                  src={img.url}
+                  alt={img.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 {idx === thumbCount - 1 && restCount > 0 && (
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
