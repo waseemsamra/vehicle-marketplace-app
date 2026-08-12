@@ -2,12 +2,19 @@ import React from 'react';
 
 const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', className = '' }) => {
   const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
-  const imgSrc = vehicle.coverImage || vehicle.images?.[0] || vehicle.img || vehicle.imageUrl || '/image/hero.jpg';
+  const localImg = vehicle.img || vehicle.imageUrl || '';
+  const remoteImg = vehicle.coverImage || vehicle.images?.[0] || '';
+  const imgSrc = localImg || remoteImg || '/image/hero.jpg';
+  const fallbackSrc = remoteImg || '/image/hero.jpg';
   const title = vehicle.title || `${vehicle.year || ''} ${vehicle.make || ''} ${vehicle.model || ''}`.trim() || 'Vehicle';
   const price = vehicle.price || (vehicle.priceNum ? `$${vehicle.priceNum.toLocaleString()}` : '');
   const status = vehicle.status || (vehicle.condition || 'Available');
   const miles = vehicle.mileage ? `${vehicle.mileage.toLocaleString()} miles` : (vehicle.sub || '');
   const sub = vehicle.sub || '';
+
+  const handleImageError = (e) => {
+    e.target.src = fallbackSrc;
+  };
 
   const handleClick = (e) => {
     if (onClick) {
@@ -25,9 +32,7 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
               src={imgSrc}
               alt={`${title} front 3/4 view`}
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => {
-                e.target.src = '/image/hero.jpg';
-              }}
+              onError={handleImageError}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
@@ -52,9 +57,7 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
               src={imgSrc}
               alt={`${title} front 3/4 view`}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              onError={(e) => {
-                e.target.src = '/image/hero.jpg';
-              }}
+              onError={handleImageError}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">

@@ -58,8 +58,8 @@ const Home = () => {
   const [activeTab, setActiveTab] = useState('Category');
   const [selected, setSelected] = useState({});
   const [categoryPage, setCategoryPage] = useState(0);
-  const [featuredVehicles] = useState([]);
-  const [featuredLoading] = useState(true);
+  const [featuredVehicles, setFeaturedVehicles] = useState([]);
+  const [featuredLoading, setFeaturedLoading] = useState(true);
   const [heroMake, setHeroMake] = useState('');
   const [heroModel, setHeroModel] = useState('');
   const [heroMaxPrice, setHeroMaxPrice] = useState('');
@@ -101,6 +101,20 @@ const Home = () => {
       }
     };
     loadMakes();
+  }, []);
+  useEffect(() => {
+    const loadFeatured = async () => {
+      try {
+        const data = await vehicleApi.getAll(null, 10);
+        const items = data?.items || data || [];
+        setFeaturedVehicles(items.slice(0, 10));
+      } catch (e) {
+        console.error('Failed to load featured vehicles', e);
+      } finally {
+        setFeaturedLoading(false);
+      }
+    };
+    loadFeatured();
   }, []);
   const toggleOption = (tab, value) =>
     setSelected((s) => ({ ...s, [tab]: s[tab] === value ? undefined : value }));
