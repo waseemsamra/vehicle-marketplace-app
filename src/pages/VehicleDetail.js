@@ -50,26 +50,26 @@ const VehicleDetail = () => {
   }, [vehicle]);
 
   const displayGallery = useMemo(() => {
-    const cover = vehicle?.coverImage ? resolveApiImageUrl(vehicle.coverImage) : undefined;
+    const seen = new Set();
+    const add = (url, alt) => {
+      const resolved = resolveApiImageUrl(url);
+      if (!resolved || seen.has(resolved)) return;
+      seen.add(resolved);
+      items.push({ url: resolved, alt: alt || 'Vehicle photo' });
+    };
+    const items = [];
+    const title = vehicle?.title || 'Vehicle';
+
     if (vehicle?.gallery?.length) {
-      const items = vehicle.gallery.map((g) => ({ ...g, url: resolveApiImageUrl(g.url) }));
-      if (cover) {
-        const coverItem = { url: cover, alt: vehicle.title ? `${vehicle.title} cover` : 'Cover photo' };
-        return [coverItem, ...items.filter((item) => item.url !== cover)];
-      }
-      return items;
+      vehicle.gallery.forEach((g) => add(g.url, g.alt));
     }
     if (vehicle?.images?.length) {
-      const items = vehicle.images.map((url, idx) => ({ url: resolveApiImageUrl(url), alt: `${vehicle.title || 'Vehicle'} photo ${idx + 1}` }));
-      if (cover) {
-        const coverItem = { url: cover, alt: vehicle.title ? `${vehicle.title} cover` : 'Cover photo' };
-        return [coverItem, ...items.filter((item) => item.url !== cover)];
-      }
-      return items;
+      vehicle.images.forEach((url, idx) => add(url, `${title} photo ${idx + 1}`));
     }
-    if (vehicle?.img) return [{ url: resolveApiImageUrl(vehicle.img), alt: vehicle.title || 'Vehicle photo' }];
-    if (vehicle?.imageUrl) return [{ url: resolveApiImageUrl(vehicle.imageUrl), alt: vehicle.title || 'Vehicle photo' }];
-    return [];
+    if (vehicle?.img) add(vehicle.img, `${title} photo`);
+    if (vehicle?.imageUrl) add(vehicle.imageUrl, `${title} photo`);
+
+    return items;
   }, [vehicle]);
 
   useEffect(() => {
@@ -82,12 +82,12 @@ const VehicleDetail = () => {
   }, [vehicle]);
 
   const nextImage = useCallback(() => {
-    setSelectedImage((p) => (p + 1) % images.length);
-  }, [images.length]);
+    setSelectedImage((p) => (p + 1) % displayGallery.length);
+  }, [displayGallery.length]);
 
   const prevImage = useCallback(() => {
-    setSelectedImage((p) => (p - 1 + images.length) % images.length);
-  }, [images.length]);
+    setSelectedImage((p) => (p - 1 + displayGallery.length) % displayGallery.length);
+  }, [displayGallery.length]);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -215,7 +215,7 @@ const VehicleDetail = () => {
                  alt={displayGallery[selectedImage]?.alt || gallery?.[selectedImage]?.alt || title}
                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                  onError={(e) => {
-                   const next = (selectedImage + 1) % images.length;
+                   const next = (selectedImage + 1) % displayGallery.length;
                    if (next !== selectedImage) {
                      setSelectedImage(next);
                    } else {
