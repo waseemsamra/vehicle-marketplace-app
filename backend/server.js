@@ -32,7 +32,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
@@ -573,9 +573,7 @@ app.post('/api/upload-url', async (req, res) => {
     });
 
     const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 });
-    const proto = (req.headers['x-forwarded-proto'] || req.protocol || 'https').toString();
-    const host = req.headers.host || 'vehicle-marketplace-app.onrender.com';
-    const publicUrl = `${proto}://${host}/api/images/${key}`;
+    const publicUrl = `https://vehicle-marketplace-app.onrender.com/api/images/${key}`;
 
     res.json({ uploadUrl: signedUrl, publicUrl, key });
   } catch (e) {
@@ -603,9 +601,7 @@ app.post('/api/makes/:id/upload-logo', async (req, res) => {
     });
 
     const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 });
-    const proto = (req.headers['x-forwarded-proto'] || req.protocol || 'https').toString();
-    const host = req.headers.host || 'vehicle-marketplace-app.onrender.com';
-    const publicUrl = `${proto}://${host}/api/images/${key}`;
+    const publicUrl = `https://vehicle-marketplace-app.onrender.com/api/images/${key}`;
 
     res.json({ uploadUrl: signedUrl, publicUrl, key });
   } catch (e) {

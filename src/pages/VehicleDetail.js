@@ -49,9 +49,27 @@ const VehicleDetail = () => {
     return [];
   }, [vehicle]);
 
-  const rewrittenGallery = useMemo(() => {
-    if (!vehicle?.gallery?.length) return vehicle?.gallery || [];
-    return vehicle.gallery.map((g) => ({ ...g, url: resolveApiImageUrl(g.url) }));
+  const displayGallery = useMemo(() => {
+    const cover = vehicle?.coverImage ? resolveApiImageUrl(vehicle.coverImage) : undefined;
+    if (vehicle?.gallery?.length) {
+      const items = vehicle.gallery.map((g) => ({ ...g, url: resolveApiImageUrl(g.url) }));
+      if (cover) {
+        const coverItem = { url: cover, alt: vehicle.title ? `${vehicle.title} cover` : 'Cover photo' };
+        return [coverItem, ...items.filter((item) => item.url !== cover)];
+      }
+      return items;
+    }
+    if (vehicle?.images?.length) {
+      const items = vehicle.images.map((url, idx) => ({ url: resolveApiImageUrl(url), alt: `${vehicle.title || 'Vehicle'} photo ${idx + 1}` }));
+      if (cover) {
+        const coverItem = { url: cover, alt: vehicle.title ? `${vehicle.title} cover` : 'Cover photo' };
+        return [coverItem, ...items.filter((item) => item.url !== cover)];
+      }
+      return items;
+    }
+    if (vehicle?.img) return [{ url: resolveApiImageUrl(vehicle.img), alt: vehicle.title || 'Vehicle photo' }];
+    if (vehicle?.imageUrl) return [{ url: resolveApiImageUrl(vehicle.imageUrl), alt: vehicle.title || 'Vehicle photo' }];
+    return [];
   }, [vehicle]);
 
   useEffect(() => {
@@ -145,7 +163,7 @@ const VehicleDetail = () => {
   } = vehicle;
 
   const thumbCount = 4;
-  const restCount = Math.max(0, gallery.length - thumbCount);
+  const restCount = Math.max(0, displayGallery.length - thumbCount);
 
   const specItems = [
     { label: 'Make', value: make },
@@ -192,17 +210,22 @@ const VehicleDetail = () => {
               className="relative aspect-[16/9] lg:h-[500px] rounded-xl overflow-hidden shadow-ambient group cursor-pointer bg-surface-container"
               onClick={() => setLightboxOpen(true)}
             >
-              <img
-                src={images[selectedImage]}
-                alt={gallery?.[selectedImage]?.alt || title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => {
-                  e.target.src = '/image/hero.jpg';
-                }}
-              />
+               <img
+                 src={displayGallery[selectedImage]?.url || images[selectedImage] || '/image/hero.jpg'}
+                 alt={displayGallery[selectedImage]?.alt || gallery?.[selectedImage]?.alt || title}
+                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                 onError={(e) => {
+                   const next = (selectedImage + 1) % images.length;
+                   if (next !== selectedImage) {
+                     setSelectedImage(next);
+                   } else {
+                     e.target.src = '/image/hero.jpg';
+                   }
+                 }}
+               />
               <div className="absolute bottom-4 left-4 bg-surface/80 glass-effect px-3 py-1.5 rounded-lg font-label-sm text-label-sm flex items-center gap-2">
                 <span className="material-symbols-outlined text-[18px]">photo_camera</span>
-                {selectedImage + 1} / {gallery.length} Photos
+                 {selectedImage + 1} / {displayGallery.length} Photos
               </div>
               <button
                 onClick={(e) => {
@@ -225,7 +248,7 @@ const VehicleDetail = () => {
           </div>
 
            <div className="lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-4">
-             {rewrittenGallery.slice(0, thumbCount).map((img, idx) => (
+              {displayGallery.slice(0, thumbCount).map((img, idx) => (
               <div
                 key={idx}
                 className="rounded-xl overflow-hidden shadow-ambient relative group cursor-pointer bg-surface-container aspect-square"
@@ -238,6 +261,9 @@ const VehicleDetail = () => {
                   src={img.url}
                   alt={img.alt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.src = '/image/hero.jpg';
+                  }}
                 />
                 {idx === thumbCount - 1 && restCount > 0 && (
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -516,10 +542,10 @@ const VehicleDetail = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          <img src={images[selectedImage]} alt="Full size" className="max-w-[90%] max-h-[85%] object-contain" onClick={(e) => e.stopPropagation()} />
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-full text-white font-medium">
-            {selectedImage + 1} / {images.length}
-          </div>
+           <img src={displayGallery[selectedImage]?.url || images[selectedImage] || '/image/hero.jpg'} alt="Full size" className="max-w-[90%] max-h-[85%] object-contain" onClick={(e) => e.stopPropagation()} />
+           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-full text-white font-medium">
+             {selectedImage + 1} / {displayGallery.length}
+           </div>
         </div>
       )}
     </div>

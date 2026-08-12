@@ -110,9 +110,9 @@ const VehicleManagement = () => {
                          <button onClick={() => navigate(`/admin/vehicles/${vehicle.vehicleId || vehicle.id || vehicle.VehicleID}/edit`)} className="text-brand-500 hover:text-brand-400 mr-4">View/Edit</button>
                          <button onClick={() => handleDelete(vehicle.vehicleId || vehicle.id || vehicle.VehicleID)} className="text-red-500 hover:text-red-700">Delete</button>
                        </td>
-                     </tr>
-                  ))}
-                </tbody>
+                      </tr>
+                   )})}
+                 </tbody>
               </table>
               {totalCount > 0 && (
                 <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200">
