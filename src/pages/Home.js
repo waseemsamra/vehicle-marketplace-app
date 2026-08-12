@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import VehicleCard from '../components/VehicleCard';
 import {
   makes,
-  imageByMake,
   CATEGORIES,
   CITIES,
   MODELS,
@@ -43,9 +42,15 @@ const CATEGORY_ICONS = {
   'Petrol Cars': <path fill="currentColor" d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z" />,
 };
 
-const makeLogo = (makeName) => {
-  const found = dbMakes.find((m) => (m.makeName || '').toLowerCase() === (makeName || '').toLowerCase());
-  return found?.logo || imageByMake[makeName] || '/image/hero.jpg';
+const makeInitial = (name) => (name || '?').charAt(0).toUpperCase();
+
+const generateMakeLogo = (name) => {
+  const initial = makeInitial(name);
+  const colors = ['#1a237e', '#b71c1c', '#1b5e20', '#e65100', '#4a148c', '#006064', '#f57f17', '#880e4f', '#33691e', '#3e2723', '#0d47a1', '#d32f2f'];
+  const idx = (name || '').split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  const bg = colors[idx % colors.length];
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="${bg}"/><text x="20" y="26" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">${initial}</text></svg>`;
+  return `data:image/svg+xml;base64,${btoa(svg)}`;
 };
 
 const Home = () => {
@@ -63,6 +68,13 @@ const Home = () => {
   const [dbMakes, setDbMakes] = useState([]);
   const [makesLoading, setMakesLoading] = useState(true);
   const featuredScrollRef = useRef(null);
+
+  const scrollFeatured = (direction) => {
+    const el = featuredScrollRef.current;
+    if (!el) return;
+    const scrollAmount = 304;
+    el.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const loadMakes = async () => {
@@ -255,7 +267,8 @@ const Home = () => {
                 <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-${TAB_OPTIONS[activeTab].cols} gap-xs`}>
                   {(TAB_OPTIONS[activeTab].options || []).map((opt) => {
                     const isActive = selected[activeTab] === opt;
-                    const logoSrc = makeLogo(opt);
+                    const found = dbMakes.find((m) => (m.makeName || '').toLowerCase() === (opt || '').toLowerCase());
+                    const logoSrc = found?.logo || generateMakeLogo(opt);
                     return (
                       <button
                         key={String(opt)}
