@@ -680,13 +680,13 @@ const Settings = () => {
                 <p className="text-gray-500 text-sm mt-1">{filteredOptions.length} options</p>
               </div>
               <div className="flex items-center gap-3">
-                {isCityCategory && (
+                {(isCityCategory || isMakeCategory) && (
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500 w-64"
-                    placeholder="Search city name, ID, or province"
+                    placeholder={isMakeCategory ? 'Search make name or ID...' : 'Search city name, ID, or province'}
                   />
                 )}
                 <button
