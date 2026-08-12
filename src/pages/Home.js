@@ -84,7 +84,11 @@ const Home = () => {
         setDbMakes(items);
         const makeNames = items.map((m) => m.makeName).filter(Boolean);
         if (makeNames.length) {
-          TAB_OPTIONS.Make.options = makeNames;
+          const originalMakes = makes.filter((m) => m !== 'All Makes');
+          const prioritized = originalMakes
+            .filter((m) => makeNames.includes(m))
+            .concat(makeNames.filter((m) => !originalMakes.includes(m)));
+          TAB_OPTIONS.Make.options = prioritized.slice(0, 12);
         } else {
           TAB_OPTIONS.Make.options = makes.filter((m) => m !== 'All Makes').slice(0, 12);
         }
