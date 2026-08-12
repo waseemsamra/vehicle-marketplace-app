@@ -60,7 +60,7 @@ const Settings = () => {
   const [showModal, setShowModal] = useState(false);
   const [showBulkModal, setShowBulkModal] = useState(false);
   const [editingId, setEditingId] = useState(null);
-  const [formData, setFormData] = useState({ value: '', label: '', order: 0 });
+  const [formData, setFormData] = useState({ value: '', label: '', order: 0, showOnHomePage: false });
   const [searchQuery, setSearchQuery] = useState('');
   const [provinces, setProvinces] = useState([]);
   const [bulkText, setBulkText] = useState('');
@@ -325,6 +325,7 @@ const Settings = () => {
           makeId: formData.value,
           makeName: formData.label || formData.value,
           logo: formData.logo || '',
+          showOnHomePage: formData.showOnHomePage || false,
         };
 
         let updated;
@@ -581,7 +582,7 @@ const Settings = () => {
         brandName: '',
       });
     } else if (isMakeCategory) {
-      setFormData({ value: option.makeId || option.value, label: option.makeName || option.label || '', order: 0, logo: option.logo || '', brandId: '', brandName: '' });
+      setFormData({ value: option.makeId || option.value, label: option.makeName || option.label || '', order: 0, logo: option.logo || '', showOnHomePage: option.showOnHomePage || false, brandId: '', brandName: '' });
     } else if (isModelCategory) {
       setFormData({
         value: option.modelId || option.value,
@@ -1016,9 +1017,20 @@ const Settings = () => {
                       className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                       placeholder="e.g., Toyota"
                     />
-                  </div>
+                   </div>
 
-                   <div>
+                   <div className="flex items-center gap-2">
+                     <input
+                       id="showOnHomePage"
+                       type="checkbox"
+                       checked={formData.showOnHomePage || false}
+                       onChange={(e) => setFormData({ ...formData, showOnHomePage: e.target.checked })}
+                       className="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500"
+                     />
+                     <label htmlFor="showOnHomePage" className="text-sm font-medium text-gray-700">Show on Home Page</label>
+                   </div>
+
+                    <div>
                      <label className="block text-sm font-medium text-gray-600 mb-2">Logo</label>
                      <input
                        type="file"

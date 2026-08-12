@@ -6,6 +6,7 @@ const makeSchema = new mongoose.Schema(
     makeName: { type: String, required: true, index: true },
     active: { type: Boolean, default: true },
     logo: { type: String, default: '' },
+    showOnHomePage: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

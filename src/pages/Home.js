@@ -82,7 +82,8 @@ const Home = () => {
         const data = await vehicleApi.getMakes();
         const items = Array.isArray(data) ? data : [];
         setDbMakes(items);
-        const makeNames = items.map((m) => m.makeName).filter(Boolean);
+        const visibleMakes = items.filter((m) => m.showOnHomePage);
+        const makeNames = visibleMakes.map((m) => m.makeName).filter(Boolean);
         if (makeNames.length) {
           const originalMakes = makes.filter((m) => m !== 'All Makes');
           const prioritized = originalMakes
@@ -90,7 +91,7 @@ const Home = () => {
             .concat(makeNames.filter((m) => !originalMakes.includes(m)));
           TAB_OPTIONS.Make.options = prioritized.slice(0, 12);
         } else {
-          TAB_OPTIONS.Make.options = makes.filter((m) => m !== 'All Makes').slice(0, 12);
+          TAB_OPTIONS.Make.options = [];
         }
       } catch (e) {
         console.error('Failed to load makes', e);
