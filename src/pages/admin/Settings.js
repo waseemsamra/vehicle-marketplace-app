@@ -126,6 +126,7 @@ const Settings = () => {
             makeName: item.makeName,
             label: item.makeName,
             value: item.makeId,
+            logo: item.logo || '',
             order: 0,
           }));
           setOptions({ makes: mapped });
@@ -164,6 +165,7 @@ const Settings = () => {
               makeName: item.makeName,
               label: item.makeName,
               value: item.makeId,
+              logo: item.logo || '',
               order: 0,
             }));
             newOptions.makes = makesMapped;
