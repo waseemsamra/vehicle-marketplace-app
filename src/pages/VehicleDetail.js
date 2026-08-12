@@ -240,7 +240,7 @@ const VehicleDetail = () => {
             <div className="space-y-4">
               <div className="flex flex-wrap justify-between items-start gap-4">
                 <div>
-                   <h1 className="font-headline-lg text-headline-lg md:text-display-lg font-extrabold text-primary text-3xl md:text-4xl lg:text-5xl">{title}</h1>
+                   <h1 className="font-headline-lg text-headline-lg md:text-display-lg font-extrabold text-primary text-2xl md:text-3xl lg:text-4xl">{title}</h1>
                   <p className="font-body-lg text-body-lg text-on-surface-variant">{subtitle}</p>
                 </div>
                 <div className="text-right">
