@@ -107,6 +107,13 @@ export const vehicleApi = {
     return response.data;
   },
 
+  getMakes: async () => {
+    return retryRequest(async () => {
+      const response = await apiClient.get('/makes');
+      return response.data;
+    });
+  },
+
   search: async (query) => {
     return retryRequest(async () => {
       const response = await apiClient.get('/vehicles', { 

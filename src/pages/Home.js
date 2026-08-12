@@ -16,7 +16,7 @@ import Navbar from '../components/Navbar';
 const TAB_OPTIONS = {
   Category: { cols: 6, options: CATEGORIES },
   City: { cols: 6, options: CITIES },
-  Make: { cols: 6, options: makes.filter((m) => m !== 'All Makes').slice(0, 12) },
+  Make: { cols: 6, options: [] },
   Model: { cols: 6, options: MODELS.slice(0, 30) },
   Budget: { cols: 4, options: BUDGETS },
   'Body Type': { cols: 6, options: BODY_TYPES },
@@ -28,7 +28,7 @@ const CATEGORY_ICONS = {
   'Luxury Car': <path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2L9.19 8.62L2 9.24l5.45 4.73L5.82 21z" />,
   'Japanese cars': <path fill="currentColor" d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z" />,
   'Automatic cars': <path fill="currentColor" d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49 1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z" />,
-  'Old Cars': <path fill="currentColor" d="m5 11l1.5-4.5h11L19 11m-1.5 5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m-11 0A1.5 1.5 0 0 1 5 14.5A1.5 1.5 0 0 1 6.5 13A1.5 1.5 0 0 1 8 14.5A1.5 1.5 0 0 1 6.5 16M18.92 6c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.22.42-1.42 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-8z" />,
+  'Old Cars': <path fill="currentColor" d="m5 11l1.5-4.5h11L19 11m-1.5 5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m-11 0A1.5 1.5 0 0 1 5 14.5A1.5 1.5 0 0 1 6.5 13A1.5 1.5 0 0 1 8 14.5A1.5 1.5 0 0 1 6.5 16M18.92 6c-.2-.58-.76-1-1.42-1h-11c-.66 0-1.22.42-1.42 1L3 12v8a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1c.55 0 1-.45 1-1v-8z" />,
   'Hybrid cars': <path fill="currentColor" d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8" />,
   'Carry Daba': <path fill="currentColor" d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z" />,
   '7 Seater': <path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20z" />,
@@ -43,6 +43,11 @@ const CATEGORY_ICONS = {
   'Petrol Cars': <path fill="currentColor" d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z" />,
 };
 
+const makeLogo = (makeName) => {
+  const found = dbMakes.find((m) => (m.makeName || '').toLowerCase() === (makeName || '').toLowerCase());
+  return found?.logo || imageByMake[makeName] || '/image/hero.jpg';
+};
+
 const Home = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('Category');
@@ -55,32 +60,30 @@ const Home = () => {
   const [heroMaxPrice, setHeroMaxPrice] = useState('');
   const [aiQuery, setAiQuery] = useState('');
   const [advancedOpen, setAdvancedOpen] = useState(false);
+  const [dbMakes, setDbMakes] = useState([]);
+  const [makesLoading, setMakesLoading] = useState(true);
   const featuredScrollRef = useRef(null);
 
-  const scrollFeatured = (direction) => {
-    const el = featuredScrollRef.current;
-    if (!el) return;
-    const scrollAmount = 304; // card width 280px + gap 24px
-    el.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-  };
-
   useEffect(() => {
-    setCategoryPage(0);
-  }, [activeTab]);
-
-  useEffect(() => {
-    const loadFeatured = async () => {
+    const loadMakes = async () => {
       try {
-        const data = await vehicleApi.getAll(null, 10);
-        const items = data?.items || data || [];
-        setFeaturedVehicles(items.slice(0, 10));
+        const data = await vehicleApi.getMakes();
+        const items = Array.isArray(data) ? data : [];
+        setDbMakes(items);
+        const makeNames = items.map((m) => m.makeName).filter(Boolean);
+        if (makeNames.length) {
+          TAB_OPTIONS.Make.options = makeNames;
+        } else {
+          TAB_OPTIONS.Make.options = makes.filter((m) => m !== 'All Makes').slice(0, 12);
+        }
       } catch (e) {
-        console.error('Failed to load featured vehicles', e);
+        console.error('Failed to load makes', e);
+        TAB_OPTIONS.Make.options = makes.filter((m) => m !== 'All Makes').slice(0, 12);
       } finally {
-        setFeaturedLoading(false);
+        setMakesLoading(false);
       }
     };
-    loadFeatured();
+    loadMakes();
   }, []);
   const toggleOption = (tab, value) =>
     setSelected((s) => ({ ...s, [tab]: s[tab] === value ? undefined : value }));
@@ -252,7 +255,7 @@ const Home = () => {
                 <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-${TAB_OPTIONS[activeTab].cols} gap-xs`}>
                   {(TAB_OPTIONS[activeTab].options || []).map((opt) => {
                     const isActive = selected[activeTab] === opt;
-                    const logoSrc = imageByMake[opt] || '/image/hero.jpg';
+                    const logoSrc = makeLogo(opt);
                     return (
                       <button
                         key={String(opt)}
