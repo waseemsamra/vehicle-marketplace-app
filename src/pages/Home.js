@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import VehicleCard from '../components/VehicleCard';
 import {
   makes,
+  imageByMake,
   CATEGORIES,
   CITIES,
   MODELS,
@@ -246,6 +247,29 @@ const Home = () => {
                       </button>
                     </>
                   )}
+                </div>
+              ) : activeTab === 'Make' ? (
+                <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-${TAB_OPTIONS[activeTab].cols} gap-xs`}>
+                  {(TAB_OPTIONS[activeTab].options || []).map((opt) => {
+                    const isActive = selected[activeTab] === opt;
+                    const logoSrc = imageByMake[opt] || '/image/hero.jpg';
+                    return (
+                      <button
+                        key={String(opt)}
+                        onClick={() => toggleOption(activeTab, opt)}
+                        className={
+                          isActive
+                            ? 'flex flex-col items-center justify-center gap-xs w-full px-md py-lg rounded-xl border-2 border-primary bg-surface text-center focus:outline-none'
+                            : 'flex flex-col items-center justify-center gap-xs w-full px-md py-lg rounded-xl border border-outline-variant bg-surface-container hover:border-outline-variant hover:bg-surface focus:outline-none text-center'
+                        }
+                      >
+                        <span className="flex items-center justify-center w-12 h-12 text-primary">
+                          <img src={logoSrc} alt={opt} className="w-10 h-10 object-contain rounded" />
+                        </span>
+                        <span className="font-label-sm text-label-sm text-on-surface break-words">{opt}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               ) : (
                 <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-${TAB_OPTIONS[activeTab].cols} gap-xs`}>
