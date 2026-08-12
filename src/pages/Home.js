@@ -58,15 +58,15 @@ const Home = () => {
   const [activeTab, setActiveTab] = useState('Category');
   const [selected, setSelected] = useState({});
   const [categoryPage, setCategoryPage] = useState(0);
-  const [featuredVehicles, setFeaturedVehicles] = useState([]);
-  const [featuredLoading, setFeaturedLoading] = useState(true);
+  const [featuredVehicles] = useState([]);
+  const [featuredLoading] = useState(true);
   const [heroMake, setHeroMake] = useState('');
   const [heroModel, setHeroModel] = useState('');
   const [heroMaxPrice, setHeroMaxPrice] = useState('');
   const [aiQuery, setAiQuery] = useState('');
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [dbMakes, setDbMakes] = useState([]);
-  const [makesLoading, setMakesLoading] = useState(true);
+  const [, setMakesLoading] = useState(true);
   const featuredScrollRef = useRef(null);
 
   const scrollFeatured = (direction) => {
