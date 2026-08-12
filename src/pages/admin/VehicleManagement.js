@@ -77,14 +77,21 @@ const VehicleManagement = () => {
                     <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {vehicles.map((vehicle) => (
-                    <tr key={vehicle.vehicleId || vehicle.id || vehicle.VehicleID} className="hover:bg-gray-100/50">
-                       <td className="px-6 py-4">
-                         <div className="flex items-center space-x-3">
-                           {(vehicle.images?.[0] || vehicle.img || vehicle.imageUrl) && (
-                             <img src={vehicle.images?.[0] || vehicle.img || vehicle.imageUrl} alt="" className="w-12 h-12 rounded object-cover" />
-                           )}
+                   <tbody className="divide-y divide-gray-200">
+                   {vehicles.map((vehicle) => {
+                     const imgSrc = vehicle.images?.[0] || vehicle.img || vehicle.imageUrl || '';
+                     const resolvedImg = imgSrc.includes('localhost:5001')
+                       ? imgSrc.replace(/http:\/\/localhost:5001\/api\//, '/api/')
+                       : imgSrc.includes('vehicle-marketplace-app.vercel.app/api/images/')
+                       ? imgSrc.replace('vehicle-marketplace-app.vercel.app/api/images/', 'vehicle-marketplace-app.onrender.com/api/images/')
+                       : imgSrc;
+                     return (
+                     <tr key={vehicle.vehicleId || vehicle.id || vehicle.VehicleID} className="hover:bg-gray-100/50">
+                        <td className="px-6 py-4">
+                          <div className="flex items-center space-x-3">
+                            {resolvedImg && (
+                              <img src={resolvedImg} alt="" className="w-12 h-12 rounded object-cover" />
+                            )}
                            <div>
                              <div className="text-gray-900 font-medium">{vehicle.year} {vehicle.make} {vehicle.model}</div>
                              <div className="text-sm text-gray-500">{vehicle.mileage} miles • {vehicle.condition}</div>
