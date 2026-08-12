@@ -3,6 +3,17 @@ import { useNavigate } from 'react-router-dom';
 
 const API_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3002');
 
+const resolveApiImageUrl = (url) => {
+  if (!url || typeof url !== 'string') return url;
+  if (url.includes('localhost:5001')) {
+    return url.replace(/http:\/\/localhost:5001\/api\//, '/api/');
+  }
+  if (url.includes('vehicle-marketplace-app.vercel.app/api/images/')) {
+    return url.replace('vehicle-marketplace-app.vercel.app/api/images/', 'vehicle-marketplace-app.onrender.com/api/images/');
+  }
+  return url;
+};
+
 const Hero = ({ onSearch }) => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('buy');
@@ -49,7 +60,7 @@ const Hero = ({ onSearch }) => {
         const data = await response.json();
         const vehicles = data.vehicles || data.items || [];
         if (vehicles.length > 0 && vehicles[0].images && vehicles[0].images.length > 0) {
-          setBgImage(vehicles[0].images[0]);
+          setBgImage(resolveApiImageUrl(vehicles[0].images[0]));
         }
       }
     } catch (error) {

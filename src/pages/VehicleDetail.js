@@ -10,6 +10,9 @@ const resolveApiImageUrl = (url) => {
   if (url.includes('localhost:5001')) {
     return url.replace(/http:\/\/localhost:5001\/api\//, '/api/');
   }
+  if (url.includes('vehicle-marketplace-app.vercel.app/api/images/')) {
+    return url.replace('vehicle-marketplace-app.vercel.app/api/images/', 'vehicle-marketplace-app.onrender.com/api/images/');
+  }
   return url;
 };
 

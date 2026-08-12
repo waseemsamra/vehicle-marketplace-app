@@ -1,9 +1,20 @@
 import React from 'react';
 
+const resolveApiImageUrl = (url) => {
+  if (!url || typeof url !== 'string') return url;
+  if (url.includes('localhost:5001')) {
+    return url.replace(/http:\/\/localhost:5001\/api\//, '/api/');
+  }
+  if (url.includes('vehicle-marketplace-app.vercel.app/api/images/')) {
+    return url.replace('vehicle-marketplace-app.vercel.app/api/images/', 'vehicle-marketplace-app.onrender.com/api/images/');
+  }
+  return url;
+};
+
 const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', className = '' }) => {
   const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
-  const localImg = vehicle.img || vehicle.imageUrl || '';
-  const remoteImg = vehicle.coverImage || vehicle.images?.[0] || '';
+  const localImg = resolveApiImageUrl(vehicle.img || vehicle.imageUrl || '');
+  const remoteImg = resolveApiImageUrl(vehicle.coverImage || vehicle.images?.[0] || '');
   const imgSrc = localImg || remoteImg || '/image/hero.jpg';
   const fallbackSrc = remoteImg || '/image/hero.jpg';
   const title = vehicle.title || `${vehicle.year || ''} ${vehicle.make || ''} ${vehicle.model || ''}`.trim() || 'Vehicle';
