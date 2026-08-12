@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import toast from 'react-hot-toast';
 
-const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5001/api').replace(/\/$/, '');
+const API_URL = (process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5001/api')).replace(/\/$/, '');
 const TOKEN_KEY = 'authToken';
 
 const CATEGORIES = [

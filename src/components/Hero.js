@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL || process.env.REACT_APP_MCP_URL || 'http://localhost:3002';
+const API_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3002');
 
 const Hero = ({ onSearch }) => {
   const navigate = useNavigate();

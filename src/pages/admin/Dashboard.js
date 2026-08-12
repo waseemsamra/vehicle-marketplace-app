@@ -3,7 +3,7 @@ import MetricsGrid from '../../components/admin/MetricsGrid';
 import RevenueChart from '../../components/admin/RevenueChart';
 import RecentOrders from '../../components/admin/RecentOrders';
 
-const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5001/api').replace(/\/$/, '');
+const API_URL = (process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5001/api')).replace(/\/$/, '');
 
 const AdminDashboard = () => {
   const handleSeed = async () => {

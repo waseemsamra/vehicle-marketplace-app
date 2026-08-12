@@ -5,6 +5,14 @@ import { vehicleApi } from '../services/vehicleApi';
 import toast from 'react-hot-toast';
 import Navbar from '../components/Navbar';
 
+const resolveApiImageUrl = (url) => {
+  if (!url || typeof url !== 'string') return url;
+  if (url.includes('localhost:5001')) {
+    return url.replace(/http:\/\/localhost:5001\/api\//, '/api/');
+  }
+  return url;
+};
+
 const detailById = new Map();
 const detailBySlug = new Map();
 vehicleDetailsData.vehicles.forEach((v) => {
@@ -24,17 +32,23 @@ const VehicleDetail = () => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   const images = useMemo(() => {
-    const cover = vehicle?.coverImage;
+    const cover = vehicle?.coverImage ? resolveApiImageUrl(vehicle.coverImage) : undefined;
     if (vehicle?.gallery?.length) {
-      const urls = vehicle.gallery.map((g) => g.url);
+      const urls = vehicle.gallery.map((g) => resolveApiImageUrl(g.url));
       return cover ? [cover, ...urls.filter((u) => u !== cover)] : urls;
     }
     if (vehicle?.images?.length) {
-      return cover ? [cover, ...vehicle.images.filter((u) => u !== cover)] : vehicle.images;
+      const urls = vehicle.images.map((u) => resolveApiImageUrl(u));
+      return cover ? [cover, ...urls.filter((u) => u !== cover)] : urls;
     }
-    if (vehicle?.img) return [vehicle.img];
-    if (vehicle?.imageUrl) return [vehicle.imageUrl];
+    if (vehicle?.img) return [resolveApiImageUrl(vehicle.img)];
+    if (vehicle?.imageUrl) return [resolveApiImageUrl(vehicle.imageUrl)];
     return [];
+  }, [vehicle]);
+
+  const rewrittenGallery = useMemo(() => {
+    if (!vehicle?.gallery?.length) return vehicle?.gallery || [];
+    return vehicle.gallery.map((g) => ({ ...g, url: resolveApiImageUrl(g.url) }));
   }, [vehicle]);
 
   useEffect(() => {
@@ -207,8 +221,8 @@ const VehicleDetail = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-4">
-            {gallery.slice(0, thumbCount).map((img, idx) => (
+           <div className="lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-4">
+             {rewrittenGallery.slice(0, thumbCount).map((img, idx) => (
               <div
                 key={idx}
                 className="rounded-xl overflow-hidden shadow-ambient relative group cursor-pointer bg-surface-container aspect-square"
