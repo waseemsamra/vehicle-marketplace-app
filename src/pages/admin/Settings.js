@@ -1018,36 +1018,41 @@ const Settings = () => {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-2">Logo</label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={async (e) => {
-                        const file = e.target.files?.[0];
-                        if (!file || !editingId) return;
-                        try {
-                          const res = await fetch(`${API_URL}/makes/${editingId}/upload-logo`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json', ...authHeaders() },
-                            body: JSON.stringify({ fileName: file.name, fileType: file.type }),
-                          });
-                          const data = await res.json();
-                          if (!res.ok) throw new Error(data.error || 'Upload failed');
-                          const uploadRes = await fetch(data.uploadUrl, {
-                            method: 'PUT',
-                            body: file,
-                            headers: { 'Content-Type': file.type },
-                          });
-                          if (!uploadRes.ok) throw new Error('Failed to upload logo');
-                          setFormData((prev) => ({ ...prev, logo: data.publicUrl }));
-                          toast.success('Logo uploaded');
-                        } catch (error) {
-                          toast.error(error.message || 'Logo upload failed');
-                        }
-                      }}
-                      className="block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-600 file:text-white hover:file:bg-brand-500 file:cursor-pointer"
-                    />
+                   <div>
+                     <label className="block text-sm font-medium text-gray-600 mb-2">Logo</label>
+                     <input
+                       type="file"
+                       accept="image/*"
+                       onChange={async (e) => {
+                         const file = e.target.files?.[0];
+                         if (!file) return;
+                         const makeId = formData.value || editingId;
+                         if (!makeId) {
+                           toast.error('Save the make first before uploading a logo');
+                           return;
+                         }
+                         try {
+                           const res = await fetch(`${API_URL}/makes/${makeId}/upload-logo`, {
+                             method: 'POST',
+                             headers: { 'Content-Type': 'application/json', ...authHeaders() },
+                             body: JSON.stringify({ fileName: file.name, fileType: file.type }),
+                           });
+                           const data = await res.json();
+                           if (!res.ok) throw new Error(data.error || 'Upload failed');
+                           const uploadRes = await fetch(data.uploadUrl, {
+                             method: 'PUT',
+                             body: file,
+                             headers: { 'Content-Type': file.type },
+                           });
+                           if (!uploadRes.ok) throw new Error('Failed to upload logo');
+                           setFormData((prev) => ({ ...prev, logo: data.publicUrl }));
+                           toast.success('Logo uploaded');
+                         } catch (error) {
+                           toast.error(error.message || 'Logo upload failed');
+                         }
+                       }}
+                       className="block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-600 file:text-white hover:file:bg-brand-500 file:cursor-pointer"
+                     />
                     {formData.logo && (
                       <div className="mt-2">
                         <img src={formData.logo} alt="Logo preview" className="w-16 h-16 object-contain rounded border border-gray-300" />
