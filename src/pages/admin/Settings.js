@@ -58,10 +58,13 @@ const Settings = () => {
   const [options, setOptions] = useState(() => readStorage());
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showBulkModal, setShowBulkModal] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({ value: '', label: '', order: 0 });
   const [searchQuery, setSearchQuery] = useState('');
   const [provinces, setProvinces] = useState([]);
+  const [bulkText, setBulkText] = useState('');
+  const [bulkLoading, setBulkLoading] = useState(false);
 
   const isProvinceCategory = activeCategory === 'provinces';
   const isCityCategory = activeCategory === 'cities';
@@ -463,6 +466,58 @@ const Settings = () => {
     }
   };
 
+  const generateMakeId = (makeName) => {
+    const clean = (makeName || '').trim().toUpperCase();
+    if (!clean) return '';
+    const parts = clean.split(/\s+/);
+    if (parts.length === 1) return parts[0].slice(0, 3);
+    return parts.map((w) => w[0]).join('').slice(0, 3);
+  };
+
+  const handleBulkSubmit = async (e) => {
+    e.preventDefault();
+    if (!bulkText.trim()) {
+      toast.error('Please enter at least one make name');
+      return;
+    }
+
+    const names = bulkText
+      .split(/[\n,]+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+
+    if (!names.length) {
+      toast.error('No valid make names found');
+      return;
+    }
+
+    const items = names.map((name) => ({
+      makeId: generateMakeId(name),
+      makeName: name,
+    }));
+
+    setBulkLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/makes/bulk`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...authHeaders() },
+        body: JSON.stringify(items),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Bulk add failed');
+
+      toast.success(`Added ${data.count || items.length} makes`);
+      setBulkText('');
+      setShowBulkModal(false);
+      await loadOptions();
+    } catch (error) {
+      toast.error(error.message || 'Bulk add failed');
+    } finally {
+      setBulkLoading(false);
+    }
+  };
+
   const handleDelete = async (option) => {
     if (!window.confirm('Delete this option?')) return;
     try {
@@ -640,6 +695,17 @@ const Settings = () => {
                   </svg>
                   Add {isProvinceCategory ? 'Province' : isMakeCategory ? 'Make' : isModelCategory ? 'Model' : isCityCategory ? 'City' : 'Option'}
                 </button>
+                {isMakeCategory && (
+                  <button
+                    onClick={() => { setBulkText(''); setShowBulkModal(true); }}
+                    className="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-semibold transition-all flex items-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    Bulk Add Makes
+                  </button>
+                )}
               </div>
             </div>
 
@@ -1065,6 +1131,59 @@ const Settings = () => {
                 <button
                   type="button"
                   onClick={() => { setShowModal(false); resetForm(); }}
+                  className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Add Modal */}
+      {showBulkModal && (
+        <div className="fixed inset-0 bg-gray-200/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl border border-gray-200 w-full max-w-lg">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+              <h2 className="text-xl font-bold text-gray-900">Bulk Add Makes</h2>
+              <button
+                onClick={() => { setShowBulkModal(false); setBulkText(''); }}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <form onSubmit={handleBulkSubmit} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-600 mb-2">Make Names *</label>
+                <textarea
+                  required
+                  value={bulkText}
+                  onChange={(e) => setBulkText(e.target.value)}
+                  className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
+                  rows="8"
+                  placeholder="Enter make names, one per line or comma-separated:&#10;Ferrari&#10;Lamborghini&#10;Porsche&#10;BMW"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Make IDs will be auto-generated from the names (e.g., Ferrari → FER, Lamborghini → LAM).
+                </p>
+              </div>
+
+              <div className="flex gap-3 pt-4">
+                <button
+                  type="submit"
+                  disabled={bulkLoading}
+                  className="flex-1 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-gray-900 rounded-lg font-semibold transition-colors disabled:opacity-50"
+                >
+                  {bulkLoading ? 'Adding...' : 'Add Makes'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setShowBulkModal(false); setBulkText(''); }}
                   className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg font-semibold transition-colors"
                 >
                   Cancel

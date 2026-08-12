@@ -439,6 +439,26 @@ app.get('/api/makes', async (req, res) => {
   }
 });
 
+app.post('/api/makes/bulk', async (req, res) => {
+  if (!isMongoUp()) return res.status(503).json({ error: 'Database unavailable' });
+  try {
+    const items = Array.isArray(req.body) ? req.body : req.body?.items || [];
+    const normalized = items
+      .map((item) => {
+        const makeName = typeof item === 'string' ? item : item?.makeName;
+        const makeId = typeof item === 'string' ? item : item?.makeId;
+        if (!makeName || !makeId) return null;
+        return { makeId, makeName: makeName.trim(), active: true };
+      })
+      .filter(Boolean);
+    if (!normalized.length) return res.status(400).json({ error: 'No valid makes provided' });
+    const created = await Make.insertMany(normalized, { ordered: true });
+    res.status(201).json({ created, count: created.length });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 app.post('/api/makes', async (req, res) => {
   if (!isMongoUp()) return res.status(503).json({ error: 'Database unavailable' });
   try {
