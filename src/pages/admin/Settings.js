@@ -322,6 +322,7 @@ const Settings = () => {
         const payload = {
           makeId: formData.value,
           makeName: formData.label || formData.value,
+          logo: formData.logo || '',
         };
 
         let updated;
@@ -578,7 +579,7 @@ const Settings = () => {
         brandName: '',
       });
     } else if (isMakeCategory) {
-      setFormData({ value: option.makeId || option.value, label: option.makeName || option.label || '', order: 0, brandId: '', brandName: '' });
+      setFormData({ value: option.makeId || option.value, label: option.makeName || option.label || '', order: 0, logo: option.logo || '', brandId: '', brandName: '' });
     } else if (isModelCategory) {
       setFormData({
         value: option.modelId || option.value,
@@ -759,6 +760,7 @@ const Settings = () => {
                   <table className="w-full">
                     <thead>
                       <tr className="text-left text-xs font-semibold text-gray-500 uppercase border-b border-gray-200">
+                        <th className="pb-3">Logo</th>
                         <th className="pb-3">Make ID</th>
                         <th className="pb-3">Make Name</th>
                         <th className="pb-3 text-right">Actions</th>
@@ -767,6 +769,13 @@ const Settings = () => {
                     <tbody className="divide-y divide-gray-100">
                       {filteredOptions.map((option, index) => (
                         <tr key={option._id || index} className="hover:bg-gray-50">
+                          <td className="py-4">
+                            {option.logo ? (
+                              <img src={option.logo} alt={option.makeName || option.label} className="w-10 h-10 object-contain rounded border border-gray-200" />
+                            ) : (
+                              <div className="w-10 h-10 bg-gray-100 rounded border border-gray-200 flex items-center justify-center text-gray-400 text-xs">No logo</div>
+                            )}
+                          </td>
                           <td className="py-4 font-medium text-gray-900">{option.makeId || option.value}</td>
                           <td className="py-4 text-gray-600">{option.makeName || option.label}</td>
                           <td className="py-4 text-right">
@@ -1005,6 +1014,43 @@ const Settings = () => {
                       className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:border-brand-500"
                       placeholder="e.g., Toyota"
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-600 mb-2">Logo</label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0];
+                        if (!file || !editingId) return;
+                        try {
+                          const res = await fetch(`${API_URL}/makes/${editingId}/upload-logo`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', ...authHeaders() },
+                            body: JSON.stringify({ fileName: file.name, fileType: file.type }),
+                          });
+                          const data = await res.json();
+                          if (!res.ok) throw new Error(data.error || 'Upload failed');
+                          const uploadRes = await fetch(data.uploadUrl, {
+                            method: 'PUT',
+                            body: file,
+                            headers: { 'Content-Type': file.type },
+                          });
+                          if (!uploadRes.ok) throw new Error('Failed to upload logo');
+                          setFormData((prev) => ({ ...prev, logo: data.publicUrl }));
+                          toast.success('Logo uploaded');
+                        } catch (error) {
+                          toast.error(error.message || 'Logo upload failed');
+                        }
+                      }}
+                      className="block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-brand-600 file:text-white hover:file:bg-brand-500 file:cursor-pointer"
+                    />
+                    {formData.logo && (
+                      <div className="mt-2">
+                        <img src={formData.logo} alt="Logo preview" className="w-16 h-16 object-contain rounded border border-gray-300" />
+                      </div>
+                    )}
                   </div>
                 </>
               ) : isModelCategory ? (

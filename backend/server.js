@@ -462,9 +462,9 @@ app.post('/api/makes/bulk', async (req, res) => {
 app.post('/api/makes', async (req, res) => {
   if (!isMongoUp()) return res.status(503).json({ error: 'Database unavailable' });
   try {
-    const { makeId, makeName } = req.body || {};
+    const { makeId, makeName, logo } = req.body || {};
     if (!makeId || !makeName) return res.status(400).json({ error: 'makeId and makeName are required' });
-    const item = await Make.create({ makeId, makeName, active: true });
+    const item = await Make.create({ makeId, makeName, logo: logo || '', active: true });
     res.status(201).json(item);
   } catch (e) {
     res.status(500).json({ error: e.message });
@@ -565,6 +565,36 @@ app.post('/api/upload-url', async (req, res) => {
     if (!fileName || !fileType) return res.status(400).json({ error: 'fileName and fileType are required' });
 
     const key = `vehicles/${vehicleId || 'general'}/${Date.now()}_${fileName}`;
+    const command = new PutObjectCommand({
+      Bucket: process.env.S3_BUCKET || 'bluechip',
+      Key: key,
+      ContentType: fileType,
+      ACL: 'public-read',
+    });
+
+    const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 });
+    const proto = (req.headers['x-forwarded-proto'] || req.protocol || 'https').toString();
+    const host = req.headers.host || 'vehicle-marketplace-app.onrender.com';
+    const publicUrl = `${proto}://${host}/api/images/${key}`;
+
+    res.json({ uploadUrl: signedUrl, publicUrl, key });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+app.post('/api/makes/:id/upload-logo', async (req, res) => {
+  if (!isMongoUp()) return res.status(503).json({ error: 'Database unavailable' });
+  try {
+    const { id } = req.params;
+    const { fileName, fileType } = req.body || {};
+    if (!fileName || !fileType) return res.status(400).json({ error: 'fileName and fileType are required' });
+
+    const make = await Make.findOne({ makeId: id });
+    if (!make) return res.status(404).json({ error: 'Make not found' });
+
+    const ext = fileName.split('.').pop() || 'png';
+    const key = `makes/${id}/logo.${ext}`;
     const command = new PutObjectCommand({
       Bucket: process.env.S3_BUCKET || 'bluechip',
       Key: key,
