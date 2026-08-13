@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { vehicleApi } from '../services/vehicleApi';
 import Navbar from '../components/Navbar';
 import VehicleCard from '../components/VehicleCard';
+import { normalizeMake } from '../data/vehicles';
 
 const API_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5001/api');
 
@@ -147,7 +148,7 @@ const Search = () => {
   const modelOptions = useMemo(() => {
     const makeName = makeSel;
     return models
-      .filter((m) => !makeName || m.brandName === makeName)
+      .filter((m) => !makeName || normalizeMake(m.brandName) === normalizeMake(makeName))
       .map((m) => ({ value: m.modelName, label: m.modelName }));
   }, [models, makeSel]);
 
@@ -197,7 +198,7 @@ const Search = () => {
         const haystack = `${v.make} ${v.model} ${v.title}`.toLowerCase();
         if (!words.some(word => haystack.includes(word))) return false;
       }
-      if (makeSel && v.make !== makeSel) return false;
+      if (makeSel && normalizeMake(v.make) !== normalizeMake(makeSel)) return false;
       if (modelSel && v.model !== modelSel) return false;
       if (bodySel && v.body !== bodySel) return false;
       if (yearSel && String(v.year) !== yearSel) return false;

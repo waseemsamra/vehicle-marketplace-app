@@ -9,6 +9,7 @@ import {
   BUDGETS,
   BODY_TYPES,
 } from '../data/vehicles';
+import { normalizeMake } from '../data/vehicles';
 import { vehicleApi } from '../services/vehicleApi';
 import Navbar from '../components/Navbar';
 
@@ -285,8 +286,8 @@ const Home = () => {
               ) : activeTab === 'Make' ? (
                 <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-${TAB_OPTIONS[activeTab].cols} gap-xs`}>
                   {(TAB_OPTIONS[activeTab].options || []).map((opt) => {
-                    const isActive = selected[activeTab] === opt;
-                    const found = dbMakes.find((m) => (m.makeName || '').toLowerCase() === (opt || '').toLowerCase());
+                    const isActive = normalizeMake(selected[activeTab] || '') === normalizeMake(opt);
+                    const found = dbMakes.find((m) => normalizeMake(m.makeName || '') === normalizeMake(opt));
                     const logoSrc = found?.logo || generateMakeLogo(opt);
                     return (
                       <button

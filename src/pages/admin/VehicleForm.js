@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ImageUpload from '../../components/ImageUpload';
 import { vehicleApi } from '../../services/vehicleApi';
 import toast from 'react-hot-toast';
+import { normalizeMake } from '../../data/vehicles';
 
 const API_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5001/api');
 
@@ -147,10 +148,10 @@ const VehicleForm = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-600 mb-2">Model</label>
-              {models.filter(m => m.brandName === formData.make).length > 0 ? (
+              {models.filter(m => normalizeMake(m.brandName) === normalizeMake(formData.make)).length > 0 ? (
                 <select value={formData.model} onChange={(e) => setFormData({...formData, model: e.target.value})} required className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900" disabled={!formData.make}>
                   <option value="">Select Model</option>
-                  {models.filter(m => m.brandName === formData.make).map((m) => <option key={m._id || m.modelId} value={m.modelName}>{m.modelName}</option>)}
+                  {models.filter(m => normalizeMake(m.brandName) === normalizeMake(formData.make)).map((m) => <option key={m._id || m.modelId} value={m.modelName}>{m.modelName}</option>)}
                 </select>
               ) : (
                 <input

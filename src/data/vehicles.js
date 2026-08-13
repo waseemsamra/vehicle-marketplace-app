@@ -16,6 +16,8 @@ const imageByMake = {
   'Ferrari': '/image/hero.jpg',
 };
 
+const normalizeMake = (name) => (name || '').replace(/\s+/g, '-').replace(/[^-a-zA-Z0-9]/g, '');
+
 const featureTags = ['Sunroof', 'AWD', 'Navigation', 'Leather', 'Adaptive Cruise', 'Sport Mode', 'Third Row', 'Heated Seats'];
 
 const bodies = [
@@ -217,4 +219,5 @@ export {
   slugify,
   categorize,
   JAPANESE_MAKES,
+  normalizeMake,
 };
