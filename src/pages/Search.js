@@ -146,12 +146,10 @@ const Search = () => {
 
   const modelOptions = useMemo(() => {
     const makeName = makeSel;
-    const vehicleModels = new Set(allVehicles.map((v) => v.model).filter(Boolean));
     return models
       .filter((m) => !makeName || m.brandName === makeName)
-      .filter((m) => vehicleModels.has(m.modelName))
       .map((m) => ({ value: m.modelName, label: m.modelName }));
-  }, [models, makeSel, allVehicles]);
+  }, [models, makeSel]);
 
   const bodyOptions = useMemo(() => {
     const set = new Set();

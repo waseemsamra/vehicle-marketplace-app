@@ -616,6 +616,14 @@ export const MODEL_SEED = [
   // JAECOO
   { modelId: 'J7_JAECOO', modelName: 'J7', brandId: 'JAE', brandName: 'Jaecoo' },
   { modelId: 'J8', modelName: 'J8', brandId: 'JAE', brandName: 'Jaecoo' },
+
+  // McLaren
+  { modelId: '720S', modelName: '720S', brandId: 'MCL', brandName: 'McLaren' },
+  { modelId: '765LT', modelName: '765LT', brandId: 'MCL', brandName: 'McLaren' },
+  { modelId: '750S', modelName: '750S', brandId: 'MCL', brandName: 'McLaren' },
+  { modelId: 'ARTURA', modelName: 'Artura', brandId: 'MCL', brandName: 'McLaren' },
+  { modelId: 'GT', modelName: 'GT', brandId: 'MCL', brandName: 'McLaren' },
+  { modelId: 'SENNA', modelName: 'Senna', brandId: 'MCL', brandName: 'McLaren' },
 ];
 
 export const preparedModels = MODEL_SEED.map((m) => ({

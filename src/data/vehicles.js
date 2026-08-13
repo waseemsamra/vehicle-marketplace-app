@@ -126,6 +126,11 @@ const templates = [
   { make: 'Ferrari', model: 'Purosangue', body: 'SUV', fuel: 'Gasoline', transmission: 'Automatic', engine: 'V12', features: ['AWD'], basePrice: 250000 },
   { make: 'Ferrari', model: 'F8', body: 'Coupe', fuel: 'Gasoline', transmission: 'Manual', engine: 'V8', features: ['Sport Mode'], basePrice: 210000 },
   { make: 'McLaren', model: '720S', body: 'Coupe', fuel: 'Gasoline', transmission: 'Manual', engine: 'V8', features: ['Sport Mode'], basePrice: 210000 },
+  { make: 'McLaren', model: '765LT', body: 'Coupe', fuel: 'Gasoline', transmission: 'Automatic', engine: 'V8', features: ['Sport Mode', 'Carbon Fiber'], basePrice: 350000 },
+  { make: 'McLaren', model: '750S', body: 'Coupe', fuel: 'Gasoline', transmission: 'Automatic', engine: 'V8', features: ['Sport Mode', 'Navigation'], basePrice: 330000 },
+  { make: 'McLaren', model: 'Artura', body: 'Coupe', fuel: 'Hybrid', transmission: 'Automatic', engine: 'V6 Hybrid', features: ['Sport Mode', 'Electric Range'], basePrice: 250000 },
+  { make: 'McLaren', model: 'GT', body: 'Coupe', fuel: 'Gasoline', transmission: 'Automatic', engine: 'V8', features: ['Navigation', 'Leather'], basePrice: 280000 },
+  { make: 'McLaren', model: 'Senna', body: 'Coupe', fuel: 'Gasoline', transmission: 'Automatic', engine: 'V8', features: ['Sport Mode', 'Carbon Fiber'], basePrice: 500000 },
   { make: 'Aston Martin', model: 'DBX', body: 'SUV', fuel: 'Gasoline', transmission: 'Automatic', engine: 'V12', features: ['AWD', 'Leather'], basePrice: 190000 },
 ];
 
