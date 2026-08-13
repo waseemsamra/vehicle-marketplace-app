@@ -13,9 +13,9 @@ const resolveApiImageUrl = (url) => {
 
 const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', className = '' }) => {
   const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
-  const localImg = resolveApiImageUrl(vehicle.img || vehicle.imageUrl || '');
-  const remoteImg = resolveApiImageUrl(vehicle.coverImage || vehicle.images?.[0] || '');
-  const imgSrc = localImg || remoteImg || '';
+  const uploadedImg = resolveApiImageUrl(vehicle.coverImage || vehicle.images?.[0] || '');
+  const legacyImg = resolveApiImageUrl(vehicle.img || vehicle.imageUrl || '');
+  const imgSrc = uploadedImg || legacyImg || '';
   const title = vehicle.title || `${vehicle.year || ''} ${vehicle.make || ''} ${vehicle.model || ''}`.trim() || 'Vehicle';
   const price = vehicle.price || (vehicle.priceNum ? `$${vehicle.priceNum.toLocaleString()}` : '');
   const status = vehicle.status || (vehicle.condition || 'Available');
