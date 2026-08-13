@@ -15,8 +15,7 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
   const vehicleId = vehicle.vehicleId || vehicle.id || vehicle._id;
   const localImg = resolveApiImageUrl(vehicle.img || vehicle.imageUrl || '');
   const remoteImg = resolveApiImageUrl(vehicle.coverImage || vehicle.images?.[0] || '');
-  const imgSrc = localImg || remoteImg || '/image/hero.jpg';
-  const fallbackSrc = remoteImg || '/image/hero.jpg';
+  const imgSrc = localImg || remoteImg || '';
   const title = vehicle.title || `${vehicle.year || ''} ${vehicle.make || ''} ${vehicle.model || ''}`.trim() || 'Vehicle';
   const price = vehicle.price || (vehicle.priceNum ? `$${vehicle.priceNum.toLocaleString()}` : '');
   const status = vehicle.status || (vehicle.condition || 'Available');
@@ -24,13 +23,13 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
   const sub = vehicle.sub || '';
 
   const cacheBustedSrc = useMemo(() => {
-    if (!imgSrc || imgSrc === '/image/hero.jpg') return imgSrc;
+    if (!imgSrc) return imgSrc;
     const sep = imgSrc.includes('?') ? '&' : '?';
     return `${imgSrc}${sep}_cb=${Date.now()}`;
   }, [imgSrc]);
 
   const handleImageError = (e) => {
-    e.target.src = fallbackSrc;
+    e.target.style.display = 'none';
   };
 
   const handleClick = (e) => {
@@ -154,14 +153,20 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
   return (
     <div key={vehicleId} className={cardClasses} onClick={() => onClick?.(vehicleId)}>
       <div className="relative h-48 overflow-hidden">
-        <img
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          alt={`${title} front 3/4 view`}
-          src={imgSrc}
-          onError={(e) => {
-            e.target.src = '/image/hero.jpg';
-          }}
-        />
+        {imgSrc ? (
+          <img
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            alt={`${title} front 3/4 view`}
+            src={cacheBustedSrc}
+            onError={handleImageError}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-100">
+            <svg className="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+        )}
         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
           <span className="w-2 h-2 rounded-full" style={{ backgroundColor: status === 'Reserved' ? '#f59e0b' : '#22c55e' }}></span>
           <span className="font-label-md text-label-md text-on-surface">{status}</span>
