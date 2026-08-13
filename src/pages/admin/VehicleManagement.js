@@ -85,12 +85,13 @@ const VehicleManagement = () => {
                        : imgSrc.includes('vehicle-marketplace-app.vercel.app/api/images/')
                        ? imgSrc.replace('vehicle-marketplace-app.vercel.app/api/images/', 'vehicle-marketplace-app.onrender.com/api/images/')
                        : imgSrc;
+                     const cacheBustedImg = resolvedImg ? `${resolvedImg}?_cb=${vehicle.updatedAt || Date.now()}` : '';
                      return (
                      <tr key={vehicle.vehicleId || vehicle.id || vehicle.VehicleID} className="hover:bg-gray-100/50">
                         <td className="px-6 py-4">
                           <div className="flex items-center space-x-3">
-                            {resolvedImg && (
-                              <img src={resolvedImg} alt="" className="w-12 h-12 rounded object-cover" />
+                            {cacheBustedImg && (
+                              <img src={cacheBustedImg} alt="" className="w-12 h-12 rounded object-cover" />
                             )}
                            <div>
                              <div className="text-gray-900 font-medium">{vehicle.year} {vehicle.make} {vehicle.model}</div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 const resolveApiImageUrl = (url) => {
   if (!url || typeof url !== 'string') return url;
@@ -23,6 +23,12 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
   const miles = vehicle.mileage ? `${vehicle.mileage.toLocaleString()} miles` : (vehicle.sub || '');
   const sub = vehicle.sub || '';
 
+  const cacheBustedSrc = useMemo(() => {
+    if (!imgSrc || imgSrc === '/image/hero.jpg') return imgSrc;
+    const sep = imgSrc.includes('?') ? '&' : '?';
+    return `${imgSrc}${sep}_cb=${Date.now()}`;
+  }, [imgSrc]);
+
   const handleImageError = (e) => {
     e.target.src = fallbackSrc;
   };
@@ -40,7 +46,7 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
         <div className="aspect-[4/3] mb-4 overflow-hidden rounded-lg bg-gray-50">
           {imgSrc ? (
             <img
-              src={imgSrc}
+              src={cacheBustedSrc}
               alt={`${title} front 3/4 view`}
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
               onError={handleImageError}
@@ -65,7 +71,7 @@ const VehicleCard = ({ vehicle, onClick, onEdit, onDelete, variant = 'default', 
         <div className="relative h-64 overflow-hidden bg-gray-100">
           {imgSrc ? (
             <img
-              src={imgSrc}
+              src={cacheBustedSrc}
               alt={`${title} front 3/4 view`}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               onError={handleImageError}
